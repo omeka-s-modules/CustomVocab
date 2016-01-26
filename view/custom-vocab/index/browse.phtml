@@ -1,0 +1,68 @@
+<?php
+$escape = $this->plugin('escapeHtml');
+?>
+
+<?php echo $this->pageTitle($this->translate('Custom Vocabs')); ?>
+
+<div id="page-actions">
+    <?php if ($this->userIsAllowed('CustomVocab\Api\Adapter\CustomVocabAdapter', 'create')): ?>
+    <?php echo $this->hyperlink($this->translate('Add new vocab'), $this->url('admin/custom-vocab/add'), array('class' => 'button')); ?>
+    <?php endif; ?>
+</div>
+
+<?php if (!$vocabs): ?>
+<p><?php echo $this->translate('There are no custom vocabs'); ?></p>
+<?php else: ?>
+<table>
+    <thead>
+        <tr>
+            <th><?php echo $this->translate('Label'); ?></th>
+            <th><?php echo $this->translate('Owner'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($vocabs as $vocab): ?>
+        <tr>
+            <td>
+                <ul class="actions">
+                    <?php if ($vocab->userIsAllowed('update')): ?>
+                    <li><?php echo $vocab->link('', 'edit', [
+                        'class' => 'o-icon-edit',
+                        'aria-label' => $this->translate('Edit'),
+                        'title' => $this->translate('Edit'),
+                    ]); ?></li>
+                    <?php endif; ?>
+                    <?php if ($vocab->userIsAllowed('delete')): ?>
+                    <li><a href="#"
+                        data-sidebar-content-url="<?php echo $escape($vocab->url('show-details')); ?>"
+                        data-sidebar-confirm-url="<?php echo $escape($vocab->url('delete')); ?>"
+                        class="o-icon-delete sidebar-confirm"
+                        aria-label="<?php echo $escape($this->translate('Delete')); ?>"
+                        title="<?php echo $escape($this->translate('Delete')); ?>"></a></li>
+                    <?php endif; ?>
+                    <li><a href="#"
+                        data-sidebar-content-url="<?php echo $escape($vocab->url('show-details')); ?>"
+                        class="o-icon-more sidebar-content"
+                        aria-label="<?php echo $escape($this->translate('Details')); ?>"
+                        title="<?php echo $escape($this->translate('Details')); ?>"></a></li>
+                </ul>
+                <?php echo $escape($vocab->label()); ?></td>
+            <td><?php echo $escape($vocab->owner()->name()); ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php endif; ?>
+
+<div class="sidebar">
+    <a href="#"
+        class="sidebar-close o-icon-close"
+        aria-label="<?php echo $escape($this->translate('Close')); ?>"
+        title="<?php echo $escape($this->translate('Close')); ?>"></a>
+    <div id="sidebar-confirm">
+        <h2><?php echo $escape($this->translate('Delete Item')); ?></h2>
+        <p><?php echo $escape($this->translate('Are you sure you would like to delete this vocab?')); ?></p>
+        <?php echo $this->form($confirmForm); ?>
+    </div>
+    <div class="sidebar-content"></div>
+</div>

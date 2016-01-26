@@ -1,0 +1,11 @@
+<?php
+$escape = $this->plugin('escapeHtml');
+$terms = array_map('trim', explode(PHP_EOL, $vocab->terms()));
+?>
+<h2><?php echo $escape($vocab->label()); ?></h2>
+<div><?php echo $this->translate('Language: ') . $escape($vocab->lang()); ?></div>
+<ul>
+<?php foreach ($terms as $term): ?>
+    <li><?php echo $escape($term); ?></li>
+<?php endforeach; ?>
+</ul>

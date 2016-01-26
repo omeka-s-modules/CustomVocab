@@ -1,0 +1,142 @@
+<?php
+namespace CustomVocab;
+
+use Omeka\Event\Event as OmekaEvent;
+use Omeka\Module\AbstractModule;
+use Omeka\Permissions\Assertion\OwnsEntityAssertion;
+use Zend\EventManager\Event;
+use Zend\EventManager\SharedEventManagerInterface;
+use Zend\Mvc\MvcEvent;
+use Zend\ServiceManager\ServiceLocatorInterface;
+
+class Module extends AbstractModule
+{
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function onBootstrap(MvcEvent $event)
+    {
+        parent::onBootstrap($event);
+
+        $acl = $this->getServiceLocator()->get('Omeka\Acl');
+        $acl->allow(
+            null,
+            'CustomVocab\Controller\Index',
+            ['browse', 'show-details']
+        );
+        $acl->allow(
+            null,
+            'CustomVocab\Api\Adapter\CustomVocabAdapter',
+            ['search', 'read']
+        );
+        $acl->allow(
+            null,
+            'CustomVocab\Entity\CustomVocab',
+            ['read']
+        );
+        $acl->allow(
+            'editor',
+            'CustomVocab\Controller\Index',
+            ['add', 'edit', 'delete']
+        );
+        $acl->allow(
+            'editor',
+            'CustomVocab\Api\Adapter\CustomVocabAdapter',
+            ['create', 'update', 'delete']
+        );
+        $acl->allow(
+            'editor',
+            'CustomVocab\Entity\CustomVocab',
+            'create'
+        );
+        $acl->allow(
+            'editor',
+            'CustomVocab\Entity\CustomVocab',
+            ['update', 'delete'],
+            new OwnsEntityAssertion
+        );
+    }
+
+    public function install(ServiceLocatorInterface $serviceLocator)
+    {
+        $conn = $serviceLocator->get('Omeka\Connection');
+        $conn->exec('CREATE TABLE custom_vocab (id INT AUTO_INCREMENT NOT NULL, owner_id INT DEFAULT NULL, `label` VARCHAR(190) NOT NULL, lang VARCHAR(190) DEFAULT NULL, terms LONGTEXT NOT NULL, UNIQUE INDEX UNIQ_8533D2A5EA750E8 (`label`), INDEX IDX_8533D2A57E3C61F9 (owner_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB;');
+        $conn->exec('ALTER TABLE custom_vocab ADD CONSTRAINT FK_8533D2A57E3C61F9 FOREIGN KEY (owner_id) REFERENCES user (id) ON DELETE SET NULL;');
+    }
+
+    public function uninstall(ServiceLocatorInterface $serviceLocator)
+    {
+        $conn = $serviceLocator->get('Omeka\Connection');
+        $conn->exec('ALTER TABLE custom_vocab DROP FOREIGN KEY FK_8533D2A57E3C61F9;');
+        $conn->exec('DROP TABLE custom_vocab');
+        // Set all types to a default state.
+        $conn->exec('UPDATE value SET type = "literal" WHERE type REGEXP "^customvocab:[0-9]+$"');
+        $conn->exec('UPDATE resource_template_property SET data_type = NULL WHERE data_type REGEXP "^customvocab:[0-9]+$"');
+    }
+
+    public function attachListeners(SharedEventManagerInterface $sharedEventManager)
+    {
+        $sharedEventManager->attach(
+            'Omeka\DataType\Manager',
+            OmekaEvent::SERVICE_REGISTERED_NAMES,
+            array($this, 'addVocabularyServices')
+        );
+        $sharedEventManager->attach(
+            ['Omeka\Controller\Admin\Item', 'Omeka\Controller\Admin\ItemSet',
+                'Omeka\Controller\Admin\Media'],
+            [OmekaEvent::VIEW_ADD_AFTER, OmekaEvent::VIEW_EDIT_AFTER],
+            array($this, 'prepareForm')
+        );
+        $sharedEventManager->attach(
+            'CustomVocab\Entity\CustomVocab',
+            OmekaEvent::ENTITY_REMOVE_PRE,
+            array($this, 'setVocabTypeToDefaultState')
+        );
+    }
+
+    public function addVocabularyServices(Event $event)
+    {
+        $vocabs = $this->getServiceLocator()->get('Omeka\ApiManager')
+            ->search('custom_vocabs')->getContent();
+        if (!$vocabs) {
+            return;
+        }
+        $names = $event->getParam('registered_names');
+        foreach ($vocabs as $vocab) {
+            $names[] = 'customvocab:' . $vocab->id();
+        }
+        $event->setParam('registered_names', $names);
+    }
+
+    public function prepareForm(Event $event)
+    {
+        $event->getTarget()->headScript()->appendScript('
+$(document).on("o:prepare-value", function(e, type, value, valueObj, namePrefix) {
+    if (type.match(/^customvocab:\d+$/)) {
+        value.find("input.language")
+            .attr("name", namePrefix + "[@language]");
+        value.find("select.terms")
+            .attr("name", namePrefix + "[@value]")
+            .val(valueObj ? valueObj["@value"] : null);
+    }
+});');
+    }
+
+    public function setVocabTypeToDefaultState(Event $event)
+    {
+        $vocab = $event->getTarget();
+        $vocabName = 'customvocab:' . $vocab->getId();
+        $conn = $this->getServiceLocator()->get('Omeka\Connection');
+
+        $stmt = $conn->prepare('UPDATE value SET type = "literal" WHERE type = ?');
+        $stmt->bindValue(1, $vocabName);
+        $stmt->execute();
+
+        $stmt = $conn->prepare('UPDATE resource_template_property SET data_type = NULL WHERE data_type = ?');
+        $stmt->bindValue(1, $vocabName);
+        $stmt->execute();
+    }
+}
+
