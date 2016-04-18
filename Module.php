@@ -81,18 +81,18 @@ class Module extends AbstractModule
         $sharedEventManager->attach(
             'Omeka\DataType\Manager',
             OmekaEvent::SERVICE_REGISTERED_NAMES,
-            array($this, 'addVocabularyServices')
+            [$this, 'addVocabularyServices']
         );
         $sharedEventManager->attach(
             ['Omeka\Controller\Admin\Item', 'Omeka\Controller\Admin\ItemSet',
                 'Omeka\Controller\Admin\Media'],
             [OmekaEvent::VIEW_ADD_AFTER, OmekaEvent::VIEW_EDIT_AFTER],
-            array($this, 'prepareForm')
+            [$this, 'prepareForm']
         );
         $sharedEventManager->attach(
             'CustomVocab\Entity\CustomVocab',
             OmekaEvent::ENTITY_REMOVE_PRE,
-            array($this, 'setVocabTypeToDefaultState')
+            [$this, 'setVocabTypeToDefaultState']
         );
     }
 
@@ -139,4 +139,3 @@ $(document).on("o:prepare-value", function(e, type, value, valueObj, namePrefix)
         $stmt->execute();
     }
 }
-

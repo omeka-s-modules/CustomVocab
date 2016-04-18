@@ -1,31 +1,31 @@
 <?php
 return [
-    'api_adapters' => array(
-        'invokables' => array(
+    'api_adapters' => [
+        'invokables' => [
             'custom_vocabs' => 'CustomVocab\Api\Adapter\CustomVocabAdapter',
-        ),
-    ),
-    'entity_manager' => array(
-        'mapping_classes_paths' => array(
+        ],
+    ],
+    'entity_manager' => [
+        'mapping_classes_paths' => [
             OMEKA_PATH . '/modules/CustomVocab/src/Entity',
-        ),
-    ),
+        ],
+    ],
     'data_types' => [
         'abstract_factories' => ['CustomVocab\Service\CustomVocabFactory'],
     ],
-    'view_manager' => array(
-        'template_path_stack'      => array(
+    'view_manager' => [
+        'template_path_stack'      => [
             OMEKA_PATH . '/modules/CustomVocab/view',
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
+        ],
+    ],
+    'controllers' => [
+        'invokables' => [
             'CustomVocab\Controller\Index' => 'CustomVocab\Controller\IndexController',
-        ),
-    ),
-    'navigation' => array(
-        'admin' => array(
-            array(
+        ],
+    ],
+    'navigation' => [
+        'admin' => [
+            [
                 'label' => 'Custom Vocab',
                 'route' => 'admin/custom-vocab',
                 'resource' => 'CustomVocab\Controller\Index',
@@ -40,9 +40,9 @@ return [
                         'visible' => false,
                     ],
                 ],
-            ),
-        ),
-    ),
+            ],
+        ],
+    ],
     'router' => [
         'routes' => [
             'admin' => [

@@ -6,7 +6,7 @@ $escape = $this->plugin('escapeHtml');
 
 <div id="page-actions">
     <?php if ($this->userIsAllowed('CustomVocab\Api\Adapter\CustomVocabAdapter', 'create')): ?>
-    <?php echo $this->hyperlink($this->translate('Add new vocab'), $this->url('admin/custom-vocab/add'), array('class' => 'button')); ?>
+    <?php echo $this->hyperlink($this->translate('Add new vocab'), $this->url('admin/custom-vocab/add'), ['class' => 'button']); ?>
     <?php endif; ?>
 </div>
 
