@@ -2,8 +2,9 @@
 namespace CustomVocab\DataType;
 
 use CustomVocab\Api\Representation\CustomVocabRepresentation;
+use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\DataType\Literal;
-use Zend\Form\Element\Hidden;
+use Omeka\Entity\Value;
 use Zend\Form\Element\Select;
 use Zend\View\Renderer\PhpRenderer;
 
@@ -35,14 +36,19 @@ class CustomVocab extends Literal
         $terms = array_map('trim', explode(PHP_EOL, $this->vocab->terms()));
         $valueOptions = array_combine($terms, $terms);
 
-        $hidden = new Hidden('customvocab');
-        $hidden->setAttributes(['class' => 'language'])
-            ->setValue($this->vocab->lang());
         $select = new Select('customvocab');
-        $select->setAttributes(['class' => 'terms'])
+        $select->setAttributes([
+                'class' => 'terms',
+                'data-value-key' => '@value',
+            ])
             ->setEmptyOption('Select Below')
             ->setValueOptions($valueOptions);
-        return $view->formHidden($hidden) . $view->formSelect($select);
+        return $view->formSelect($select);
+    }
 
+    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)
+    {
+        $valueObject['@language'] = $this->vocab->lang();
+        parent::hydrate($valueObject, $value, $adapter);
     }
 }

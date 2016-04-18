@@ -84,12 +84,6 @@ class Module extends AbstractModule
             [$this, 'addVocabularyServices']
         );
         $sharedEventManager->attach(
-            ['Omeka\Controller\Admin\Item', 'Omeka\Controller\Admin\ItemSet',
-                'Omeka\Controller\Admin\Media'],
-            [OmekaEvent::VIEW_ADD_AFTER, OmekaEvent::VIEW_EDIT_AFTER],
-            [$this, 'prepareForm']
-        );
-        $sharedEventManager->attach(
             'CustomVocab\Entity\CustomVocab',
             OmekaEvent::ENTITY_REMOVE_PRE,
             [$this, 'setVocabTypeToDefaultState']
@@ -108,20 +102,6 @@ class Module extends AbstractModule
             $names[] = 'customvocab:' . $vocab->id();
         }
         $event->setParam('registered_names', $names);
-    }
-
-    public function prepareForm(Event $event)
-    {
-        $event->getTarget()->headScript()->appendScript('
-$(document).on("o:prepare-value", function(e, type, value, valueObj, namePrefix) {
-    if (type.match(/^customvocab:\d+$/)) {
-        value.find("input.language")
-            .attr("name", namePrefix + "[@language]");
-        value.find("select.terms")
-            .attr("name", namePrefix + "[@value]")
-            .val(valueObj ? valueObj["@value"] : null);
-    }
-});');
     }
 
     public function setVocabTypeToDefaultState(Event $event)
