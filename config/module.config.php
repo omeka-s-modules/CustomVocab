@@ -24,7 +24,7 @@ return [
         ],
     ],
     'navigation' => [
-        'AdminGlobal' => [
+        'AdminModule' => [
             [
                 'label' => 'Custom Vocab',
                 'route' => 'admin/custom-vocab',
