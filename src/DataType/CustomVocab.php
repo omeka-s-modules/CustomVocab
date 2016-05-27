@@ -25,6 +25,11 @@ class CustomVocab extends Literal
         $this->vocab = $vocab;
     }
 
+    public function getName()
+    {
+        return 'customvocab:' . $this->vocab->id();
+    }
+
     public function getLabel()
     {
         return sprintf('Custom Vocab: “%s”', $this->vocab->label());
