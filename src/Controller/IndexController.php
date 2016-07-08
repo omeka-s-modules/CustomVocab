@@ -13,11 +13,6 @@ class IndexController extends AbstractActionController
         $response = $this->api()->search('custom_vocabs');
         $view = new ViewModel;
         $view->setVariable('vocabs', $response->getContent());
-        $view->setVariable('confirmForm', new ConfirmForm(
-            $this->getServiceLocator(), null, [
-                'button_value' => $this->translate('Confirm Delete'),
-            ]
-        ));
         return $view;
     }
 
@@ -26,14 +21,14 @@ class IndexController extends AbstractActionController
         $response = $this->api()->read('custom_vocabs', $this->params('id'));
         $view = new ViewModel;
         $view->setTerminal(true);
-        $view->setVariable('vocab', $response->getContent());
+        $view->setVariable('resource', $response->getContent());
         return $view;
     }
 
     public function addAction()
     {
         $action = $this->params('action');
-        $form = new CustomVocabForm($this->getServiceLocator());
+        $form = $this->getForm(CustomVocabForm::class);
 
         if ($this->getRequest()->isPost()) {
             $form->setData($this->params()->fromPost());
@@ -59,7 +54,7 @@ class IndexController extends AbstractActionController
     public function editAction()
     {
         $action = $this->params('action');
-        $form = new CustomVocabForm($this->getServiceLocator());
+        $form = $this->getForm(CustomVocabForm::class);
         $response = $this->api()->read('custom_vocabs', $this->params('id'));
         $vocab = $response->getContent();
         $form->setData($vocab->jsonSerialize());
@@ -89,7 +84,7 @@ class IndexController extends AbstractActionController
     public function deleteAction()
     {
         if ($this->getRequest()->isPost()) {
-            $form = new ConfirmForm($this->getServiceLocator());
+            $form = $this->getForm(ConfirmForm::class);
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
                 $response = $this->api()->delete('custom_vocabs', $this->params('id'));
@@ -103,5 +98,18 @@ class IndexController extends AbstractActionController
             }
         }
         return $this->redirect()->toRoute('admin/custom-vocab');
+    }
+
+    public function deleteConfirmAction()
+    {
+        $resource = $this->api()->read('custom_vocabs', $this->params('id'))->getContent();
+
+        $view = new ViewModel;
+        $view->setTerminal(true);
+        $view->setTemplate('common/delete-confirm-details');
+        $view->setVariable('resource', $resource);
+        $view->setVariable('resourceLabel', 'custom vocab');
+        $view->setVariable('partialPath', 'custom-vocab/index/show-details');
+        return $view;
     }
 }

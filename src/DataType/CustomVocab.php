@@ -35,7 +35,7 @@ class CustomVocab extends Literal
         return sprintf('Custom Vocab: “%s”', $this->vocab->label());
     }
 
-    public function getTemplate(PhpRenderer $view)
+    public function form(PhpRenderer $view)
     {
         // Normalize vocab terms for use in a select element.
         $terms = array_map('trim', explode(PHP_EOL, $this->vocab->terms()));

@@ -1,20 +1,18 @@
 <?php
 namespace CustomVocab\Form;
 
-use Omeka\Form\AbstractForm;
+use Zend\Form\Form;
 
-class CustomVocabForm extends AbstractForm
+class CustomVocabForm extends Form
 {
-    public function buildForm()
+    public function init()
     {
-        $translator = $this->getTranslator();
-
         $this->add([
             'name' => 'o:label',
             'type' => 'text',
             'options' => [
-                'label' => $translator->translate('Label'),
-                'info' => $translator->translate('A human-readable title of the custom vocabulary.'),
+                'label' => 'Label', // @translate
+                'info' => 'A human-readable title of the custom vocabulary.', // @translate
             ],
             'attributes' => [
                 'required' => true,
@@ -25,8 +23,8 @@ class CustomVocabForm extends AbstractForm
             'name' => 'o:lang',
             'type' => 'text',
             'options' => [
-                'label' => $translator->translate('Language'),
-                'info' => $translator->translate('The language of the vocabulary terms.'),
+                'label' => 'Language', // @translate
+                'info' => 'The language of the vocabulary terms.', // @translate
             ],
         ]);
 
@@ -34,8 +32,8 @@ class CustomVocabForm extends AbstractForm
             'name' => 'o:terms',
             'type' => 'textarea',
             'options' => [
-                'label' => $translator->translate('Terms'),
-                'info' => $translator->translate('All terms in this vocabulary, separated by new lines.'),
+                'label' => 'Terms', // @translate
+                'info' => 'All terms in this vocabulary, separated by new lines.', // @translate
             ],
             'attributes' => [
                 'required' => true,
@@ -47,7 +45,7 @@ class CustomVocabForm extends AbstractForm
             'name' => 'submit',
             'type'  => 'Submit',
             'attributes' => [
-                'value' => $translator->translate('Submit'),
+                'value' => 'Submit', // @translate
             ],
         ]);
     }
