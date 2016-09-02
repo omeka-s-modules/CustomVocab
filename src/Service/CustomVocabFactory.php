@@ -2,24 +2,22 @@
 namespace CustomVocab\Service;
 
 use CustomVocab\DataType\CustomVocab;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\AbstractFactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 
 class CustomVocabFactory implements AbstractFactoryInterface
 {
-    public function canCreateServiceWithName(
-        ServiceLocatorInterface $serviceLocator, $name, $requestedName
-    ) {
-        return (bool) preg_match('/^customvocab:\d+$/', $name);
+    public function canCreate(ContainerInterface $services, $requestedName)
+    {
+        return (bool) preg_match('/^customvocab:\d+$/', $requestedName);
     }
 
-    public function createServiceWithName(
-        ServiceLocatorInterface $serviceLocator, $name, $requestedName
-    ) {
+    public function __invoke(ContainerInterface $services, $requestedName, array $options = null)
+    {
         // Derive the custom vocab ID, fetch the representation, and pass it to
         // the data type.
-        $id = (int) substr($name, strrpos($name, ':') + 1);
-        $vocab = $serviceLocator->getServiceLocator()->get('Omeka\ApiManager')
+        $id = (int) substr($requestedName, strrpos($requestedName, ':') + 1);
+        $vocab = $services->get('Omeka\ApiManager')
             ->read('custom_vocabs', $id)->getContent();
         return new CustomVocab($vocab);
     }
