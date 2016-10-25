@@ -1,7 +1,6 @@
 <?php
 namespace CustomVocab;
 
-use Omeka\Event\Event as OmekaEvent;
 use Omeka\Module\AbstractModule;
 use Omeka\Permissions\Assertion\OwnsEntityAssertion;
 use Zend\EventManager\Event;
@@ -80,12 +79,12 @@ class Module extends AbstractModule
     {
         $sharedEventManager->attach(
             'Omeka\DataType\Manager',
-            OmekaEvent::SERVICE_REGISTERED_NAMES,
+            'service.registered.names',
             [$this, 'addVocabularyServices']
         );
         $sharedEventManager->attach(
             'CustomVocab\Entity\CustomVocab',
-            OmekaEvent::ENTITY_REMOVE_PRE,
+            'entity.remove.pre',
             [$this, 'setVocabTypeToDefaultState']
         );
     }
