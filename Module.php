@@ -79,7 +79,7 @@ class Module extends AbstractModule
     {
         $sharedEventManager->attach(
             'Omeka\DataType\Manager',
-            'service.registered.names',
+            'service.registered_names',
             [$this, 'addVocabularyServices']
         );
         $sharedEventManager->attach(
