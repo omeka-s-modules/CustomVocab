@@ -43,7 +43,7 @@ class CustomVocab extends Literal
 
         $select = new Select('customvocab');
         $select->setAttributes([
-                'class' => 'terms',
+                'class' => 'terms to-require',
                 'data-value-key' => '@value',
             ])
             ->setEmptyOption('Select Below')
