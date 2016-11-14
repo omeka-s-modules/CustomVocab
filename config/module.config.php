@@ -9,6 +9,9 @@ return [
         'mapping_classes_paths' => [
             OMEKA_PATH . '/modules/CustomVocab/src/Entity',
         ],
+        'proxy_paths' => [
+            OMEKA_PATH . '/modules/CustomVocab/data/doctrine-proxies',
+        ],
     ],
     'data_types' => [
         'abstract_factories' => ['CustomVocab\Service\CustomVocabFactory'],
