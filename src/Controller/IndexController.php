@@ -34,10 +34,8 @@ class IndexController extends AbstractActionController
             $form->setData($this->params()->fromPost());
             if ($form->isValid()) {
                 $formData = $form->getData();
-                $response = $this->api()->create('custom_vocabs', $formData);
-                if ($response->isError()) {
-                    $form->setMessages($response->getErrors());
-                } else {
+                $response = $this->api($form)->create('custom_vocabs', $formData);
+                if ($response) {
                     $this->messenger()->addSuccess('Custom vocab created.');
                     return $this->redirect()->toRoute('admin/custom-vocab');
                 }
@@ -63,10 +61,8 @@ class IndexController extends AbstractActionController
             $form->setData($this->params()->fromPost());
             if ($form->isValid()) {
                 $formData = $form->getData();
-                $response = $this->api()->update('custom_vocabs', $vocab->id(), $formData);
-                if ($response->isError()) {
-                    $form->setMessages($response->getErrors());
-                } else {
+                $response = $this->api($form)->update('custom_vocabs', $vocab->id(), $formData);
+                if ($response) {
                     $this->messenger()->addSuccess('Custom vocab updated.');
                     return $this->redirect()->toRoute('admin/custom-vocab');
                 }
@@ -87,10 +83,8 @@ class IndexController extends AbstractActionController
             $form = $this->getForm(ConfirmForm::class);
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
-                $response = $this->api()->delete('custom_vocabs', $this->params('id'));
-                if ($response->isError()) {
-                    $this->messenger()->addError('Vocab could not be deleted');
-                } else {
+                $response = $this->api($form)->delete('custom_vocabs', $this->params('id'));
+                if ($response) {
                     $this->messenger()->addSuccess('Vocab successfully deleted');
                 }
             } else {
