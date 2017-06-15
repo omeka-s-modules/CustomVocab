@@ -40,13 +40,5 @@ class CustomVocabForm extends Form
                 'rows' => 20,
             ],
         ]);
-
-        $this->add([
-            'name' => 'submit',
-            'type'  => 'Submit',
-            'attributes' => [
-                'value' => 'Submit', // @translate
-            ],
-        ]);
     }
 }
