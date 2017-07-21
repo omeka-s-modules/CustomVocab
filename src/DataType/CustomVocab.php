@@ -30,9 +30,14 @@ class CustomVocab extends Literal
         return 'customvocab:' . $this->vocab->id();
     }
 
+    public function getOptgroupLabel()
+    {
+        return 'Custom Vocab'; // @translate
+    }
+
     public function getLabel()
     {
-        return sprintf('Custom Vocab: “%s”', $this->vocab->label());
+        return $this->vocab->label();
     }
 
     public function form(PhpRenderer $view)
