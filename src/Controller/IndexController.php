@@ -102,7 +102,8 @@ class IndexController extends AbstractActionController
         $view->setTerminal(true);
         $view->setTemplate('common/delete-confirm-details');
         $view->setVariable('resource', $resource);
-        $view->setVariable('resourceLabel', 'custom vocab');
+        $resourceLabel = 'custom vocab'; // @translate
+        $view->setVariable('resourceLabel', $resourceLabel);
         $view->setVariable('partialPath', 'custom-vocab/index/show-details');
         return $view;
     }

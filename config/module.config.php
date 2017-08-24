@@ -5,6 +5,16 @@ return [
             'custom_vocabs' => 'CustomVocab\Api\Adapter\CustomVocabAdapter',
         ],
     ],
+    'translator' => [
+        'translation_file_patterns' => [
+            [
+                'type' => 'gettext',
+                'base_dir' => OMEKA_PATH . '/modules/CustomVocab/language',
+                'pattern' => '%s.mo',
+                'text_domain' => null,
+            ],
+        ],
+    ],
     'entity_manager' => [
         'mapping_classes_paths' => [
             OMEKA_PATH . '/modules/CustomVocab/src/Entity',
@@ -29,7 +39,7 @@ return [
     'navigation' => [
         'AdminModule' => [
             [
-                'label' => 'Custom Vocab',
+                'label' => 'Custom Vocab', // @translate
                 'route' => 'admin/custom-vocab',
                 'resource' => 'CustomVocab\Controller\Index',
                 'privilege' => 'browse',
