@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-28 12:42-0400\n"
+"POT-Creation-Date: 2017-09-28 13:00-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,26 @@ msgstr ""
 
 #: view/custom-vocab/index/show-details.phtml:6
 msgid "Language: "
+msgstr ""
+
+#: src/Controller/IndexController.php:39
+msgid "Custom vocab created."
+msgstr ""
+
+#: src/Controller/IndexController.php:40
+msgid "admin/custom-vocab"
+msgstr ""
+
+#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:70
+msgid "There was an error during validation"
+msgstr ""
+
+#: src/Controller/IndexController.php:88
+msgid "Vocab successfully deleted"
+msgstr ""
+
+#: src/Controller/IndexController.php:91
+msgid "Vocab could not be deleted"
 msgstr ""
 
 #: src/Controller/IndexController.php:105

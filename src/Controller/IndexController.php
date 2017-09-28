@@ -36,11 +36,11 @@ class IndexController extends AbstractActionController
                 $formData = $form->getData();
                 $response = $this->api($form)->create('custom_vocabs', $formData);
                 if ($response) {
-                    $this->messenger()->addSuccess('Custom vocab created.');
-                    return $this->redirect()->toRoute('admin/custom-vocab');
+                    $this->messenger()->addSuccess('Custom vocab created.'); // @translate
+                    return $this->redirect()->toRoute('admin/custom-vocab'); // @translate
                 }
             } else {
-                $this->messenger()->addError('There was an error during validation');
+                $this->messenger()->addError('There was an error during validation'); // @translate
             }
         }
 
@@ -67,7 +67,7 @@ class IndexController extends AbstractActionController
                     return $this->redirect()->toRoute('admin/custom-vocab');
                 }
             } else {
-                $this->messenger()->addError('There was an error during validation');
+                $this->messenger()->addError('There was an error during validation'); // @translate
             }
         }
 
@@ -85,10 +85,10 @@ class IndexController extends AbstractActionController
             if ($form->isValid()) {
                 $response = $this->api($form)->delete('custom_vocabs', $this->params('id'));
                 if ($response) {
-                    $this->messenger()->addSuccess('Vocab successfully deleted');
+                    $this->messenger()->addSuccess('Vocab successfully deleted'); // @translate
                 }
             } else {
-                $this->messenger()->addError('Vocab could not be deleted');
+                $this->messenger()->addError('Vocab could not be deleted'); // @translate
             }
         }
         return $this->redirect()->toRoute('admin/custom-vocab');
