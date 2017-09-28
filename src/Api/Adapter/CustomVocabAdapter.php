@@ -43,14 +43,14 @@ class CustomVocabAdapter extends AbstractEntityAdapter
     ) {
         $label = $entity->getLabel();
         if (false == trim($label)) {
-            $errorStore->addError('o:label', 'The label cannot be empty.');
+            $errorStore->addError('o:label', 'The label cannot be empty.'); // @translate
         }
         if (!$this->isUnique($entity, ['label' => $label])) {
-            $errorStore->addError('o:label', 'The label is already taken.');
+            $errorStore->addError('o:label', 'The label is already taken.'); // @translate
         }
 
         if (false == trim($entity->getTerms())) {
-            $errorStore->addError('o:terms', 'The terms cannot be empty.');
+            $errorStore->addError('o:terms', 'The terms cannot be empty.'); // @translate
         }
     }
 
