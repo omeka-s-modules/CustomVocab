@@ -51,8 +51,9 @@ class CustomVocab extends Literal
                 'class' => 'terms to-require',
                 'data-value-key' => '@value',
             ])
-            ->setEmptyOption('Select Below')
+            ->setEmptyOption('Select below…') // @translate
             ->setValueOptions($valueOptions);
+
         return $view->formSelect($select);
     }
 
