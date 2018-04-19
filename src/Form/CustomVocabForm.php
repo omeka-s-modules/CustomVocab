@@ -16,6 +16,7 @@ class CustomVocabForm extends Form
             ],
             'attributes' => [
                 'required' => true,
+                'id' => 'o-label',
             ],
         ]);
 
@@ -25,6 +26,9 @@ class CustomVocabForm extends Form
             'options' => [
                 'label' => 'Language', // @translate
                 'info' => 'The language of the vocabulary terms.', // @translate
+            ],
+            'attributes' => [
+                'id' => 'o-lang',
             ],
         ]);
 
@@ -38,6 +42,7 @@ class CustomVocabForm extends Form
             'attributes' => [
                 'required' => true,
                 'rows' => 20,
+                'id' => 'o-terms',
             ],
         ]);
     }
