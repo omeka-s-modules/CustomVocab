@@ -65,13 +65,21 @@ class Module extends AbstractModule
         $conn->exec('ALTER TABLE custom_vocab ADD CONSTRAINT FK_8533D2A57E3C61F9 FOREIGN KEY (owner_id) REFERENCES user (id) ON DELETE SET NULL;');
     }
 
+    public function upgrade($oldVersion, $newVersion, ServiceLocatorInterface $serviceLocator)
+    {
+        $conn = $serviceLocator->get('Omeka\Connection');
+
+        if (version_compare($oldVersion, '1.1.0', '<')) {
+            $conn->exec('UPDATE value SET data = type, type = "literal" WHERE type REGEXP "^customvocab:[0-9]+$"');
+        }
+    }
+
     public function uninstall(ServiceLocatorInterface $serviceLocator)
     {
         $conn = $serviceLocator->get('Omeka\Connection');
         $conn->exec('ALTER TABLE custom_vocab DROP FOREIGN KEY FK_8533D2A57E3C61F9;');
         $conn->exec('DROP TABLE custom_vocab');
         // Set all types to a default state.
-        $conn->exec('UPDATE value SET type = "literal" WHERE type REGEXP "^customvocab:[0-9]+$"');
         $conn->exec('UPDATE resource_template_property SET data_type = NULL WHERE data_type REGEXP "^customvocab:[0-9]+$"');
     }
 

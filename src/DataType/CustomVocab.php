@@ -25,7 +25,7 @@ class CustomVocab extends Literal
         $this->vocab = $vocab;
     }
 
-    public function getName()
+    public function getData()
     {
         return 'customvocab:' . $this->vocab->id();
     }
