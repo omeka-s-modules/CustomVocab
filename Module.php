@@ -22,37 +22,37 @@ class Module extends AbstractModule
         $acl = $this->getServiceLocator()->get('Omeka\Acl');
         $acl->allow(
             null,
-            'CustomVocab\Controller\Index',
+            \CustomVocab\Controller\IndexController::class,
             ['browse', 'show-details']
         );
         $acl->allow(
             null,
-            'CustomVocab\Api\Adapter\CustomVocabAdapter',
+            \CustomVocab\Api\Adapter\CustomVocabAdapter::class,
             ['search', 'read']
         );
         $acl->allow(
             null,
-            'CustomVocab\Entity\CustomVocab',
+            \CustomVocab\Entity\CustomVocab::class,
             ['read']
         );
         $acl->allow(
             'editor',
-            'CustomVocab\Controller\Index',
+            \CustomVocab\Controller\IndexController::class,
             ['add', 'edit', 'delete']
         );
         $acl->allow(
             'editor',
-            'CustomVocab\Api\Adapter\CustomVocabAdapter',
+            \CustomVocab\Api\Adapter\CustomVocabAdapter::class,
             ['create', 'update', 'delete']
         );
         $acl->allow(
             'editor',
-            'CustomVocab\Entity\CustomVocab',
+            \CustomVocab\Entity\CustomVocab::class,
             'create'
         );
         $acl->allow(
             'editor',
-            'CustomVocab\Entity\CustomVocab',
+            \CustomVocab\Entity\CustomVocab::class,
             ['update', 'delete'],
             new OwnsEntityAssertion
         );
@@ -83,7 +83,7 @@ class Module extends AbstractModule
             [$this, 'addVocabularyServices']
         );
         $sharedEventManager->attach(
-            'CustomVocab\Entity\CustomVocab',
+            \CustomVocab\Entity\CustomVocab::class,
             'entity.remove.pre',
             [$this, 'setVocabTypeToDefaultState']
         );

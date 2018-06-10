@@ -15,12 +15,12 @@ class CustomVocabAdapter extends AbstractEntityAdapter
 
     public function getRepresentationClass()
     {
-        return 'CustomVocab\Api\Representation\CustomVocabRepresentation';
+        return \CustomVocab\Api\Representation\CustomVocabRepresentation::class;
     }
 
     public function getEntityClass()
     {
-        return 'CustomVocab\Entity\CustomVocab';
+        return \CustomVocab\Entity\CustomVocab::class;
     }
 
     public function hydrate(Request $request, EntityInterface $entity,
