@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-28 13:00-0400\n"
+"POT-Creation-Date: 2019-03-18 00:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,61 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: view/custom-vocab/index/add.phtml:2
+#: view/custom-vocab/index/add.phtml:5
 msgid "Add Custom Vocab"
 msgstr ""
 
-#: view/custom-vocab/index/browse.phtml:6
+#: view/custom-vocab/index/browse.phtml:7
 msgid "Custom Vocabs"
 msgstr ""
 
-#: view/custom-vocab/index/browse.phtml:10
+#: view/custom-vocab/index/browse.phtml:11
 msgid "Add new vocab"
 msgstr ""
 
-#: view/custom-vocab/index/browse.phtml:15
+#: view/custom-vocab/index/browse.phtml:16
 msgid "There are no custom vocabs"
 msgstr ""
 
-#: view/custom-vocab/index/edit.phtml:2
+#: view/custom-vocab/index/edit.phtml:5
 #, php-format
 msgid "Edit Custom Vocab: “%s”"
 msgstr ""
 
-#: view/custom-vocab/index/show-details.phtml:6
+#: view/custom-vocab/index/show-details.phtml:7
 msgid "Language: "
-msgstr ""
-
-#: src/Controller/IndexController.php:39
-msgid "Custom vocab created."
-msgstr ""
-
-#: src/Controller/IndexController.php:40
-msgid "admin/custom-vocab"
-msgstr ""
-
-#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:70
-msgid "There was an error during validation"
-msgstr ""
-
-#: src/Controller/IndexController.php:88
-msgid "Vocab successfully deleted"
-msgstr ""
-
-#: src/Controller/IndexController.php:91
-msgid "Vocab could not be deleted"
-msgstr ""
-
-#: src/Controller/IndexController.php:105
-msgid "custom vocab"
-msgstr ""
-
-#: src/Api/Adapter/CustomVocabAdapter.php:53
-msgid "The terms cannot be empty."
-msgstr ""
-
-#: src/DataType/CustomVocab.php:35 config/module.config.php:42
-msgid "Custom Vocab"
 msgstr ""
 
 #: src/Form/CustomVocabForm.php:15
@@ -88,4 +56,40 @@ msgstr ""
 
 #: src/Form/CustomVocabForm.php:36
 msgid "All terms in this vocabulary, separated by new lines."
+msgstr ""
+
+#: src/DataType/CustomVocab.php:35 config/module.config.php:42
+msgid "Custom Vocab"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:54
+msgid "Select below"
+msgstr ""
+
+#: src/Controller/IndexController.php:38
+msgid "Custom vocab created."
+msgstr ""
+
+#: src/Controller/IndexController.php:42 src/Controller/IndexController.php:68
+msgid "There was an error during validation"
+msgstr ""
+
+#: src/Controller/IndexController.php:64
+msgid "Custom vocab updated."
+msgstr ""
+
+#: src/Controller/IndexController.php:86
+msgid "Vocab successfully deleted"
+msgstr ""
+
+#: src/Controller/IndexController.php:89
+msgid "Vocab could not be deleted"
+msgstr ""
+
+#: src/Controller/IndexController.php:103
+msgid "custom vocab"
+msgstr ""
+
+#: src/Api/Adapter/CustomVocabAdapter.php:53
+msgid "The terms cannot be empty."
 msgstr ""
