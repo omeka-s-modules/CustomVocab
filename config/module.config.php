@@ -1,39 +1,33 @@
 <?php
+namespace CustomVocab;
+
 return [
     'api_adapters' => [
         'invokables' => [
-            'custom_vocabs' => 'CustomVocab\Api\Adapter\CustomVocabAdapter',
-        ],
-    ],
-    'translator' => [
-        'translation_file_patterns' => [
-            [
-                'type' => 'gettext',
-                'base_dir' => OMEKA_PATH . '/modules/CustomVocab/language',
-                'pattern' => '%s.mo',
-                'text_domain' => null,
-            ],
+            'custom_vocabs' => Api\Adapter\CustomVocabAdapter::class,
         ],
     ],
     'entity_manager' => [
         'mapping_classes_paths' => [
-            OMEKA_PATH . '/modules/CustomVocab/src/Entity',
+            dirname(__DIR__) . '/src/Entity',
         ],
         'proxy_paths' => [
-            OMEKA_PATH . '/modules/CustomVocab/data/doctrine-proxies',
+            dirname(__DIR__) . '/data/doctrine-proxies',
         ],
     ],
     'data_types' => [
-        'abstract_factories' => ['CustomVocab\Service\CustomVocabFactory'],
+        'abstract_factories' => [
+            Service\CustomVocabFactory::class,
+        ],
     ],
     'view_manager' => [
-        'template_path_stack'      => [
-            OMEKA_PATH . '/modules/CustomVocab/view',
+        'template_path_stack' => [
+            dirname(__DIR__) . '/view',
         ],
     ],
     'controllers' => [
         'invokables' => [
-            'CustomVocab\Controller\Index' => 'CustomVocab\Controller\IndexController',
+            Controller\IndexController::class => Controller\IndexController::class,
         ],
     ],
     'navigation' => [
@@ -41,7 +35,7 @@ return [
             [
                 'label' => 'Custom Vocab', // @translate
                 'route' => 'admin/custom-vocab',
-                'resource' => 'CustomVocab\Controller\Index',
+                'resource' => Controller\IndexController::class,
                 'privilege' => 'browse',
                 'pages' => [
                     [
@@ -61,19 +55,19 @@ return [
             'admin' => [
                 'child_routes' => [
                     'custom-vocab' => [
-                        'type' => 'Literal',
+                        'type' => \Zend\Router\Http\Literal::class,
                         'options' => [
                             'route' => '/custom-vocab',
                             'defaults' => [
                                 '__NAMESPACE__' => 'CustomVocab\Controller',
-                                'controller' => 'Index',
+                                'controller' => Controller\IndexController::class,
                                 'action' => 'browse',
                             ],
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
                             'add' => [
-                                'type' => 'Literal',
+                                'type' => \Zend\Router\Http\Literal::class,
                                 'options' => [
                                     'route' => '/add',
                                     'defaults' => [
@@ -82,7 +76,7 @@ return [
                                 ],
                             ],
                             'id' => [
-                                'type' => 'Segment',
+                                'type' => \Zend\Router\Http\Segment::class,
                                 'options' => [
                                     'route' => '/:id[/:action]',
                                     'constraints' => [
@@ -97,6 +91,16 @@ return [
                         ],
                     ],
                 ],
+            ],
+        ],
+    ],
+    'translator' => [
+        'translation_file_patterns' => [
+            [
+                'type' => 'gettext',
+                'base_dir' => dirname(__DIR__) . '/language',
+                'pattern' => '%s.mo',
+                'text_domain' => null,
             ],
         ],
     ],

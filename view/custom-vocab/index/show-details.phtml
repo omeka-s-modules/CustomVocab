@@ -1,9 +1,10 @@
 <?php
+$translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $terms = array_map('trim', explode(PHP_EOL, $resource->terms()));
 ?>
 <h2><?php echo $escape($resource->label()); ?></h2>
-<div><?php echo $this->translate('Language: ') . $escape($resource->lang()); ?></div>
+<div><?php echo $translate('Language: ') . $escape($resource->lang()); ?></div>
 <ul>
 <?php foreach ($terms as $term): ?>
     <li><?php echo $escape($term); ?></li>

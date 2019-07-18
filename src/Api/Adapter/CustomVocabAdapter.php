@@ -15,12 +15,12 @@ class CustomVocabAdapter extends AbstractEntityAdapter
 
     public function getRepresentationClass()
     {
-        return 'CustomVocab\Api\Representation\CustomVocabRepresentation';
+        return \CustomVocab\Api\Representation\CustomVocabRepresentation::class;
     }
 
     public function getEntityClass()
     {
-        return 'CustomVocab\Entity\CustomVocab';
+        return \CustomVocab\Entity\CustomVocab::class;
     }
 
     public function hydrate(Request $request, EntityInterface $entity,
@@ -56,7 +56,8 @@ class CustomVocabAdapter extends AbstractEntityAdapter
 
     protected function sanitizeTerms($terms)
     {
-        $terms = explode(PHP_EOL, $terms); // explode at end of line
+        // The str_replace() allows to fix Apple copy/paste.
+        $terms = explode(PHP_EOL, str_replace(["\r\n", "\n\r", "\r", "\n"], PHP_EOL, $terms)); // explode at end of line
         $terms = array_map('trim', $terms); // trim all terms
         $terms = array_filter($terms); // remove empty terms
         $terms = array_unique($terms); // remove duplicate terms

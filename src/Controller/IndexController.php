@@ -27,7 +27,6 @@ class IndexController extends AbstractActionController
 
     public function addAction()
     {
-        $action = $this->params('action');
         $form = $this->getForm(CustomVocabForm::class);
 
         if ($this->getRequest()->isPost()) {
@@ -37,7 +36,7 @@ class IndexController extends AbstractActionController
                 $response = $this->api($form)->create('custom_vocabs', $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Custom vocab created.'); // @translate
-                    return $this->redirect()->toRoute('admin/custom-vocab'); // @translate
+                    return $this->redirect()->toRoute('admin/custom-vocab');
                 }
             } else {
                 $this->messenger()->addError('There was an error during validation'); // @translate
@@ -51,7 +50,6 @@ class IndexController extends AbstractActionController
 
     public function editAction()
     {
-        $action = $this->params('action');
         $form = $this->getForm(CustomVocabForm::class);
         $response = $this->api()->read('custom_vocabs', $this->params('id'));
         $vocab = $response->getContent();
@@ -63,7 +61,7 @@ class IndexController extends AbstractActionController
                 $formData = $form->getData();
                 $response = $this->api($form)->update('custom_vocabs', $vocab->id(), $formData);
                 if ($response) {
-                    $this->messenger()->addSuccess('Custom vocab updated.');
+                    $this->messenger()->addSuccess('Custom vocab updated.'); // @translate
                     return $this->redirect()->toRoute('admin/custom-vocab');
                 }
             } else {
