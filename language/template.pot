@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-18 00:00+0100\n"
+"POT-Creation-Date: 2019-07-23 16:01-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,28 +42,16 @@ msgstr ""
 msgid "Language: "
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:15
-msgid "A human-readable title of the custom vocabulary."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:27
-msgid "The language of the vocabulary terms."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:35
-msgid "Terms"
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:36
-msgid "All terms in this vocabulary, separated by new lines."
-msgstr ""
-
-#: src/DataType/CustomVocab.php:35 config/module.config.php:42
+#: src/DataType/CustomVocab.php:35 config/module.config.php:36
 msgid "Custom Vocab"
 msgstr ""
 
 #: src/DataType/CustomVocab.php:54
 msgid "Select below"
+msgstr ""
+
+#: src/Api/Adapter/CustomVocabAdapter.php:53
+msgid "The terms cannot be empty."
 msgstr ""
 
 #: src/Controller/IndexController.php:38
@@ -90,6 +78,18 @@ msgstr ""
 msgid "custom vocab"
 msgstr ""
 
-#: src/Api/Adapter/CustomVocabAdapter.php:53
-msgid "The terms cannot be empty."
+#: src/Form/CustomVocabForm.php:15
+msgid "A human-readable title of the custom vocabulary."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:28
+msgid "The language of the vocabulary terms."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:39
+msgid "Terms"
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:40
+msgid "All terms in this vocabulary, separated by new lines."
 msgstr ""
