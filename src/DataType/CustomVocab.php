@@ -60,21 +60,17 @@ class CustomVocab extends AbstractDataType
                     $item->id()
                 );
             }
-            $select->setAttributes([
-                'class' => 'terms to-require',
-                'data-value-key' => 'value_resource_id',
-            ]);
+            $select->setAttribute('data-value-key', 'value_resource_id')
+                ->setEmptyOption($view->translate('Select item below'));
         } else {
             // Normalize vocab terms for use in a select element.
             $terms = array_map('trim', explode(PHP_EOL, $this->vocab->terms()));
             $valueOptions = array_combine($terms, $terms);
-            $select->setAttributes([
-                'class' => 'terms to-require',
-                'data-value-key' => '@value',
-            ]);
+            $select->setAttributes('data-value-key', '@value')
+                ->setEmptyOption($view->translate('Select term below'));;
         }
-        $select->setEmptyOption($view->translate('Select below'))
-            ->setValueOptions($valueOptions);
+        $select->setValueOptions($valueOptions)
+            ->setAttribute('class', 'terms to-require');
 
         return $view->formSelect($select);
     }
