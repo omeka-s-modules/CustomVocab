@@ -31,10 +31,27 @@ class CustomVocabAdapter extends AbstractEntityAdapter
             $entity->setLabel($request->getValue('o:label'));
         }
         if ($this->shouldHydrate($request, 'o:lang')) {
-            $entity->setLang($request->getValue('o:lang'));
+            $lang = trim($request->getValue('o:lang'));
+            if ('' === $lang) {
+                $lang = null;
+            }
+            $entity->setLang($lang);
+        }
+        if ($this->shouldHydrate($request, 'o:item_set')) {
+            $itemSet = $request->getValue('o:item_set');
+            if ($itemSet && isset($itemSet['o:id']) && is_numeric($itemSet['o:id'])) {
+                $itemSet = $this->getAdapter('item_sets')->findEntity($itemSet['o:id']);
+            } else {
+                $itemSet = null;
+            }
+            $entity->setItemSet($itemSet);
         }
         if ($this->shouldHydrate($request, 'o:terms')) {
-            $entity->setTerms($this->sanitizeTerms($request->getValue('o:terms')));
+            $terms = $this->sanitizeTerms($request->getValue('o:terms'));
+            if ('' === $terms) {
+                $terms = null;
+            }
+            $entity->setTerms($terms);
         }
     }
 
@@ -49,8 +66,8 @@ class CustomVocabAdapter extends AbstractEntityAdapter
             $errorStore->addError('o:label', 'The label is already taken.'); // @translate
         }
 
-        if (false == trim($entity->getTerms())) {
-            $errorStore->addError('o:terms', 'The terms cannot be empty.'); // @translate
+        if ((null === $entity->getItemSet()) && (false == trim($entity->getTerms()))) {
+            $errorStore->addError('o:terms', 'The item set and terms cannot both be empty.'); // @translate
         }
     }
 
