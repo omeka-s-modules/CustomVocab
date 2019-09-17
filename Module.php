@@ -74,7 +74,8 @@ class Module extends AbstractModule
         $conn->exec('DROP TABLE custom_vocab');
         $conn->exec('SET FOREIGN_KEY_CHECKS=1;');
         // Set all types to a default state.
-        $conn->exec('UPDATE value SET type = "literal" WHERE type REGEXP "^customvocab:[0-9]+$"');
+        $conn->exec('UPDATE value SET type = "literal" WHERE type REGEXP "^customvocab:[0-9]+$" AND value IS NOT NULL');
+        $conn->exec('UPDATE value SET type = "resource:item" WHERE type REGEXP "^customvocab:[0-9]+$" AND value_resource_id IS NOT NULL');
         $conn->exec('UPDATE resource_template_property SET data_type = NULL WHERE data_type REGEXP "^customvocab:[0-9]+$"');
     }
 
