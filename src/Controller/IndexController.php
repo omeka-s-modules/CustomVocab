@@ -33,6 +33,7 @@ class IndexController extends AbstractActionController
             $form->setData($this->params()->fromPost());
             if ($form->isValid()) {
                 $formData = $form->getData();
+                $formData['o:item_set'] = ['o:id' => $formData['o:item_set']];
                 $response = $this->api($form)->create('custom_vocabs', $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Custom vocab created.'); // @translate
