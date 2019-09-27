@@ -2,6 +2,7 @@
 namespace CustomVocab\Entity;
 
 use Omeka\Entity\AbstractEntity;
+use Omeka\Entity\ItemSet;
 use Omeka\Entity\User;
 
 /**
@@ -27,7 +28,13 @@ class CustomVocab extends AbstractEntity
     protected $lang;
 
     /**
-     * @Column(type="text")
+     * @ManyToOne(targetEntity="Omeka\Entity\ItemSet")
+     * @JoinColumn(onDelete="SET NULL")
+     */
+    protected $itemSet;
+
+    /**
+     * @Column(nullable=true, type="text")
      */
     protected $terms;
 
@@ -60,6 +67,16 @@ class CustomVocab extends AbstractEntity
     public function getLang()
     {
         return $this->lang;
+    }
+
+    public function setItemSet(ItemSet $itemSet = null)
+    {
+        $this->itemSet = $itemSet;
+    }
+
+    public function getItemSet()
+    {
+        return $this->itemSet;
     }
 
     public function setTerms($terms)

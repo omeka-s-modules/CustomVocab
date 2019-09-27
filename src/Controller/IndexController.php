@@ -33,6 +33,7 @@ class IndexController extends AbstractActionController
             $form->setData($this->params()->fromPost());
             if ($form->isValid()) {
                 $formData = $form->getData();
+                $formData['o:item_set'] = ['o:id' => $formData['o:item_set']];
                 $response = $this->api($form)->create('custom_vocabs', $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Custom vocab created.'); // @translate
@@ -53,12 +54,12 @@ class IndexController extends AbstractActionController
         $form = $this->getForm(CustomVocabForm::class);
         $response = $this->api()->read('custom_vocabs', $this->params('id'));
         $vocab = $response->getContent();
-        $form->setData($vocab->jsonSerialize());
 
         if ($this->getRequest()->isPost()) {
             $form->setData($this->params()->fromPost());
             if ($form->isValid()) {
                 $formData = $form->getData();
+                $formData['o:item_set'] = ['o:id' => $formData['o:item_set']];
                 $response = $this->api($form)->update('custom_vocabs', $vocab->id(), $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Custom vocab updated.'); // @translate
@@ -67,6 +68,10 @@ class IndexController extends AbstractActionController
             } else {
                 $this->messenger()->addError('There was an error during validation'); // @translate
             }
+        } else {
+            $data = $vocab->jsonSerialize();
+            $data['o:item_set'] = $data['o:item_set'] ? $data['o:item_set']->id() : null;
+            $form->setData($data);
         }
 
         $view = new ViewModel;

@@ -1,6 +1,7 @@
 <?php
 namespace CustomVocab;
 
+use Composer\Semver\Comparator;
 use Omeka\Module\AbstractModule;
 use Omeka\Permissions\Assertion\OwnsEntityAssertion;
 use Zend\EventManager\Event;
@@ -61,18 +62,33 @@ class Module extends AbstractModule
     public function install(ServiceLocatorInterface $serviceLocator)
     {
         $conn = $serviceLocator->get('Omeka\Connection');
-        $conn->exec('CREATE TABLE custom_vocab (id INT AUTO_INCREMENT NOT NULL, owner_id INT DEFAULT NULL, `label` VARCHAR(190) NOT NULL, lang VARCHAR(190) DEFAULT NULL, terms LONGTEXT NOT NULL, UNIQUE INDEX UNIQ_8533D2A5EA750E8 (`label`), INDEX IDX_8533D2A57E3C61F9 (owner_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB;');
+        $conn->exec('CREATE TABLE custom_vocab (id INT AUTO_INCREMENT NOT NULL, item_set_id INT DEFAULT NULL, owner_id INT DEFAULT NULL, `label` VARCHAR(190) NOT NULL, lang VARCHAR(190) DEFAULT NULL, terms LONGTEXT DEFAULT NULL, UNIQUE INDEX UNIQ_8533D2A5EA750E8 (`label`), INDEX IDX_8533D2A5960278D7 (item_set_id), INDEX IDX_8533D2A57E3C61F9 (owner_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB;');
+        $conn->exec('ALTER TABLE custom_vocab ADD CONSTRAINT FK_8533D2A5960278D7 FOREIGN KEY (item_set_id) REFERENCES item_set (id) ON DELETE SET NULL;');
         $conn->exec('ALTER TABLE custom_vocab ADD CONSTRAINT FK_8533D2A57E3C61F9 FOREIGN KEY (owner_id) REFERENCES user (id) ON DELETE SET NULL;');
     }
 
     public function uninstall(ServiceLocatorInterface $serviceLocator)
     {
         $conn = $serviceLocator->get('Omeka\Connection');
-        $conn->exec('ALTER TABLE custom_vocab DROP FOREIGN KEY FK_8533D2A57E3C61F9;');
+        $conn->exec('SET FOREIGN_KEY_CHECKS=0;');
         $conn->exec('DROP TABLE custom_vocab');
+        $conn->exec('SET FOREIGN_KEY_CHECKS=1;');
         // Set all types to a default state.
-        $conn->exec('UPDATE value SET type = "literal" WHERE type REGEXP "^customvocab:[0-9]+$"');
+        $conn->exec('UPDATE value SET type = "literal" WHERE type REGEXP "^customvocab:[0-9]+$" AND value IS NOT NULL');
+        $conn->exec('UPDATE value SET type = "resource:item" WHERE type REGEXP "^customvocab:[0-9]+$" AND value_resource_id IS NOT NULL');
         $conn->exec('UPDATE resource_template_property SET data_type = NULL WHERE data_type REGEXP "^customvocab:[0-9]+$"');
+    }
+
+    public function upgrade($oldVersion, $newVersion, ServiceLocatorInterface $services)
+    {
+        $conn = $services->get('Omeka\Connection');
+        if (Comparator::lessThan($oldVersion, '1.2.0')) {
+            // Add the item set field
+            $conn->exec('ALTER TABLE custom_vocab ADD item_set_id int(11) DEFAULT NULL');
+            $conn->exec('ALTER TABLE custom_vocab ADD CONSTRAINT FK_8533D2A5960278D7 FOREIGN KEY (item_set_id) REFERENCES item_set (id) ON DELETE SET NULL;');
+            // Make `terms` DEFAULT NULL
+            $conn->exec('ALTER TABLE `custom_vocab` CHANGE `terms` `terms` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;');
+        }
     }
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)

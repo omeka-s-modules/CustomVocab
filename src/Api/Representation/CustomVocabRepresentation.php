@@ -17,7 +17,11 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
 
     public function getJsonLd()
     {
+        $itemSet = null;
         $owner = null;
+        if ($this->itemSet()) {
+            $itemSet = $this->itemSet()->getReference();
+        }
         if ($this->owner()) {
             $owner = $this->owner()->getReference();
         }
@@ -25,6 +29,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
             'o:label' => $this->label(),
             'o:lang' => $this->lang(),
             'o:terms' => $this->terms(),
+            'o:item_set' => $itemSet,
             'o:owner' => $owner,
         ];
     }
@@ -37,6 +42,12 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     public function lang()
     {
         return $this->resource->getLang();
+    }
+
+    public function itemSet()
+    {
+        return $this->getAdapter('item_sets')
+            ->getRepresentation($this->resource->getItemSet());
     }
 
     public function terms()

@@ -33,17 +33,36 @@ class CustomVocabForm extends Form
         ]);
 
         $this->add([
+            'name' => 'o:item_set',
+            'type' => 'Omeka\Form\Element\ItemSetSelect',
+            'options' => [
+                'label' => 'Items', // @translate
+                'info' => 'Enter the item set containing the items in this vocabulary.', // @translate
+                'empty_option' => '',
+            ],
+            'attributes' => [
+                'class' => 'chosen-select',
+                'data-placeholder' => 'Select an item set', // @translate
+            ],
+        ]);
+
+        $this->add([
             'name' => 'o:terms',
             'type' => 'textarea',
             'options' => [
                 'label' => 'Terms', // @translate
-                'info' => 'All terms in this vocabulary, separated by new lines.', // @translate
+                'info' => 'Enter all the terms in this vocabulary, separated by new lines. This will be ignored if an item set is selected above.', // @translate
             ],
             'attributes' => [
-                'required' => true,
                 'rows' => 20,
                 'id' => 'o-terms',
             ],
+        ]);
+
+        $inputFilter = $this->getInputFilter();
+        $inputFilter->add([
+            'name' => 'o:item_set',
+            'allow_empty' => true,
         ]);
     }
 }

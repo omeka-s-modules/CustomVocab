@@ -64,10 +64,10 @@ class CustomVocab extends \CustomVocab\Entity\CustomVocab implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'label', 'lang', 'terms', 'owner'];
+            return ['__isInitialized__', 'id', 'label', 'lang', 'itemSet', 'terms', 'owner'];
         }
 
-        return ['__isInitialized__', 'id', 'label', 'lang', 'terms', 'owner'];
+        return ['__isInitialized__', 'id', 'label', 'lang', 'itemSet', 'terms', 'owner'];
     }
 
     /**
@@ -230,6 +230,28 @@ class CustomVocab extends \CustomVocab\Entity\CustomVocab implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLang', []);
 
         return parent::getLang();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setItemSet(\Omeka\Entity\ItemSet $itemSet = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemSet', [$itemSet]);
+
+        return parent::setItemSet($itemSet);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getItemSet()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemSet', []);
+
+        return parent::getItemSet();
     }
 
     /**
