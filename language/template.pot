@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-23 16:01-0400\n"
+"POT-Creation-Date: 2019-09-27 08:47-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,19 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/DataType/CustomVocab.php:58
+#, php-format
+msgid "%s (#%s)"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:64
+msgid "Select item below"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:70
+msgid "Select term below"
+msgstr ""
 
 #: view/custom-vocab/index/add.phtml:5
 msgid "Add Custom Vocab"
@@ -42,39 +55,35 @@ msgstr ""
 msgid "Language: "
 msgstr ""
 
-#: src/DataType/CustomVocab.php:35 config/module.config.php:36
+#: src/DataType/CustomVocab.php:36 config/module.config.php:36
 msgid "Custom Vocab"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:54
-msgid "Select below"
+#: src/Api/Adapter/CustomVocabAdapter.php:70
+msgid "The item set and terms cannot both be empty."
 msgstr ""
 
-#: src/Api/Adapter/CustomVocabAdapter.php:53
-msgid "The terms cannot be empty."
-msgstr ""
-
-#: src/Controller/IndexController.php:38
+#: src/Controller/IndexController.php:39
 msgid "Custom vocab created."
 msgstr ""
 
-#: src/Controller/IndexController.php:42 src/Controller/IndexController.php:68
+#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:69
 msgid "There was an error during validation"
 msgstr ""
 
-#: src/Controller/IndexController.php:64
+#: src/Controller/IndexController.php:65
 msgid "Custom vocab updated."
 msgstr ""
 
-#: src/Controller/IndexController.php:86
+#: src/Controller/IndexController.php:91
 msgid "Vocab successfully deleted"
 msgstr ""
 
-#: src/Controller/IndexController.php:89
+#: src/Controller/IndexController.php:94
 msgid "Vocab could not be deleted"
 msgstr ""
 
-#: src/Controller/IndexController.php:103
+#: src/Controller/IndexController.php:108
 msgid "custom vocab"
 msgstr ""
 
@@ -86,10 +95,20 @@ msgstr ""
 msgid "The language of the vocabulary terms."
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:39
+#: src/Form/CustomVocabForm.php:40
+msgid "Enter the item set containing the items in this vocabulary."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:45
+msgid "Select an item set"
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:53
 msgid "Terms"
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:40
-msgid "All terms in this vocabulary, separated by new lines."
+#: src/Form/CustomVocabForm.php:54
+msgid ""
+"Enter all the terms in this vocabulary, separated by new lines. This will be "
+"ignored if an item set is selected above."
 msgstr ""
