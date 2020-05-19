@@ -30,6 +30,11 @@ return [
             Controller\IndexController::class => Controller\IndexController::class,
         ],
     ],
+    'datascribe_data_types' => [
+        'factories' => [
+            'custom_vocab_select' => Service\DatascribeDataType\CustomVocabSelectFactory::class,
+        ],
+    ],
     'navigation' => [
         'AdminModule' => [
             [
