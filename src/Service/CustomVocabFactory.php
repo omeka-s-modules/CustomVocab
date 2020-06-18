@@ -3,7 +3,7 @@ namespace CustomVocab\Service;
 
 use CustomVocab\DataType\CustomVocab;
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\AbstractFactoryInterface;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 
 class CustomVocabFactory implements AbstractFactoryInterface
 {

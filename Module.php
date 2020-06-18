@@ -4,10 +4,10 @@ namespace CustomVocab;
 use Composer\Semver\Comparator;
 use Omeka\Module\AbstractModule;
 use Omeka\Permissions\Assertion\OwnsEntityAssertion;
-use Zend\EventManager\Event;
-use Zend\EventManager\SharedEventManagerInterface;
-use Zend\Mvc\MvcEvent;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\EventManager\Event;
+use Laminas\EventManager\SharedEventManagerInterface;
+use Laminas\Mvc\MvcEvent;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class Module extends AbstractModule
 {

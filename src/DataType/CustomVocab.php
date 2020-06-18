@@ -6,8 +6,8 @@ use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\DataType\AbstractDataType;
 use Omeka\Entity\Value;
-use Zend\Form\Element\Select;
-use Zend\View\Renderer\PhpRenderer;
+use Laminas\Form\Element\Select;
+use Laminas\View\Renderer\PhpRenderer;
 
 class CustomVocab extends AbstractDataType
 {

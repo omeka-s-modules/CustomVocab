@@ -1,7 +1,7 @@
 <?php
 namespace CustomVocab\Form;
 
-use Zend\Form\Form;
+use Laminas\Form\Form;
 
 class CustomVocabForm extends Form
 {

@@ -55,7 +55,7 @@ return [
             'admin' => [
                 'child_routes' => [
                     'custom-vocab' => [
-                        'type' => \Zend\Router\Http\Literal::class,
+                        'type' => \Laminas\Router\Http\Literal::class,
                         'options' => [
                             'route' => '/custom-vocab',
                             'defaults' => [
@@ -67,7 +67,7 @@ return [
                         'may_terminate' => true,
                         'child_routes' => [
                             'add' => [
-                                'type' => \Zend\Router\Http\Literal::class,
+                                'type' => \Laminas\Router\Http\Literal::class,
                                 'options' => [
                                     'route' => '/add',
                                     'defaults' => [
@@ -76,7 +76,7 @@ return [
                                 ],
                             ],
                             'id' => [
-                                'type' => \Zend\Router\Http\Segment::class,
+                                'type' => \Laminas\Router\Http\Segment::class,
                                 'options' => [
                                     'route' => '/:id[/:action]',
                                     'constraints' => [
