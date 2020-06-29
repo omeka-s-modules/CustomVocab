@@ -48,7 +48,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/custom-vocab.css', 'Cus
                         title="<?php echo $escape($translate('Details')); ?>"></a></li>
                 </ul>
                 <?php echo $escape($vocab->label()); ?></td>
-            <td><?php echo $escape($vocab->owner()->name()); ?></td>
+            <td><?php echo $escape($vocab->owner() ? $vocab->owner()->name() : $translate('[Unknown]')); ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>
