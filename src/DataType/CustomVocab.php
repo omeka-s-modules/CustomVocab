@@ -67,7 +67,7 @@ class CustomVocab extends AbstractDataType
             $terms = array_map('trim', explode(PHP_EOL, $this->vocab->terms()));
             $valueOptions = array_combine($terms, $terms);
             $select->setAttribute('data-value-key', '@value')
-                ->setEmptyOption($view->translate('Select term below'));;
+                ->setEmptyOption($view->translate('Select term below'));
         }
         $select->setValueOptions($valueOptions)
             ->setAttribute('class', 'terms to-require');
