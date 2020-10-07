@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Rafael Trindade <drafael@usp.br>, 2019
+# Daniel Alves <daniel_r_alves@hotmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -13,30 +13,30 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-01 16:45-0400\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
-"Last-Translator: Rafael Trindade <drafael@usp.br>, 2019\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/omeka/teams/14184/pt_BR/)\n"
+"Last-Translator: Daniel Alves <daniel_r_alves@hotmail.com>, 2020\n"
+"Language-Team: Portuguese (Portugal) (https://www.transifex.com/omeka/teams/14184/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: pt_PT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/DataType/CustomVocab.php:58
 #, php-format
 msgid "%s (#%s)"
-msgstr ""
+msgstr "%s (#%s)"
 
 #: src/DataType/CustomVocab.php:64
 msgid "Select item below"
-msgstr ""
+msgstr "Escolher o item abaixo"
 
 #: src/DataType/CustomVocab.php:70
 msgid "Select term below"
-msgstr ""
+msgstr "Escolher o termo abaixo"
 
 #: view/custom-vocab/index/add.phtml:5
 msgid "Add Custom Vocab"
-msgstr "Adicionar vocabulário personalizado"
+msgstr "Adicionar um Vocabulário Personalizado"
 
 #: view/custom-vocab/index/browse.phtml:7
 msgid "Custom Vocabs"
@@ -48,16 +48,16 @@ msgstr "Adicionar novo vocabulário"
 
 #: view/custom-vocab/index/browse.phtml:16
 msgid "There are no custom vocabs"
-msgstr "Não há vocabulários personalizados"
+msgstr "Não existem vocabulários personalizados"
 
 #: view/custom-vocab/index/edit.phtml:5
 #, php-format
 msgid "Edit Custom Vocab: “%s”"
-msgstr "Editar vocabulário personalizado \"%s\""
+msgstr "Editar Vocabulário Personalizado: \"%s\""
 
 #: view/custom-vocab/index/show-details.phtml:7
 msgid "Language: "
-msgstr "Linguagem"
+msgstr "Língua:"
 
 #: src/DataType/CustomVocab.php:36 config/module.config.php:36
 msgid "Custom Vocab"
@@ -65,7 +65,7 @@ msgstr "Vocabulário Personalizado"
 
 #: src/Api/Adapter/CustomVocabAdapter.php:70
 msgid "The item set and terms cannot both be empty."
-msgstr ""
+msgstr "Conjunto de itens e termos não podem ambos ficar vazios."
 
 #: src/Controller/IndexController.php:39
 msgid "Custom vocab created."
@@ -73,19 +73,19 @@ msgstr "Vocabulário personalizado criado."
 
 #: src/Controller/IndexController.php:43 src/Controller/IndexController.php:69
 msgid "There was an error during validation"
-msgstr "Houve um erro durante a validação"
+msgstr "Ocorreu um erro durante a validação"
 
 #: src/Controller/IndexController.php:65
 msgid "Custom vocab updated."
-msgstr "Vocabulário personalizado atualizado."
+msgstr "Vocabulário personalizado actualizado."
 
 #: src/Controller/IndexController.php:91
 msgid "Vocab successfully deleted"
-msgstr "Vocabulário excluído com sucesso"
+msgstr "Vocabulário eliminado com sucesso"
 
 #: src/Controller/IndexController.php:94
 msgid "Vocab could not be deleted"
-msgstr "Vocabulário não pode ser excluído"
+msgstr "Vocabulário não pode ser eliminado"
 
 #: src/Controller/IndexController.php:108
 msgid "custom vocab"
@@ -93,19 +93,19 @@ msgstr "vocabulário personalizado"
 
 #: src/Form/CustomVocabForm.php:15
 msgid "A human-readable title of the custom vocabulary."
-msgstr "Um título legível por humanos do vocabulário personalizado."
+msgstr "Um título legível para o vocabulário personalizado."
 
 #: src/Form/CustomVocabForm.php:28
 msgid "The language of the vocabulary terms."
-msgstr "A linguagem dos termos do vocabulário."
+msgstr "A língua dos termos do vocabulário."
 
 #: src/Form/CustomVocabForm.php:40
 msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
+msgstr "Indique o conjunto de itens que contém os itens neste vocabulário."
 
 #: src/Form/CustomVocabForm.php:45
 msgid "Select an item set"
-msgstr ""
+msgstr "Escolha um conjunto de itens"
 
 #: src/Form/CustomVocabForm.php:53
 msgid "Terms"
@@ -116,3 +116,5 @@ msgid ""
 "Enter all the terms in this vocabulary, separated by new lines. This will be"
 " ignored if an item set is selected above."
 msgstr ""
+"Indique todos os termos deste vocabulário separados por novas linhas. Isto "
+"será ignorado se um conjunto de itens for seleccionado abaixo."
