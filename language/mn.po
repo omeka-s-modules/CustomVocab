@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 16:45-0400\n"
+"POT-Creation-Date: 2020-12-03 13:24-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Khaidav T. <khaidaw@yahoo.com>, 2020\n"
 "Language-Team: Mongolian (https://www.transifex.com/omeka/teams/14184/mn/)\n"
@@ -59,12 +59,8 @@ msgstr ""
 msgid "Language: "
 msgstr "Хэл:"
 
-#: src/DataType/CustomVocab.php:36 config/module.config.php:36
+#: config/module.config.php:36 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
-msgstr ""
-
-#: src/Api/Adapter/CustomVocabAdapter.php:70
-msgid "The item set and terms cannot both be empty."
 msgstr ""
 
 #: src/Controller/IndexController.php:39
@@ -89,6 +85,10 @@ msgstr ""
 
 #: src/Controller/IndexController.php:108
 msgid "custom vocab"
+msgstr ""
+
+#: src/Api/Adapter/CustomVocabAdapter.php:70
+msgid "The item set and terms cannot both be empty."
 msgstr ""
 
 #: src/Form/CustomVocabForm.php:15

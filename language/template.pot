@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 16:45-0400\n"
+"POT-Creation-Date: 2020-12-03 13:24-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,12 +55,8 @@ msgstr ""
 msgid "Language: "
 msgstr ""
 
-#: src/DataType/CustomVocab.php:36 config/module.config.php:36
+#: config/module.config.php:36 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
-msgstr ""
-
-#: src/Api/Adapter/CustomVocabAdapter.php:70
-msgid "The item set and terms cannot both be empty."
 msgstr ""
 
 #: src/Controller/IndexController.php:39
@@ -85,6 +81,10 @@ msgstr ""
 
 #: src/Controller/IndexController.php:108
 msgid "custom vocab"
+msgstr ""
+
+#: src/Api/Adapter/CustomVocabAdapter.php:70
+msgid "The item set and terms cannot both be empty."
 msgstr ""
 
 #: src/Form/CustomVocabForm.php:15

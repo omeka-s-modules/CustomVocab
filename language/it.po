@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 16:45-0400\n"
+"POT-Creation-Date: 2020-12-03 13:24-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -60,13 +60,9 @@ msgstr "Modifica vocabolario personalizzato: “%s”"
 msgid "Language: "
 msgstr "Lingua:"
 
-#: src/DataType/CustomVocab.php:36 config/module.config.php:36
+#: config/module.config.php:36 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
 msgstr "Vocabolario personalizzato"
-
-#: src/Api/Adapter/CustomVocabAdapter.php:70
-msgid "The item set and terms cannot both be empty."
-msgstr "Collezione e termini non possono essere entrambi vuoti."
 
 #: src/Controller/IndexController.php:39
 msgid "Custom vocab created."
@@ -91,6 +87,10 @@ msgstr "Non è stato possibile eliminare il vocabolario."
 #: src/Controller/IndexController.php:108
 msgid "custom vocab"
 msgstr "Vocabolario personalizzato"
+
+#: src/Api/Adapter/CustomVocabAdapter.php:70
+msgid "The item set and terms cannot both be empty."
+msgstr "Collezione e termini non possono essere entrambi vuoti."
 
 #: src/Form/CustomVocabForm.php:15
 msgid "A human-readable title of the custom vocabulary."
