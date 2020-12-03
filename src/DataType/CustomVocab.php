@@ -64,7 +64,7 @@ class CustomVocab extends AbstractDataType
                 ->setEmptyOption($view->translate('Select item below'));
         } else {
             // Normalize vocab terms for use in a select element.
-            $terms = array_map('trim', explode(PHP_EOL, $this->vocab->terms()));
+            $terms = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->terms()));
             $valueOptions = array_combine($terms, $terms);
             $select->setAttribute('data-value-key', '@value')
                 ->setEmptyOption($view->translate('Select term below'));
