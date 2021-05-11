@@ -78,6 +78,15 @@ class IndexController extends AbstractActionController
         return $view;
     }
 
+    /**
+     * Prepare form data for create/update operation.
+     *
+     * Given a vocab type, this sets the other vocab type's data to null. This
+     * will ensure that the API saves only the relevant data.
+     *
+     * @param $formData
+     * @return array
+     */
     protected function processFormData($formData)
     {
         $formData['o:item_set'] = ['o:id' => $formData['o:item_set']];

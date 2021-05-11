@@ -17,10 +17,10 @@ $(document).on('o:prepare-value', function(e, type, value) {
             width: "100%"
         });
         // Prepare URI types.
-        const select = thisValue.find('select.custom-vocab-uri');
-        if (select.length) {
-            setCustomVocabUriLabel(select);
-        }
+        const selects = thisValue.find('select.custom-vocab-uri');
+        selects.each(function() {
+            setCustomVocabUriLabel($(this));
+        });
     }
 });
 

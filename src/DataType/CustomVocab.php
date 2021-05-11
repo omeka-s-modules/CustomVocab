@@ -43,60 +43,90 @@ class CustomVocab extends AbstractDataType
 
     public function form(PhpRenderer $view)
     {
-        $itemSet = $this->vocab->itemSet();
-        if ($itemSet) {
-            // Get items by item type and use as value options.
-            $response = $view->api()->search('items', [
-                'item_set_id' => $itemSet->id(),
-                'sort_by' => 'title',
-            ]);
-            $items = $response->getContent();
-            $valueOptions = [];
-            foreach ($items as $item) {
-                $valueOptions[$item->id()] = sprintf(
-                    $view->translate('%s (#%s)'),
-                    $item->displayTitle(),
-                    $item->id()
-                );
-            }
-            $select = new Select('customvocab');
-            $select->setAttribute('data-value-key', 'value_resource_id')
-                ->setAttribute('class', 'terms to-require')
-                ->setEmptyOption($view->translate('Select item below'))
-                ->setValueOptions($valueOptions);
-            return $view->formSelect($select);
+        if ($this->vocab->itemSet()) {
+            return $this->getResourceForm($view);
         }
-
         if ($this->vocab->uris()) {
-            $uris = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->uris()));
-            $valueOptions = [];
-            foreach ($uris as $uri) {
-                if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
-                    $uri = $matches[1];
-                    $label = $matches[2];
-                    $valueOptions[] = [
-                        'value' => $uri,
-                        'label' => sprintf($view->translate('%s <%s>'), $label, $uri),
-                        'attributes' => [
-                            'data-label' => $label,
-                        ],
-                    ];
-                } elseif (preg_match('/^(.+)/', $uri, $matches)) {
-                    $uri = $matches[1];
-                    $valueOptions[] = [
-                        'value' => $uri,
-                        'label' => $uri,
-                    ];
-                }
-            }
-            $select = new Select('customvocab');
-            $select->setAttribute('data-value-key', '@id')
-                ->setAttribute('class', 'terms to-require custom-vocab-uri')
-                ->setEmptyOption($view->translate('Select URI below'))
-                ->setValueOptions($valueOptions);
-            return $view->formSelect($select);
+            return $this->getUriForm($view);
         }
+        return $this->getLiteralForm($view);
+    }
 
+    /**
+     * Get the form for the resource type.
+     *
+     * @param PhpRenderer $view
+     * @return string
+     */
+    protected function getResourceForm(PhpRenderer $view)
+    {
+        // Get items by item type and use as value options.
+        $response = $view->api()->search('items', [
+            'item_set_id' => $this->vocab->itemSet()->id(),
+            'sort_by' => 'title',
+        ]);
+        $items = $response->getContent();
+        $valueOptions = [];
+        foreach ($items as $item) {
+            $valueOptions[$item->id()] = sprintf(
+                $view->translate('%s (#%s)'),
+                $item->displayTitle(),
+                $item->id()
+            );
+        }
+        $select = new Select('customvocab');
+        $select->setAttribute('data-value-key', 'value_resource_id')
+            ->setAttribute('class', 'terms to-require')
+            ->setEmptyOption($view->translate('Select item below'))
+            ->setValueOptions($valueOptions);
+        return $view->formSelect($select);
+    }
+
+    /**
+     * Get the form for the URI type.
+     *
+     * @param PhpRenderer $view
+     * @return string
+     */
+    protected function getUriForm(PhpRenderer $view)
+    {
+        $uris = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->uris()));
+        $valueOptions = [];
+        foreach ($uris as $uri) {
+            if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
+                $uri = $matches[1];
+                $label = $matches[2];
+                $valueOptions[] = [
+                    'value' => $uri,
+                    'label' => sprintf($view->translate('%s <%s>'), $label, $uri),
+                    'attributes' => [
+                        'data-label' => $label,
+                    ],
+                ];
+            } elseif (preg_match('/^(.+)/', $uri, $matches)) {
+                $uri = $matches[1];
+                $valueOptions[] = [
+                    'value' => $uri,
+                    'label' => $uri,
+                ];
+            }
+        }
+        $select = new Select('customvocab');
+        $select->setAttribute('data-value-key', '@id')
+            ->setAttribute('class', 'terms to-require custom-vocab-uri')
+            ->setEmptyOption($view->translate('Select URI below'))
+            ->setValueOptions($valueOptions);
+        return $view->formSelect($select);
+    }
+
+    /**
+     * Get the form for the literal type.
+     *
+     * @param PhpRenderer $view
+     * @return string
+     */
+    protected function getLiteralForm(PhpRenderer $view)
+    {
         $terms = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->terms()));
         $valueOptions = array_combine($terms, $terms);
         $select = new Select('customvocab');
