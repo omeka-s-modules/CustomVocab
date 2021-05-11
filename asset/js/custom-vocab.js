@@ -1,3 +1,14 @@
+const setCustomVocabUriLabel = function(select) {
+    const value = select.closest('.value');
+    const label = select.children(':selected').data('label');
+    let labelInput = value.find('.custom-vocab-uri-label');
+    if (!labelInput.length) {
+        labelInput = $(`<input type="hidden" class="custom-vocab-uri-label" data-value-key="o:label">`);
+        select.after(labelInput);
+    }
+    labelInput.attr('value', label ?? '');
+};
+
 $(document).on('o:prepare-value', function(e, type, value) {
     if (0 === type.indexOf('customvocab:')) {
         var thisValue = $(value);
@@ -5,14 +16,15 @@ $(document).on('o:prepare-value', function(e, type, value) {
         selectTerms.chosen({
             width: "100%"
         });
+        // Prepare URI types.
+        const select = thisValue.find('select.custom-vocab-uri');
+        if (select.length) {
+            setCustomVocabUriLabel(select);
+        }
     }
 });
 
 $(document).on('change', 'select.custom-vocab-uri', function(e) {
-    const thisSelect = $(this);
-    const label = thisSelect.children(':selected').data('label');
-    const labelInput = $(`<input type="hidden" data-value-key="o:label">`);
-    labelInput.attr('value', label);
-    thisSelect.after(labelInput);
+    setCustomVocabUriLabel($(this));
 });
 

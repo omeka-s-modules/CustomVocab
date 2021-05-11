@@ -43,7 +43,6 @@ class CustomVocab extends AbstractDataType
 
     public function form(PhpRenderer $view)
     {
-        $select = new Select('customvocab');
         $itemSet = $this->vocab->itemSet();
         if ($itemSet) {
             // Get items by item type and use as value options.
@@ -60,10 +59,15 @@ class CustomVocab extends AbstractDataType
                     $item->id()
                 );
             }
+            $select = new Select('customvocab');
             $select->setAttribute('data-value-key', 'value_resource_id')
                 ->setAttribute('class', 'terms to-require')
-                ->setEmptyOption($view->translate('Select item below'));
-        } else if ($this->vocab->uris()) {
+                ->setEmptyOption($view->translate('Select item below'))
+                ->setValueOptions($valueOptions);
+            return $view->formSelect($select);
+        }
+
+        if ($this->vocab->uris()) {
             $uris = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->uris()));
             $valueOptions = [];
             foreach ($uris as $uri) {
@@ -85,19 +89,21 @@ class CustomVocab extends AbstractDataType
                     ];
                 }
             }
+            $select = new Select('customvocab');
             $select->setAttribute('data-value-key', '@id')
                 ->setAttribute('class', 'terms to-require custom-vocab-uri')
-                ->setEmptyOption($view->translate('Select URI below'));
-        } else {
-            // Normalize vocab terms for use in a select element.
-            $terms = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->terms()));
-            $valueOptions = array_combine($terms, $terms);
-            $select->setAttribute('data-value-key', '@value')
-                ->setAttribute('class', 'terms to-require')
-                ->setEmptyOption($view->translate('Select term below'));
+                ->setEmptyOption($view->translate('Select URI below'))
+                ->setValueOptions($valueOptions);
+            return $view->formSelect($select);
         }
-        $select->setValueOptions($valueOptions);
 
+        $terms = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->terms()));
+        $valueOptions = array_combine($terms, $terms);
+        $select = new Select('customvocab');
+        $select->setAttribute('data-value-key', '@value')
+            ->setAttribute('class', 'terms to-require')
+            ->setEmptyOption($view->translate('Select term below'))
+            ->setValueOptions($valueOptions);
         return $view->formSelect($select);
     }
 
