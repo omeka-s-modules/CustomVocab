@@ -38,9 +38,9 @@ class CustomVocabForm extends Form
             'options' => [
                 'label' => 'Vocab type',
                 'value_options' => [
-                    'literal' => 'Text', // @translate
-                    'resource' => 'Resource', // @translate
-                    'uri' => 'URI', // @translate
+                    'literal' => 'Terms', // @translate
+                    'resource' => 'Items', // @translate
+                    'uri' => 'URIs', // @translate
                 ],
             ],
             'attributes' => [
