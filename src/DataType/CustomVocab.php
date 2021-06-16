@@ -130,4 +130,13 @@ class CustomVocab extends AbstractDataType
         }
         return $jsonLd;
     }
+
+    public function toString(ValueRepresentation $value)
+    {
+        $valueResource = $value->valueResource();
+        if ($valueResource) {
+            return $valueResource->url(null, true);
+        }
+        return (string) $value->value();
+    }
 }
