@@ -143,7 +143,7 @@ class CustomVocab extends AbstractDataType
             && is_numeric($valueObject['value_resource_id'])
         ) {
             return true;
-        } elseif ($valueObject['@id']
+        } elseif (isset($valueObject['@id'])
             && is_string($valueObject['@id'])
             && '' !== trim($valueObject['@id'])
         ) {
@@ -163,7 +163,7 @@ class CustomVocab extends AbstractDataType
             && is_numeric($valueObject['value_resource_id'])
         ) {
             $dataTypeName = 'resource:item';
-        } elseif ($valueObject['@id']
+        } elseif (isset($valueObject['@id'])
             && is_string($valueObject['@id'])
             && '' !== trim($valueObject['@id'])
         ) {
