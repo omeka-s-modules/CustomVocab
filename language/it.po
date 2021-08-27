@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-03 13:24-0500\n"
+"POT-Creation-Date: 2021-08-27 11:22-0400\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -22,20 +22,29 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/DataType/CustomVocab.php:58
+#: src/DataType/CustomVocab.php:72
 #, php-format
 msgid "%s (#%s)"
 msgstr "%s (#%s)"
 
-#: src/DataType/CustomVocab.php:64
+#: src/DataType/CustomVocab.php:80
 msgid "Select item below"
 msgstr "Seleziona contenuto"
 
-#: src/DataType/CustomVocab.php:70
+#: src/DataType/CustomVocab.php:101
+#, php-format
+msgid "%s <%s>"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:117
+msgid "Select URI below"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:135
 msgid "Select term below"
 msgstr "Seleziona termine"
 
-#: view/custom-vocab/index/add.phtml:5
+#: view/custom-vocab/index/add.phtml:6
 msgid "Add Custom Vocab"
 msgstr "Aggiungi vocabolario personalizzato"
 
@@ -51,7 +60,11 @@ msgstr "Aggiungi un nuovo vocabolario"
 msgid "There are no custom vocabs"
 msgstr "Non ci sono vocabolari personalizzati"
 
-#: view/custom-vocab/index/edit.phtml:5
+#: view/custom-vocab/index/browse.phtml:51
+msgid "[Unknown]"
+msgstr ""
+
+#: view/custom-vocab/index/edit.phtml:6
 #, php-format
 msgid "Edit Custom Vocab: “%s”"
 msgstr "Modifica vocabolario personalizzato: “%s”"
@@ -64,33 +77,9 @@ msgstr "Lingua:"
 msgid "Custom Vocab"
 msgstr "Vocabolario personalizzato"
 
-#: src/Controller/IndexController.php:39
-msgid "Custom vocab created."
-msgstr "Vocabolario personalizzato creato."
-
-#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:69
-msgid "There was an error during validation"
-msgstr "Si è riscontrato un errore durante la validazione"
-
-#: src/Controller/IndexController.php:65
-msgid "Custom vocab updated."
-msgstr "Vocabolario personalizzato aggiornato."
-
-#: src/Controller/IndexController.php:91
-msgid "Vocab successfully deleted"
-msgstr "Vocabolario eliminato con successo"
-
-#: src/Controller/IndexController.php:94
-msgid "Vocab could not be deleted"
-msgstr "Non è stato possibile eliminare il vocabolario."
-
-#: src/Controller/IndexController.php:108
-msgid "custom vocab"
-msgstr "Vocabolario personalizzato"
-
-#: src/Api/Adapter/CustomVocabAdapter.php:70
-msgid "The item set and terms cannot both be empty."
-msgstr "Collezione e termini non possono essere entrambi vuoti."
+#: src/Api/Adapter/CustomVocabAdapter.php:77
+msgid "The item set, terms, and URIs cannot all be empty."
+msgstr ""
 
 #: src/Form/CustomVocabForm.php:15
 msgid "A human-readable title of the custom vocabulary."
@@ -100,23 +89,49 @@ msgstr "Un titolo leggibile dall'uomo del vocabolario personalizzato."
 msgid "The language of the vocabulary terms."
 msgstr "La lingua dei termini del vocabolario."
 
-#: src/Form/CustomVocabForm.php:40
+#: src/Form/CustomVocabForm.php:41 src/Form/CustomVocabForm.php:68
+msgid "Terms"
+msgstr "Termini"
+
+#: src/Form/CustomVocabForm.php:43 src/Form/CustomVocabForm.php:81
+msgid "URIs"
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:56
 msgid "Enter the item set containing the items in this vocabulary."
 msgstr ""
 "Inserisci la collezione che include i contenuti in questo vocabolario."
 
-#: src/Form/CustomVocabForm.php:45
-msgid "Select an item set"
-msgstr "Seleziona una collezione"
-
-#: src/Form/CustomVocabForm.php:53
-msgid "Terms"
-msgstr "Termini"
-
-#: src/Form/CustomVocabForm.php:54
-msgid ""
-"Enter all the terms in this vocabulary, separated by new lines. This will be"
-" ignored if an item set is selected above."
+#: src/Form/CustomVocabForm.php:69
+msgid "Enter all the terms in this vocabulary, separated by new lines."
 msgstr ""
-"Inserisci tutti i termini di questo vocabolario, separati da a capo riga. "
-"Questo verrà ignorato se è stata selezionata una collezione qui sopra."
+
+#: src/Form/CustomVocabForm.php:82
+msgid ""
+"Enter all the URIs in this vocabulary, separated by new lines. You may label"
+" a URI by including the label after the URI, separated by a space."
+msgstr ""
+
+#: src/Controller/IndexController.php:38
+msgid "Custom vocab created."
+msgstr "Vocabolario personalizzato creato."
+
+#: src/Controller/IndexController.php:42 src/Controller/IndexController.php:67
+msgid "There was an error during validation"
+msgstr "Si è riscontrato un errore durante la validazione"
+
+#: src/Controller/IndexController.php:63
+msgid "Custom vocab updated."
+msgstr "Vocabolario personalizzato aggiornato."
+
+#: src/Controller/IndexController.php:118
+msgid "Vocab successfully deleted"
+msgstr "Vocabolario eliminato con successo"
+
+#: src/Controller/IndexController.php:121
+msgid "Vocab could not be deleted"
+msgstr "Non è stato possibile eliminare il vocabolario."
+
+#: src/Controller/IndexController.php:135
+msgid "custom vocab"
+msgstr "Vocabolario personalizzato"

@@ -2,29 +2,34 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Evgeni Ivanov <evgeni.ivanov89@abv.bg>, 2018
+# Tzvetan Tzvetanski <ceibg.org@gmail.com>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-27 11:22-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2017-09-14 20:14+0000\n"
+"Last-Translator: Tzvetan Tzvetanski <ceibg.org@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (Bulgaria) (https://www.transifex.com/omeka/teams/14184/bg_BG/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg_BG\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/DataType/CustomVocab.php:72
 #, php-format
 msgid "%s (#%s)"
-msgstr ""
+msgstr "%s (#%s)"
 
 #: src/DataType/CustomVocab.php:80
 msgid "Select item below"
-msgstr ""
+msgstr "Изберете елемент по-долу"
 
 #: src/DataType/CustomVocab.php:101
 #, php-format
@@ -37,23 +42,23 @@ msgstr ""
 
 #: src/DataType/CustomVocab.php:135
 msgid "Select term below"
-msgstr ""
+msgstr "Изберете термин по-долу"
 
 #: view/custom-vocab/index/add.phtml:6
 msgid "Add Custom Vocab"
-msgstr ""
+msgstr "Добавете персонализиран Vocab"
 
 #: view/custom-vocab/index/browse.phtml:7
 msgid "Custom Vocabs"
-msgstr ""
+msgstr "Персонализирани Vocabs"
 
 #: view/custom-vocab/index/browse.phtml:11
 msgid "Add new vocab"
-msgstr ""
+msgstr "добавете нов речник"
 
 #: view/custom-vocab/index/browse.phtml:16
 msgid "There are no custom vocabs"
-msgstr ""
+msgstr "Няма персонализирани речници"
 
 #: view/custom-vocab/index/browse.phtml:51
 msgid "[Unknown]"
@@ -62,15 +67,15 @@ msgstr ""
 #: view/custom-vocab/index/edit.phtml:6
 #, php-format
 msgid "Edit Custom Vocab: “%s”"
-msgstr ""
+msgstr "Редактиране на персонализиран Vocab: “%s”"
 
 #: view/custom-vocab/index/show-details.phtml:7
 msgid "Language: "
-msgstr ""
+msgstr "Език:"
 
 #: config/module.config.php:36 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
-msgstr ""
+msgstr "Персонализиран речник"
 
 #: src/Api/Adapter/CustomVocabAdapter.php:77
 msgid "The item set, terms, and URIs cannot all be empty."
@@ -78,15 +83,15 @@ msgstr ""
 
 #: src/Form/CustomVocabForm.php:15
 msgid "A human-readable title of the custom vocabulary."
-msgstr ""
+msgstr "Прочетено с глас заглавие на потребителския речник."
 
 #: src/Form/CustomVocabForm.php:28
 msgid "The language of the vocabulary terms."
-msgstr ""
+msgstr "Езикът на речниковите термини."
 
 #: src/Form/CustomVocabForm.php:41 src/Form/CustomVocabForm.php:68
 msgid "Terms"
-msgstr ""
+msgstr "Термини"
 
 #: src/Form/CustomVocabForm.php:43 src/Form/CustomVocabForm.php:81
 msgid "URIs"
@@ -94,7 +99,7 @@ msgstr ""
 
 #: src/Form/CustomVocabForm.php:56
 msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
+msgstr "Въведете набора от елементи, съдържащ елементите в този речник."
 
 #: src/Form/CustomVocabForm.php:69
 msgid "Enter all the terms in this vocabulary, separated by new lines."
@@ -102,30 +107,30 @@ msgstr ""
 
 #: src/Form/CustomVocabForm.php:82
 msgid ""
-"Enter all the URIs in this vocabulary, separated by new lines. You may label "
-"a URI by including the label after the URI, separated by a space."
+"Enter all the URIs in this vocabulary, separated by new lines. You may label"
+" a URI by including the label after the URI, separated by a space."
 msgstr ""
 
 #: src/Controller/IndexController.php:38
 msgid "Custom vocab created."
-msgstr ""
+msgstr "Създаден е персонализиран речник."
 
 #: src/Controller/IndexController.php:42 src/Controller/IndexController.php:67
 msgid "There was an error during validation"
-msgstr ""
+msgstr "По време на валидирането възникна грешка"
 
 #: src/Controller/IndexController.php:63
 msgid "Custom vocab updated."
-msgstr ""
+msgstr "Персонализираният речник е актуализиран"
 
 #: src/Controller/IndexController.php:118
 msgid "Vocab successfully deleted"
-msgstr ""
+msgstr "Речникът е успешно изтрит."
 
 #: src/Controller/IndexController.php:121
 msgid "Vocab could not be deleted"
-msgstr ""
+msgstr "Речникът не може да бъде изтрит"
 
 #: src/Controller/IndexController.php:135
 msgid "custom vocab"
-msgstr ""
+msgstr "персонализиран речник"
