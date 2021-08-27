@@ -73,7 +73,7 @@ class CustomVocabAdapter extends AbstractEntityAdapter
             $errorStore->addError('o:label', 'The label is already taken.'); // @translate
         }
 
-        if ((null === $entity->getItemSet()) && (false == trim($entity->getTerms()))&& (false == trim($entity->getUris()))) {
+        if ((null === $entity->getItemSet()) && (false == trim($entity->getTerms())) && (false == trim($entity->getUris()))) {
             $errorStore->addError('o:terms', 'The item set, terms, and URIs cannot all be empty.'); // @translate
         }
     }
