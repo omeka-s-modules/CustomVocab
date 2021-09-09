@@ -182,11 +182,11 @@ class CustomVocab extends AbstractDataType
             ->hydrate($valueObject, $value, $adapter);
     }
 
-    public function render(PhpRenderer $view, ValueRepresentation $value)
+    public function render(PhpRenderer $view, ValueRepresentation $value, $lang = null)
     {
         $valueResource = $value->valueResource();
         if ($valueResource) {
-            return $valueResource->linkPretty();
+            return $valueResource->linkPretty($lang);
         }
         if ($value->uri()) {
             $uri = $value->uri();
