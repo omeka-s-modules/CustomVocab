@@ -138,6 +138,11 @@ class Module extends AbstractModule
             'view.edit.after',
             [$this, 'prepareResourceForm']
         );
+        $sharedEventManager->attach(
+            '*',
+            'csv_import.config',
+            [$this, 'addDataTypesToCsvImportConfig']
+        );
     }
 
     public function addVocabularyServices(Event $event)
@@ -178,5 +183,41 @@ class Module extends AbstractModule
     {
         $view = $event->getTarget();
         $view->headScript()->appendFile($view->assetUrl('js/custom-vocab.js', 'CustomVocab'));
+    }
+
+    /**
+     * Add Custom Vocab data types to CSV Import configuration.
+     *
+     * Typically we would do this by modifying the `csv_import` config array,
+     * but we have to add them via CSVImport's `csv_import.config` event becuase
+     * Custom Vocab data types are dynamically named.
+     *
+     * @param Event $event
+     */
+    public function addDataTypesToCsvImportConfig(Event $event)
+    {
+        $config = $event->getParam('config');
+        $vocabs = $this->getServiceLocator()
+            ->get('Omeka\ApiManager')
+            ->search('custom_vocabs')->getContent();
+        foreach ($vocabs as $vocab) {
+            // Build the data type name according to the convention established
+            // by this module.
+            $name = sprintf('customvocab:%s', $vocab->id());
+            // Set the CSV Import data type "adapter" according to the type of
+            // vocabulary, which is determined heuristically.
+            if ($vocab->itemSet()) {
+                $adapter = 'resource';
+            } elseif ($vocab->uris()) {
+                $adapter = 'uri';
+            } else {
+                $adapter = 'literal';
+            }
+            $config['data_types'][$name] = [
+                'label' => $vocab->label(),
+                'adapter' => $adapter,
+            ];
+        }
+        $event->setParam('config', $config);
     }
 }
