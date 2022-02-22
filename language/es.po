@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-27 11:22-0400\n"
+"POT-Creation-Date: 2022-02-22 12:15-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Alfonso Montejo <almontejor@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
@@ -35,11 +35,11 @@ msgstr "Seleccionar un elemento"
 #: src/DataType/CustomVocab.php:101
 #, php-format
 msgid "%s <%s>"
-msgstr ""
+msgstr "%s <%s>"
 
 #: src/DataType/CustomVocab.php:117
 msgid "Select URI below"
-msgstr ""
+msgstr "Seleccionar el URI a continuación"
 
 #: src/DataType/CustomVocab.php:135
 msgid "Select term below"
@@ -63,7 +63,7 @@ msgstr "No hay ningún vocabulario personalizado"
 
 #: view/custom-vocab/index/browse.phtml:51
 msgid "[Unknown]"
-msgstr ""
+msgstr "[Desconocido]"
 
 #: view/custom-vocab/index/edit.phtml:6
 #, php-format
@@ -80,7 +80,7 @@ msgstr "Vocabulario personalizado"
 
 #: src/Api/Adapter/CustomVocabAdapter.php:77
 msgid "The item set, terms, and URIs cannot all be empty."
-msgstr ""
+msgstr "El conjunto de fichas, términos y URI no pueden quedar todos vacíos."
 
 #: src/Form/CustomVocabForm.php:15
 msgid "A human-readable title of the custom vocabulary."
@@ -96,7 +96,7 @@ msgstr "Términos"
 
 #: src/Form/CustomVocabForm.php:43 src/Form/CustomVocabForm.php:81
 msgid "URIs"
-msgstr ""
+msgstr "URIs"
 
 #: src/Form/CustomVocabForm.php:56
 msgid "Enter the item set containing the items in this vocabulary."
@@ -107,12 +107,17 @@ msgstr ""
 #: src/Form/CustomVocabForm.php:69
 msgid "Enter all the terms in this vocabulary, separated by new lines."
 msgstr ""
+"Introducir todos los términos del vocabulario, separados en líneas "
+"independientes."
 
 #: src/Form/CustomVocabForm.php:82
 msgid ""
 "Enter all the URIs in this vocabulary, separated by new lines. You may label"
 " a URI by including the label after the URI, separated by a space."
 msgstr ""
+"Introducir todos los URIs del vocabulario, separados en líneas "
+"independientes. Puede etiquetarse un URI introduciendo la etiqueta después "
+"del URI, separada por un espacio."
 
 #: src/Controller/IndexController.php:38
 msgid "Custom vocab created."
