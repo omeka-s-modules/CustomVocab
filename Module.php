@@ -143,6 +143,11 @@ class Module extends AbstractModule
             'csv_import.config',
             [$this, 'addDataTypesToCsvImportConfig']
         );
+        $sharedEventManager->attach(
+            '*',
+            'data_types.value_annotating',
+            [$this, 'addDataTypesToValueAnnotatingConfig']
+        );
     }
 
     public function addVocabularyServices(Event $event)
@@ -219,5 +224,22 @@ class Module extends AbstractModule
             ];
         }
         $event->setParam('config', $config);
+    }
+
+    /**
+     * Add Custom Vocab data types as value annotating.
+     *
+     * @param Event $event
+     */
+    public function addDataTypesToValueAnnotatingConfig(Event $event)
+    {
+        $valueAnnotating = $event->getParam('data_types');
+        $vocabs = $this->getServiceLocator()
+            ->get('Omeka\ApiManager')
+            ->search('custom_vocabs')->getContent();
+        foreach ($vocabs as $vocab) {
+            $valueAnnotating[] = sprintf('customvocab:%s', $vocab->id());
+        }
+        $event->setParam('data_types', $valueAnnotating);
     }
 }

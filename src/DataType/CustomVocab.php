@@ -5,11 +5,12 @@ use CustomVocab\Api\Representation\CustomVocabRepresentation;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\DataType\AbstractDataType;
+use Omeka\DataType\ValueAnnotatingInterface;
 use Omeka\Entity\Value;
 use Laminas\Form\Element\Select;
 use Laminas\View\Renderer\PhpRenderer;
 
-class CustomVocab extends AbstractDataType
+class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
 {
     /**
      * @var CustomVocabRepresentation
@@ -186,7 +187,7 @@ class CustomVocab extends AbstractDataType
     {
         $valueResource = $value->valueResource();
         if ($valueResource) {
-            return $valueResource->linkPretty($lang);
+            return $valueResource->linkPretty('square');
         }
         if ($value->uri()) {
             $uri = $value->uri();
@@ -226,5 +227,14 @@ class CustomVocab extends AbstractDataType
             return $valueResource->url(null, true);
         }
         return (string) $value->value();
+    }
+
+    public function valueAnnotationPrepareForm(PhpRenderer $view)
+    {
+    }
+
+    public function valueAnnotationForm(PhpRenderer $view)
+    {
+        return $this->form($view);
     }
 }
