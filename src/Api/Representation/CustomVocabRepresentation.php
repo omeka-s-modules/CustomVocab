@@ -29,6 +29,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
             'o:label' => $this->label(),
             'o:lang' => $this->lang(),
             'o:terms' => $this->terms(),
+            'o:uris' => $this->uris(),
             'o:item_set' => $itemSet,
             'o:owner' => $owner,
         ];
@@ -53,6 +54,11 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     public function terms()
     {
         return $this->resource->getTerms();
+    }
+
+    public function uris()
+    {
+        return $this->resource->getUris();
     }
 
     public function owner()

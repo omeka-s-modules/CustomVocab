@@ -6,16 +6,16 @@
 # Translators:
 # Josu Aramberri <jaramberri@i2basque.es>, 2018
 # Carlos Rivera <Robertohernande9z9@hotmail.com>, 2019
-# Darío Hereñú, 2019
+# Alfonso Montejo <almontejor@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 16:45-0400\n"
+"POT-Creation-Date: 2022-02-22 12:15-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
-"Last-Translator: Darío Hereñú, 2019\n"
+"Last-Translator: Alfonso Montejo <almontejor@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,36 +23,49 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/DataType/CustomVocab.php:58
+#: src/DataType/CustomVocab.php:72
 #, php-format
 msgid "%s (#%s)"
-msgstr ""
+msgstr "%s (#%s)"
 
-#: src/DataType/CustomVocab.php:64
+#: src/DataType/CustomVocab.php:80
 msgid "Select item below"
-msgstr ""
+msgstr "Seleccionar un elemento"
 
-#: src/DataType/CustomVocab.php:70
+#: src/DataType/CustomVocab.php:101
+#, php-format
+msgid "%s <%s>"
+msgstr "%s <%s>"
+
+#: src/DataType/CustomVocab.php:117
+msgid "Select URI below"
+msgstr "Seleccionar el URI a continuación"
+
+#: src/DataType/CustomVocab.php:135
 msgid "Select term below"
-msgstr ""
+msgstr "Seleccionar un término"
 
-#: view/custom-vocab/index/add.phtml:5
+#: view/custom-vocab/index/add.phtml:6
 msgid "Add Custom Vocab"
-msgstr "Agregar vocabulario personalizado"
+msgstr "Crear un vocabulario personalizado"
 
 #: view/custom-vocab/index/browse.phtml:7
 msgid "Custom Vocabs"
-msgstr "Vocabulario personalizado"
+msgstr "Vocabularios personalizados"
 
 #: view/custom-vocab/index/browse.phtml:11
 msgid "Add new vocab"
-msgstr "Agregar nuevo vocabulario "
+msgstr "Añadir nuevo vocabulario "
 
 #: view/custom-vocab/index/browse.phtml:16
 msgid "There are no custom vocabs"
-msgstr "No existe un vocabulario personalizado"
+msgstr "No hay ningún vocabulario personalizado"
 
-#: view/custom-vocab/index/edit.phtml:5
+#: view/custom-vocab/index/browse.phtml:51
+msgid "[Unknown]"
+msgstr "[Desconocido]"
+
+#: view/custom-vocab/index/edit.phtml:6
 #, php-format
 msgid "Edit Custom Vocab: “%s”"
 msgstr "Editar vocabulario personalizado: \"%s\""
@@ -61,60 +74,71 @@ msgstr "Editar vocabulario personalizado: \"%s\""
 msgid "Language: "
 msgstr "Idioma:"
 
-#: src/DataType/CustomVocab.php:36 config/module.config.php:36
+#: config/module.config.php:36 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
 msgstr "Vocabulario personalizado"
 
-#: src/Api/Adapter/CustomVocabAdapter.php:70
-msgid "The item set and terms cannot both be empty."
-msgstr ""
-
-#: src/Controller/IndexController.php:39
-msgid "Custom vocab created."
-msgstr ""
-
-#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:69
-msgid "There was an error during validation"
-msgstr ""
-
-#: src/Controller/IndexController.php:65
-msgid "Custom vocab updated."
-msgstr ""
-
-#: src/Controller/IndexController.php:91
-msgid "Vocab successfully deleted"
-msgstr ""
-
-#: src/Controller/IndexController.php:94
-msgid "Vocab could not be deleted"
-msgstr ""
-
-#: src/Controller/IndexController.php:108
-msgid "custom vocab"
-msgstr "Vocabulario personalizado"
+#: src/Api/Adapter/CustomVocabAdapter.php:77
+msgid "The item set, terms, and URIs cannot all be empty."
+msgstr "El conjunto de fichas, términos y URI no pueden quedar todos vacíos."
 
 #: src/Form/CustomVocabForm.php:15
 msgid "A human-readable title of the custom vocabulary."
-msgstr "Un título comprensible por humanos para el vocabulario personalizado."
+msgstr "Un título, de fácil lectura, para el vocabulario personalizado."
 
 #: src/Form/CustomVocabForm.php:28
 msgid "The language of the vocabulary terms."
 msgstr "Idioma de los términos del vocabulario"
 
-#: src/Form/CustomVocabForm.php:40
-msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:45
-msgid "Select an item set"
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:53
+#: src/Form/CustomVocabForm.php:41 src/Form/CustomVocabForm.php:68
 msgid "Terms"
 msgstr "Términos"
 
-#: src/Form/CustomVocabForm.php:54
-msgid ""
-"Enter all the terms in this vocabulary, separated by new lines. This will be"
-" ignored if an item set is selected above."
+#: src/Form/CustomVocabForm.php:43 src/Form/CustomVocabForm.php:81
+msgid "URIs"
+msgstr "URIs"
+
+#: src/Form/CustomVocabForm.php:56
+msgid "Enter the item set containing the items in this vocabulary."
 msgstr ""
+"Seleccionar un conjunto de fichas que contenga los elementos de este "
+"vocabulario."
+
+#: src/Form/CustomVocabForm.php:69
+msgid "Enter all the terms in this vocabulary, separated by new lines."
+msgstr ""
+"Introducir todos los términos del vocabulario, separados en líneas "
+"independientes."
+
+#: src/Form/CustomVocabForm.php:82
+msgid ""
+"Enter all the URIs in this vocabulary, separated by new lines. You may label"
+" a URI by including the label after the URI, separated by a space."
+msgstr ""
+"Introducir todos los URIs del vocabulario, separados en líneas "
+"independientes. Puede etiquetarse un URI introduciendo la etiqueta después "
+"del URI, separada por un espacio."
+
+#: src/Controller/IndexController.php:38
+msgid "Custom vocab created."
+msgstr "Se ha creado un nuevo vocabulario personalizado."
+
+#: src/Controller/IndexController.php:42 src/Controller/IndexController.php:67
+msgid "There was an error during validation"
+msgstr "Se produjo un error durante la validación."
+
+#: src/Controller/IndexController.php:63
+msgid "Custom vocab updated."
+msgstr "Se ha actualizado el vocabulario personalizado."
+
+#: src/Controller/IndexController.php:118
+msgid "Vocab successfully deleted"
+msgstr "Se ha eliminado con éxito el vocabulario personalizado"
+
+#: src/Controller/IndexController.php:121
+msgid "Vocab could not be deleted"
+msgstr "El vocabulario personalizado no puede eliminarse."
+
+#: src/Controller/IndexController.php:135
+msgid "custom vocab"
+msgstr "Vocabulario personalizado"

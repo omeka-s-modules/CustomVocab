@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hong Zhang <zhangh@unlv.nevada.edu>, 2018
+# Hong Zhang <zhangh@unlv.nevada.edu>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 16:45-0400\n"
+"POT-Creation-Date: 2022-02-22 12:15-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
-"Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2018\n"
+"Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/omeka/teams/14184/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,20 +21,29 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/DataType/CustomVocab.php:58
+#: src/DataType/CustomVocab.php:72
 #, php-format
 msgid "%s (#%s)"
-msgstr ""
+msgstr "%s（#%s）"
 
-#: src/DataType/CustomVocab.php:64
+#: src/DataType/CustomVocab.php:80
 msgid "Select item below"
+msgstr "选择下面的条目"
+
+#: src/DataType/CustomVocab.php:101
+#, php-format
+msgid "%s <%s>"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:70
+#: src/DataType/CustomVocab.php:117
+msgid "Select URI below"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:135
 msgid "Select term below"
-msgstr ""
+msgstr "选择下面的术语"
 
-#: view/custom-vocab/index/add.phtml:5
+#: view/custom-vocab/index/add.phtml:6
 msgid "Add Custom Vocab"
 msgstr "添加定制词汇"
 
@@ -50,7 +59,11 @@ msgstr "添加新词汇"
 msgid "There are no custom vocabs"
 msgstr "没有定制词汇"
 
-#: view/custom-vocab/index/edit.phtml:5
+#: view/custom-vocab/index/browse.phtml:51
+msgid "[Unknown]"
+msgstr ""
+
+#: view/custom-vocab/index/edit.phtml:6
 #, php-format
 msgid "Edit Custom Vocab: “%s”"
 msgstr "编辑定制词汇：“%s”"
@@ -59,37 +72,13 @@ msgstr "编辑定制词汇：“%s”"
 msgid "Language: "
 msgstr "语言："
 
-#: src/DataType/CustomVocab.php:36 config/module.config.php:36
+#: config/module.config.php:36 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
 msgstr "定制词汇"
 
-#: src/Api/Adapter/CustomVocabAdapter.php:70
-msgid "The item set and terms cannot both be empty."
+#: src/Api/Adapter/CustomVocabAdapter.php:77
+msgid "The item set, terms, and URIs cannot all be empty."
 msgstr ""
-
-#: src/Controller/IndexController.php:39
-msgid "Custom vocab created."
-msgstr ""
-
-#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:69
-msgid "There was an error during validation"
-msgstr ""
-
-#: src/Controller/IndexController.php:65
-msgid "Custom vocab updated."
-msgstr ""
-
-#: src/Controller/IndexController.php:91
-msgid "Vocab successfully deleted"
-msgstr ""
-
-#: src/Controller/IndexController.php:94
-msgid "Vocab could not be deleted"
-msgstr ""
-
-#: src/Controller/IndexController.php:108
-msgid "custom vocab"
-msgstr "定制词汇"
 
 #: src/Form/CustomVocabForm.php:15
 msgid "A human-readable title of the custom vocabulary."
@@ -99,20 +88,48 @@ msgstr "定制词汇的人类可读标题。"
 msgid "The language of the vocabulary terms."
 msgstr "词汇名词的语言。"
 
-#: src/Form/CustomVocabForm.php:40
-msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:45
-msgid "Select an item set"
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:53
+#: src/Form/CustomVocabForm.php:41 src/Form/CustomVocabForm.php:68
 msgid "Terms"
 msgstr "术语"
 
-#: src/Form/CustomVocabForm.php:54
-msgid ""
-"Enter all the terms in this vocabulary, separated by new lines. This will be"
-" ignored if an item set is selected above."
+#: src/Form/CustomVocabForm.php:43 src/Form/CustomVocabForm.php:81
+msgid "URIs"
 msgstr ""
+
+#: src/Form/CustomVocabForm.php:56
+msgid "Enter the item set containing the items in this vocabulary."
+msgstr "输入包含该词汇中的术语的条目。"
+
+#: src/Form/CustomVocabForm.php:69
+msgid "Enter all the terms in this vocabulary, separated by new lines."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:82
+msgid ""
+"Enter all the URIs in this vocabulary, separated by new lines. You may label"
+" a URI by including the label after the URI, separated by a space."
+msgstr ""
+
+#: src/Controller/IndexController.php:38
+msgid "Custom vocab created."
+msgstr "已创建定制词汇。"
+
+#: src/Controller/IndexController.php:42 src/Controller/IndexController.php:67
+msgid "There was an error during validation"
+msgstr "验证时出错"
+
+#: src/Controller/IndexController.php:63
+msgid "Custom vocab updated."
+msgstr "已更新定制词汇。"
+
+#: src/Controller/IndexController.php:118
+msgid "Vocab successfully deleted"
+msgstr "词汇已成功删除"
+
+#: src/Controller/IndexController.php:121
+msgid "Vocab could not be deleted"
+msgstr "无法删除词汇"
+
+#: src/Controller/IndexController.php:135
+msgid "custom vocab"
+msgstr "定制词汇"

@@ -53,6 +53,13 @@ class CustomVocabAdapter extends AbstractEntityAdapter
             }
             $entity->setTerms($terms);
         }
+        if ($this->shouldHydrate($request, 'o:uris')) {
+            $uris = $this->sanitizeTerms($request->getValue('o:uris'));
+            if ('' === $uris) {
+                $uris = null;
+            }
+            $entity->setUris($uris);
+        }
     }
 
     public function validateEntity(EntityInterface $entity,
@@ -66,8 +73,8 @@ class CustomVocabAdapter extends AbstractEntityAdapter
             $errorStore->addError('o:label', 'The label is already taken.'); // @translate
         }
 
-        if ((null === $entity->getItemSet()) && (false == trim($entity->getTerms()))) {
-            $errorStore->addError('o:terms', 'The item set and terms cannot both be empty.'); // @translate
+        if ((null === $entity->getItemSet()) && (false == trim($entity->getTerms())) && (false == trim($entity->getUris()))) {
+            $errorStore->addError('o:terms', 'The item set, terms, and URIs cannot all be empty.'); // @translate
         }
     }
 

@@ -3,8 +3,8 @@ namespace CustomVocab\Controller;
 
 use CustomVocab\Form\CustomVocabForm;
 use Omeka\Form\ConfirmForm;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
@@ -32,8 +32,7 @@ class IndexController extends AbstractActionController
         if ($this->getRequest()->isPost()) {
             $form->setData($this->params()->fromPost());
             if ($form->isValid()) {
-                $formData = $form->getData();
-                $formData['o:item_set'] = ['o:id' => $formData['o:item_set']];
+                $formData = $this->processFormData($form->getData());
                 $response = $this->api($form)->create('custom_vocabs', $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Custom vocab created.'); // @translate
@@ -58,8 +57,7 @@ class IndexController extends AbstractActionController
         if ($this->getRequest()->isPost()) {
             $form->setData($this->params()->fromPost());
             if ($form->isValid()) {
-                $formData = $form->getData();
-                $formData['o:item_set'] = ['o:id' => $formData['o:item_set']];
+                $formData = $this->processFormData($form->getData());
                 $response = $this->api($form)->update('custom_vocabs', $vocab->id(), $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Custom vocab updated.'); // @translate
@@ -78,6 +76,35 @@ class IndexController extends AbstractActionController
         $view->setVariable('form', $form);
         $view->setVariable('vocab', $vocab);
         return $view;
+    }
+
+    /**
+     * Prepare form data for create/update operation.
+     *
+     * Given a vocab type, this sets the other vocab type's data to null. This
+     * will ensure that the API saves only the relevant data.
+     *
+     * @param $formData
+     * @return array
+     */
+    protected function processFormData($formData)
+    {
+        $formData['o:item_set'] = ['o:id' => $formData['o:item_set']];
+        switch ($formData['vocab_type']) {
+            case 'resource':
+                $formData['o:terms'] = null;
+                $formData['o:uris'] = null;
+                break;
+            case 'uri':
+                $formData['o:item_set'] = null;
+                $formData['o:terms'] = null;
+                break;
+            case 'literal':
+            default:
+                $formData['o:item_set'] = null;
+                $formData['o:uris'] = null;
+        }
+        return $formData;
     }
 
     public function deleteAction()

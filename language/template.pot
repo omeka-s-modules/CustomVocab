@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 16:45-0400\n"
+"POT-Creation-Date: 2022-02-22 12:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/DataType/CustomVocab.php:58
+#: src/DataType/CustomVocab.php:72
 #, php-format
 msgid "%s (#%s)"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:64
+#: src/DataType/CustomVocab.php:80
 msgid "Select item below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:70
+#: src/DataType/CustomVocab.php:101
+#, php-format
+msgid "%s <%s>"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:117
+msgid "Select URI below"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:135
 msgid "Select term below"
 msgstr ""
 
-#: view/custom-vocab/index/add.phtml:5
+#: view/custom-vocab/index/add.phtml:6
 msgid "Add Custom Vocab"
 msgstr ""
 
@@ -46,7 +55,11 @@ msgstr ""
 msgid "There are no custom vocabs"
 msgstr ""
 
-#: view/custom-vocab/index/edit.phtml:5
+#: view/custom-vocab/index/browse.phtml:51
+msgid "[Unknown]"
+msgstr ""
+
+#: view/custom-vocab/index/edit.phtml:6
 #, php-format
 msgid "Edit Custom Vocab: “%s”"
 msgstr ""
@@ -55,36 +68,12 @@ msgstr ""
 msgid "Language: "
 msgstr ""
 
-#: src/DataType/CustomVocab.php:36 config/module.config.php:36
+#: config/module.config.php:36 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
 msgstr ""
 
-#: src/Api/Adapter/CustomVocabAdapter.php:70
-msgid "The item set and terms cannot both be empty."
-msgstr ""
-
-#: src/Controller/IndexController.php:39
-msgid "Custom vocab created."
-msgstr ""
-
-#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:69
-msgid "There was an error during validation"
-msgstr ""
-
-#: src/Controller/IndexController.php:65
-msgid "Custom vocab updated."
-msgstr ""
-
-#: src/Controller/IndexController.php:91
-msgid "Vocab successfully deleted"
-msgstr ""
-
-#: src/Controller/IndexController.php:94
-msgid "Vocab could not be deleted"
-msgstr ""
-
-#: src/Controller/IndexController.php:108
-msgid "custom vocab"
+#: src/Api/Adapter/CustomVocabAdapter.php:77
+msgid "The item set, terms, and URIs cannot all be empty."
 msgstr ""
 
 #: src/Form/CustomVocabForm.php:15
@@ -95,20 +84,48 @@ msgstr ""
 msgid "The language of the vocabulary terms."
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:40
-msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:45
-msgid "Select an item set"
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:53
+#: src/Form/CustomVocabForm.php:41 src/Form/CustomVocabForm.php:68
 msgid "Terms"
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:54
+#: src/Form/CustomVocabForm.php:43 src/Form/CustomVocabForm.php:81
+msgid "URIs"
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:56
+msgid "Enter the item set containing the items in this vocabulary."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:69
+msgid "Enter all the terms in this vocabulary, separated by new lines."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:82
 msgid ""
-"Enter all the terms in this vocabulary, separated by new lines. This will be "
-"ignored if an item set is selected above."
+"Enter all the URIs in this vocabulary, separated by new lines. You may label "
+"a URI by including the label after the URI, separated by a space."
+msgstr ""
+
+#: src/Controller/IndexController.php:38
+msgid "Custom vocab created."
+msgstr ""
+
+#: src/Controller/IndexController.php:42 src/Controller/IndexController.php:67
+msgid "There was an error during validation"
+msgstr ""
+
+#: src/Controller/IndexController.php:63
+msgid "Custom vocab updated."
+msgstr ""
+
+#: src/Controller/IndexController.php:118
+msgid "Vocab successfully deleted"
+msgstr ""
+
+#: src/Controller/IndexController.php:121
+msgid "Vocab could not be deleted"
+msgstr ""
+
+#: src/Controller/IndexController.php:135
+msgid "custom vocab"
 msgstr ""
