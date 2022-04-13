@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 12:15-0500\n"
+"POT-Creation-Date: 2022-04-13 12:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/DataType/CustomVocab.php:72
+#: src/DataType/CustomVocab.php:73
 #, php-format
 msgid "%s (#%s)"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:80
+#: src/DataType/CustomVocab.php:81
 msgid "Select item below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:101
+#: src/DataType/CustomVocab.php:102
 #, php-format
 msgid "%s <%s>"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:117
+#: src/DataType/CustomVocab.php:118
 msgid "Select URI below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:135
+#: src/DataType/CustomVocab.php:136
 msgid "Select term below"
 msgstr ""
 
@@ -68,12 +68,32 @@ msgstr ""
 msgid "Language: "
 msgstr ""
 
-#: config/module.config.php:36 src/DataType/CustomVocab.php:36
+#: config/module.config.php:41 src/DataType/CustomVocab.php:37
 msgid "Custom Vocab"
 msgstr ""
 
 #: src/Api/Adapter/CustomVocabAdapter.php:77
 msgid "The item set, terms, and URIs cannot all be empty."
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:37
+msgid "Custom vocab select"
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:43
+msgid "Selection label"
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:56
+msgid "Custom vocab"
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:59
+msgid "Select one:"
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:89
+msgid "[No selection]"
 msgstr ""
 
 #: src/Form/CustomVocabForm.php:15

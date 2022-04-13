@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 12:15-0500\n"
+"POT-Creation-Date: 2022-04-13 12:05-0400\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Rivo Zängov <eraser@eraser.ee>, 2021\n"
 "Language-Team: Estonian (https://www.transifex.com/omeka/teams/14184/et/)\n"
@@ -22,25 +22,25 @@ msgstr ""
 "Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/DataType/CustomVocab.php:72
+#: src/DataType/CustomVocab.php:73
 #, php-format
 msgid "%s (#%s)"
 msgstr "%s (#%s)"
 
-#: src/DataType/CustomVocab.php:80
+#: src/DataType/CustomVocab.php:81
 msgid "Select item below"
 msgstr "Vali alt ühik"
 
-#: src/DataType/CustomVocab.php:101
+#: src/DataType/CustomVocab.php:102
 #, php-format
 msgid "%s <%s>"
 msgstr "%s <%s>"
 
-#: src/DataType/CustomVocab.php:117
+#: src/DataType/CustomVocab.php:118
 msgid "Select URI below"
 msgstr "Vali alt URI"
 
-#: src/DataType/CustomVocab.php:135
+#: src/DataType/CustomVocab.php:136
 msgid "Select term below"
 msgstr "Vali alt termin"
 
@@ -73,13 +73,33 @@ msgstr "Muuda kohandatud sõnastikku: “%s”"
 msgid "Language: "
 msgstr "Keel:"
 
-#: config/module.config.php:36 src/DataType/CustomVocab.php:36
+#: config/module.config.php:41 src/DataType/CustomVocab.php:37
 msgid "Custom Vocab"
 msgstr "Kohandatud sõnastik"
 
 #: src/Api/Adapter/CustomVocabAdapter.php:77
 msgid "The item set, terms, and URIs cannot all be empty."
 msgstr "Ühikute kogum, terminid ja URI-d ei saa olla tühjad."
+
+#: src/DatascribeDataType/CustomVocabSelect.php:37
+msgid "Custom vocab select"
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:43
+msgid "Selection label"
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:56
+msgid "Custom vocab"
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:59
+msgid "Select one:"
+msgstr ""
+
+#: src/DatascribeDataType/CustomVocabSelect.php:89
+msgid "[No selection]"
+msgstr ""
 
 #: src/Form/CustomVocabForm.php:15
 msgid "A human-readable title of the custom vocabulary."
