@@ -194,7 +194,7 @@ class Module extends AbstractModule
      * Add Custom Vocab data types to CSV Import configuration.
      *
      * Typically we would do this by modifying the `csv_import` config array,
-     * but we have to add them via CSVImport's `csv_import.config` event becuase
+     * but we have to add them via CSVImport's `csv_import.config` event because
      * Custom Vocab data types are dynamically named.
      *
      * @param Event $event

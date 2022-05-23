@@ -44,13 +44,15 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
 
     public function form(PhpRenderer $view)
     {
-        if ($this->vocab->itemSet()) {
-            return $this->getResourceForm($view);
+        switch ($this->vocab->typeValues()) {
+            case 'resource':
+                return $this->getResourceForm($view);
+            case 'uri':
+                return $this->getUriForm($view);
+            case 'literal':
+            default:
+                return $this->getLiteralForm($view);
         }
-        if ($this->vocab->uris()) {
-            return $this->getUriForm($view);
-        }
-        return $this->getLiteralForm($view);
     }
 
     /**
@@ -61,20 +63,7 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
      */
     protected function getResourceForm(PhpRenderer $view)
     {
-        // Get items by item type and use as value options.
-        $response = $view->api()->search('items', [
-            'item_set_id' => $this->vocab->itemSet()->id(),
-            'sort_by' => 'title',
-        ]);
-        $items = $response->getContent();
-        $valueOptions = [];
-        foreach ($items as $item) {
-            $valueOptions[$item->id()] = sprintf(
-                $view->translate('%s (#%s)'),
-                $item->displayTitle(),
-                $item->id()
-            );
-        }
+        $valueOptions = $this->vocab->listItemTitles(true) ?? [];
         $select = new Select('customvocab');
         $select->setAttribute('data-value-key', 'value_resource_id')
             ->setAttribute('class', 'terms to-require')
@@ -91,21 +80,19 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
      */
     protected function getUriForm(PhpRenderer $view)
     {
-        $uris = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->uris()));
         $valueOptions = [];
-        foreach ($uris as $uri) {
-            if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
-                $uri = $matches[1];
-                $label = $matches[2];
+        $uriLabels = $this->vocab->listUriLabels() ?? [];
+        $sLabel = $view->translate('%s <%s>'); // @translate
+        foreach ($uriLabels as $uri => $label) {
+            if ($uri !== $label) {
                 $valueOptions[] = [
                     'value' => $uri,
-                    'label' => sprintf($view->translate('%s <%s>'), $label, $uri),
+                    'label' => sprintf($sLabel, $label, $uri),
                     'attributes' => [
                         'data-label' => $label,
                     ],
                 ];
-            } elseif (preg_match('/^(.+)/', $uri, $matches)) {
-                $uri = $matches[1];
+            } else {
                 $valueOptions[] = [
                     'value' => $uri,
                     'label' => $uri,
@@ -128,8 +115,7 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
      */
     protected function getLiteralForm(PhpRenderer $view)
     {
-        $terms = array_map('trim', preg_split("/\r\n|\n|\r/", $this->vocab->terms()));
-        $valueOptions = array_combine($terms, $terms);
+        $valueOptions = $this->vocab->listTerms() ?? [];
         $select = new Select('customvocab');
         $select->setAttribute('data-value-key', '@value')
             ->setAttribute('class', 'terms to-require')
@@ -177,7 +163,7 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
             $dataTypeName = 'literal';
             $valueObject['@language'] = $this->vocab->lang();
         }
-        $dataType = $adapter->getServiceLocator()
+        $adapter->getServiceLocator()
             ->get('Omeka\DataTypeManager')
             ->get($dataTypeName)
             ->hydrate($valueObject, $value, $adapter);
