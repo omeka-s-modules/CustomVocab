@@ -79,6 +79,23 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     }
 
     /**
+     * List values as value/label, whatever the type.
+     */
+    public function listValues(bool $appendIdToTitle = false): array
+    {
+        switch ($this->typeValues()) {
+            case 'resource':
+                return $this->listItemTitles($appendIdToTitle) ?? [];
+            case 'uri':
+                return $this->listTerms() ?? [];
+            case 'literal':
+                return $this->listUriLabels() ?? [];
+            default:
+                return [];
+        }
+    }
+
+    /**
      * List item titles by id when the vocab is based on an item set.
      */
     public function listItemTitles(bool $appendIdToTitle = false): ?array
@@ -109,7 +126,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     }
 
     /**
-     * List of terms when the vocab is a simple list.
+     * List of terms by term when the vocab is a simple list.
      */
     public function listTerms(): ?array
     {
@@ -117,7 +134,10 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         if (!strlen($terms)) {
             return null;
         }
-        return array_filter(array_map('trim', explode("\n", $terms)), 'strlen') ?: null;
+        $terms = array_filter(array_map('trim', explode("\n", $terms)), 'strlen') ?: null;
+        return $terms
+            ? array_combine($terms, $terms)
+            : null;
     }
 
     /**
