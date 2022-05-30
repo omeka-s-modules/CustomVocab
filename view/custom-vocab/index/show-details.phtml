@@ -1,12 +1,46 @@
 <?php
-$translate = $this->plugin('translate');
-$escape = $this->plugin('escapeHtml');
-$terms = array_map('trim', explode(PHP_EOL, $resource->terms()));
+/**
+ * @var \Laminas\View\Renderer\PhpRenderer $this
+ * @var \CustomVocab\Api\Representation\CustomVocabRepresentation $resource
+ */
+
+$plugins = $this->getHelperPluginManager();
+$url = $plugins->get('url');
+$escape = $plugins->get('escapeHtml');
+$translate = $plugins->get('translate');
+$hyperlink = $plugins->get('hyperlink');
+$escapeAttr = $plugins->get('escapeHtmlAttr');
+
+$itemSet = $resource->itemSet();
+$uris = trim($resource->uris());
+$uris = $uris ? array_map('trim', explode("\n", $uris)) : [];
+$terms = trim($resource->terms());
+$terms = $terms ? array_map('trim', explode("\n", $terms)) : [];
 ?>
-<h2><?php echo $escape($resource->label()); ?></h2>
-<div><?php echo $translate('Language: ') . $escape($resource->lang()); ?></div>
+
+<h2><?= $escape($resource->label()) ?></h2>
+<div><?= $escape(sprintf($translate('Language: %s'), $resource->lang() ?: $translate('[none]'))) ?></div>
+<?php if ($itemSet): ?>
+<div><?= sprintf(
+    $translate('%1$s in item set %2$s'),
+    $hyperlink(sprintf($translate('%d items'), $itemSet->itemCount()), $url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])),
+    $itemSet->link($itemSet->displayTitle())
+) ?>
+<?php elseif (count($uris)): ?>
 <ul>
-<?php foreach ($terms as $term): ?>
-    <li><?php echo $escape($term); ?></li>
-<?php endforeach; ?>
+    <?php foreach ($uris as $uriLabel):
+    [$uri, $label] = explode(' ', $uriLabel, 2);
+    if (strlen($uri) && strlen($label)): ?>
+        <li><a href="<?= $escapeAttr($uri) ?>" target="_blank"><?= $escape($label) ?></a></li>
+    <?php endif; ?>
+    <?php endforeach; ?>
 </ul>
+<?php elseif (count($terms)): ?>
+<ul>
+    <?php foreach ($terms as $term): ?>
+    <li><?= $escape($term) ?></li>
+    <?php endforeach; ?>
+</ul>
+<?php else: ?>
+<div class="warning"><?= $translate('This custom vocabulary does not contain any value.') ?></div>
+<?php endif; ?>
