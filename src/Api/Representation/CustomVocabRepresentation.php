@@ -35,17 +35,17 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         ];
     }
 
-    public function label()
+    public function label(): string
     {
         return $this->resource->getLabel();
     }
 
-    public function lang()
+    public function lang(): ?string
     {
         return $this->resource->getLang();
     }
 
-    public function itemSet()
+    public function itemSet(): ?\Omeka\Api\Representation\ItemSetRepresentation
     {
         return $this->getAdapter('item_sets')
             ->getRepresentation($this->resource->getItemSet());
@@ -61,7 +61,19 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         return $this->resource->getUris();
     }
 
-    public function owner()
+    /**
+     * List of terms when the vocab is a simple list.
+     */
+    public function listTerms(): ?array
+    {
+        $terms = trim($this->resource->getTerms());
+        if (!strlen($terms)) {
+            return null;
+        }
+        return array_filter(array_map('trim', explode("\n", $terms)), 'strlen') ?: null;
+    }
+
+    public function owner(): ?\Omeka\Api\Representation\UserRepresentation
     {
         return $this->getAdapter('users')
             ->getRepresentation($this->resource->getOwner());
