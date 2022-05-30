@@ -73,6 +73,27 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         return array_filter(array_map('trim', explode("\n", $terms)), 'strlen') ?: null;
     }
 
+    /**
+     * List of uris (as key) and labels when the vocab is a list of uris.
+     */
+    public function listUriLabels(): ?array
+    {
+        $uris = trim($this->resource->getUris());
+        if (!strlen($uris)) {
+            return null;
+        }
+        $result = [];
+        $matches = [];
+        foreach (array_filter(array_map('trim', explode("\n", $uris)), 'strlen') as $uri) {
+            if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
+                $result[$matches[1]] = $matches[2];
+            } elseif (preg_match('/^(.+)/', $uri, $matches)) {
+                $result[$matches[1]] = $matches[1];
+            }
+        }
+        return $result ?: null;
+    }
+
     public function owner(): ?\Omeka\Api\Representation\UserRepresentation
     {
         return $this->getAdapter('users')
