@@ -62,6 +62,23 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     }
 
     /**
+     * The type of values can be "resource", "uri", "literal" or null (unknown).
+     */
+    public function typeValues(): ?string
+    {
+        // Normally, values are checked in adapter on save, so no more check.
+        if ($this->resource->getItemSet()) {
+            return 'resource';
+        } elseif ($this->resource->getUris()) {
+            return 'uri';
+        } elseif ($this->resource->getTerms()) {
+            return 'literal';
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * List item titles by id when the vocab is based on an item set.
      */
     public function listItemTitles(bool $appendIdToTitle = false): ?array
