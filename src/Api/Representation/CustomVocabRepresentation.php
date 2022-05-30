@@ -62,6 +62,34 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     }
 
     /**
+     * List item titles by id when the vocab is based on an item set.
+     */
+    public function listItemTitles(bool $appendIdToTitle = false): ?array
+    {
+        $itemSet = $this->resource->getItemSet();
+        if (!$itemSet) {
+            return null;
+        }
+        $result = [];
+        /** @var \Omeka\Api\Representation\ItemRepresentation[] $items */
+        $items = $this->getServiceLocator()->get('Omeka\ApiManager')
+            ->search('items', ['item_set_id' => $itemSet->getId(), 'sort_by' => 'title'])
+            ->getContent();
+        if ($appendIdToTitle) {
+            $label = $this->getTranslator()->translate('%s (#%s)'); // @translate
+            foreach ($items as $item) {
+                $itemId = $item->id();
+                $result[$itemId] = sprintf($label, $item->displayTitle(), $itemId);
+            }
+        } else {
+            foreach ($items as $item) {
+                $result[$item->id()] = $item->displayTitle();
+            }
+        }
+        return $result;
+    }
+
+    /**
      * List of terms when the vocab is a simple list.
      */
     public function listTerms(): ?array
