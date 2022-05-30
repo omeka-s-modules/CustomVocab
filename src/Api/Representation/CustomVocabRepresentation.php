@@ -73,19 +73,21 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         $result = [];
         /** @var \Omeka\Api\Representation\ItemRepresentation[] $items */
         $items = $this->getServiceLocator()->get('Omeka\ApiManager')
-            ->search('items', ['item_set_id' => $itemSet->getId(), 'sort_by' => 'title'])
+            ->search('items', ['item_set_id' => $itemSet->getId()])
             ->getContent();
+        $lang = $this->lang();
         if ($appendIdToTitle) {
             $label = $this->getTranslator()->translate('%s (#%s)'); // @translate
             foreach ($items as $item) {
                 $itemId = $item->id();
-                $result[$itemId] = sprintf($label, $item->displayTitle(), $itemId);
+                $result[$itemId] = sprintf($label, $item->displayTitle(null, $lang), $itemId);
             }
         } else {
             foreach ($items as $item) {
-                $result[$item->id()] = $item->displayTitle();
+                $result[$item->id()] = $item->displayTitle(null, $lang);
             }
         }
+        natcasesort($result);
         return $result;
     }
 
