@@ -2,6 +2,8 @@
 namespace CustomVocab\Api\Representation;
 
 use Omeka\Api\Representation\AbstractEntityRepresentation;
+use Omeka\Api\Representation\ItemSetRepresentation;
+use Omeka\Api\Representation\UserRepresentation;
 
 class CustomVocabRepresentation extends AbstractEntityRepresentation
 {
@@ -45,7 +47,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         return $this->resource->getLang();
     }
 
-    public function itemSet(): ?\Omeka\Api\Representation\ItemSetRepresentation
+    public function itemSet(): ?ItemSetRepresentation
     {
         return $this->getAdapter('item_sets')
             ->getRepresentation($this->resource->getItemSet());
@@ -161,7 +163,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         return $result ?: null;
     }
 
-    public function owner(): ?\Omeka\Api\Representation\UserRepresentation
+    public function owner(): ?UserRepresentation
     {
         return $this->getAdapter('users')
             ->getRepresentation($this->resource->getOwner());
