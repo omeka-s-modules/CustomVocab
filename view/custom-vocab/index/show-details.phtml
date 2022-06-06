@@ -10,35 +10,39 @@ $escape = $plugins->get('escapeHtml');
 $translate = $plugins->get('translate');
 $hyperlink = $plugins->get('hyperlink');
 $escapeAttr = $plugins->get('escapeHtmlAttr');
-
-$itemSet = $resource->itemSet();
-$uris = trim($resource->uris());
-$uris = $uris ? array_map('trim', explode("\n", $uris)) : [];
-$terms = trim($resource->terms());
-$terms = $terms ? array_map('trim', explode("\n", $terms)) : [];
 ?>
 
 <h2><?= $escape($resource->label()) ?></h2>
 <div><?= $escape(sprintf($translate('Language: %s'), $resource->lang() ?: $translate('[none]'))) ?></div>
-<?php if ($itemSet): ?>
+
+<?php switch ($resource->typeValues()):
+    case 'resource':
+        $itemSet = $resource->itemSet();
+        ?>
 <div><?= sprintf(
     $translate('%1$s in item set %2$s'),
     $hyperlink(sprintf($translate('%d items'), $itemSet->itemCount()), $url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])),
     $itemSet->link($itemSet->displayTitle())
 ) ?>
-<?php elseif (count($uris)): ?>
+<?php break;
+
+    case 'uri': ?>
 <ul>
-    <?php foreach ($uris as $uri): ?>
-    <?php $uri = $uri = explode(' ', $uri, 2); ?>
-    <li><a href="<?= $escapeAttr($uri[0]) ?>" target="_blank"><?= $escape($uri[1] ?? $uri[0]) ?></a></li>
+    <?php foreach ($resource->listUriLabels() as $uri => $label): ?>
+    <li><a href="<?= $escapeAttr($uri) ?>" target="_blank"><?= $escape($label) ?></a></li>
     <?php endforeach; ?>
 </ul>
-<?php elseif (count($terms)): ?>
+<?php break;
+
+    case 'literal': ?>
 <ul>
-    <?php foreach ($terms as $term): ?>
+    <?php foreach ($resource->listTerms() as $term): ?>
     <li><?= $escape($term) ?></li>
     <?php endforeach; ?>
 </ul>
-<?php else: ?>
+<?php break;
+
+    default: ?>
 <div class="warning"><?= $translate('This custom vocabulary does not contain any value.') ?></div>
-<?php endif; ?>
+
+<?php endswitch; ?>
