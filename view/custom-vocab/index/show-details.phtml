@@ -28,11 +28,9 @@ $terms = $terms ? array_map('trim', explode("\n", $terms)) : [];
 ) ?>
 <?php elseif (count($uris)): ?>
 <ul>
-    <?php foreach ($uris as $uriLabel):
-    [$uri, $label] = explode(' ', $uriLabel, 2);
-    if (strlen($uri) && strlen($label)): ?>
-        <li><a href="<?= $escapeAttr($uri) ?>" target="_blank"><?= $escape($label) ?></a></li>
-    <?php endif; ?>
+    <?php foreach ($uris as $uri): ?>
+    <?php $uri = $uri = explode(' ', $uri, 2); ?>
+    <li><a href="<?= $escapeAttr($uri[0]) ?>" target="_blank"><?= $escape($uri[1] ?? $uri[0]) ?></a></li>
     <?php endforeach; ?>
 </ul>
 <?php elseif (count($terms)): ?>
