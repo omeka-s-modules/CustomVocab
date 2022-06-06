@@ -8,6 +8,12 @@ use Omeka\Stdlib\ErrorStore;
 
 class CustomVocabAdapter extends AbstractEntityAdapter
 {
+    protected $sortFields = [
+        'id' => 'id',
+        'label' => 'label',
+        'owner' => 'owner',
+    ];
+
     public function getResourceName()
     {
         return 'custom_vocabs';
