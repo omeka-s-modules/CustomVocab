@@ -126,8 +126,7 @@ class CustomVocabSelect implements DataTypeInterface
         }
         try {
             $customVocab = $this->api->read('custom_vocabs', $customVocabId)->getContent();
-            $valueOptions = array_map('trim', explode(PHP_EOL, $customVocab->terms()));
-            $valueOptions = array_combine($valueOptions, $valueOptions);
+            $valueOptions = $customVocab->listValues(true);
         } catch (NotFoundException $e) {
             $valueOptions = [];
         }
