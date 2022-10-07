@@ -36,13 +36,12 @@ $(document).on('o:prepare-value-annotation', function(e, type, value) {
         selects.each(function() {
             setCustomVocabUriLabel($(this));
         });
-	// fix style
-	thisValue.find(".chosen-container").css("height", "100%");
-	thisValue.find(".chosen-search-input").css("min-height", "36px");
+        // fix style
+        thisValue.find(".chosen-container").css("height", "100%");
+        thisValue.find(".chosen-search-input").css("min-height", "36px");
     }
 });
 
 $(document).on('change', 'select.custom-vocab-uri', function(e) {
     setCustomVocabUriLabel($(this));
 });
-
