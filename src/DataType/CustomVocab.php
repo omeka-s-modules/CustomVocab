@@ -178,10 +178,21 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
         if ($value->uri()) {
             $uri = $value->uri();
             $uriLabel = $value->value();
-            if (!$uriLabel) {
-                $uriLabel = $uri;
+            $hyperlink = $view->plugin('hyperlink');
+            if (filter_var($uri, FILTER_VALIDATE_URL)) {
+                if (!$uriLabel) {
+                    $uriLabel = $uri;
+                }
+                $icon = '<i class="fas fa-external-link-alt" aria-hidden="true" title="External link"></i>';
+
+                return $uriLabel . $hyperlink->raw($icon, $uri, ['style' => 'margin-left:.5em', 'target' => '_blank', 'aria-label' => 'External link']);
+            } else {
+                if (!$uriLabel) {
+                    return $uri;
+                } else {
+                    return $uriLabel . ': ' . $uri;
+                }
             }
-            return $view->hyperlink($uriLabel, $uri, ['target' => '_blank']);
         }
         return nl2br($view->escapeHtml($value->value()));
     }
