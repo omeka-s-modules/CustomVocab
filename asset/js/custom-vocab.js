@@ -24,6 +24,24 @@ $(document).on('o:prepare-value', function(e, type, value) {
     }
 });
 
+$(document).on('o:prepare-value-annotation', function(e, type, value) {
+    if (0 === type.indexOf('customvocab:')) {
+        var thisValue = $(value);
+        var selectTerms = thisValue.find('select.terms');
+        selectTerms.chosen({
+            width: "100%"
+        });
+        // Prepare URI types.
+        const selects = thisValue.find('select.custom-vocab-uri');
+        selects.each(function() {
+            setCustomVocabUriLabel($(this));
+        });
+	// fix style
+	thisValue.find(".chosen-container").css("height", "100%");
+	thisValue.find(".chosen-search-input").css("min-height", "36px");
+    }
+});
+
 $(document).on('change', 'select.custom-vocab-uri', function(e) {
     setCustomVocabUriLabel($(this));
 });
