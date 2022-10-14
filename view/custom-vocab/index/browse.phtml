@@ -15,7 +15,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/custom-vocab.css', 'Cus
 <?php if (!$vocabs): ?>
 <p><?php echo $translate('There are no custom vocabs'); ?></p>
 <?php else: ?>
-<table>
+<table class="tablesaw" data-tablesaw-mode="stack">
     <thead>
         <tr>
             <th><?php echo $translate('Label'); ?></th>
