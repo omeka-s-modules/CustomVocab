@@ -89,9 +89,9 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
             case 'resource':
                 return $this->listItemTitles($appendIdToTitle) ?? [];
             case 'uri':
-                return $this->listTerms() ?? [];
-            case 'literal':
                 return $this->listUriLabels() ?? [];
+            case 'literal':
+                return $this->listTerms() ?? [];
             default:
                 return [];
         }
