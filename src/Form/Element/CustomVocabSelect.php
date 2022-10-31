@@ -44,6 +44,12 @@ class CustomVocabSelect extends Select
         }
 
         $valueOptions = $customVocab->listValues($this->getOptions());
+
+        $prependValueOptions = $this->getOption('prepend_value_options');
+        if (is_array($prependValueOptions)) {
+            $valueOptions = $prependValueOptions + $valueOptions;
+        }
+
         $this->setValueOptions($valueOptions);
         return $valueOptions;
     }
