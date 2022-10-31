@@ -1,6 +1,7 @@
 <?php
 namespace CustomVocab\Api\Representation;
 
+use CustomVocab\Form\Element\CustomVocabSelect;
 use Omeka\Api\Representation\AbstractEntityRepresentation;
 use Omeka\Api\Representation\ItemSetRepresentation;
 use Omeka\Api\Representation\UserRepresentation;
@@ -167,5 +168,13 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     {
         return $this->getAdapter('users')
             ->getRepresentation($this->resource->getOwner());
+    }
+
+    public function select(array $options = []): CustomVocabSelect
+    {
+        $options['custom_vocab_id'] = $this->id();
+        return $this->getServiceLocator()->get('FormElementManager')
+            ->get(CustomVocabSelect::class)
+            ->setOptions($options);
     }
 }
