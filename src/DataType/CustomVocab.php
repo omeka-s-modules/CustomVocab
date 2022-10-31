@@ -63,12 +63,12 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
      */
     protected function getResourceForm(PhpRenderer $view)
     {
-        $valueOptions = $this->vocab->listItemTitles(['append_id_to_title' => true]) ?? [];
-        $select = new Select('customvocab');
-        $select->setAttribute('data-value-key', 'value_resource_id')
+        $select = $this->vocab->select(['append_id_to_title' => true]);
+        $select
+            ->setName('customvocab')
+            ->setAttribute('data-value-key', 'value_resource_id')
             ->setAttribute('class', 'terms to-require')
-            ->setEmptyOption($view->translate('Select item below'))
-            ->setValueOptions($valueOptions);
+            ->setEmptyOption($view->translate('Select item below'));
         return $view->formSelect($select);
     }
 
@@ -99,8 +99,10 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
                 ];
             }
         }
-        $select = new Select('customvocab');
-        $select->setAttribute('data-value-key', '@id')
+        $select = $this->vocab->select();
+        $select
+            ->setName('customvocab')
+            ->setAttribute('data-value-key', '@id')
             ->setAttribute('class', 'terms to-require custom-vocab-uri')
             ->setEmptyOption($view->translate('Select URI below'))
             ->setValueOptions($valueOptions);
@@ -115,12 +117,12 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
      */
     protected function getLiteralForm(PhpRenderer $view)
     {
-        $valueOptions = $this->vocab->listTerms() ?? [];
-        $select = new Select('customvocab');
-        $select->setAttribute('data-value-key', '@value')
+        $select = $this->vocab->select();
+        $select
+            ->setName('customvocab')
+            ->setAttribute('data-value-key', '@value')
             ->setAttribute('class', 'terms to-require')
-            ->setEmptyOption($view->translate('Select term below'))
-            ->setValueOptions($valueOptions);
+            ->setEmptyOption($view->translate('Select term below'));
         return $view->formSelect($select);
     }
 
