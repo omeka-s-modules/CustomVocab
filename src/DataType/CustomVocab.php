@@ -63,7 +63,7 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
      */
     protected function getResourceForm(PhpRenderer $view)
     {
-        $valueOptions = $this->vocab->listItemTitles(true) ?? [];
+        $valueOptions = $this->vocab->listItemTitles(['append_id_to_title' => true]) ?? [];
         $select = new Select('customvocab');
         $select->setAttribute('data-value-key', 'value_resource_id')
             ->setAttribute('class', 'terms to-require')

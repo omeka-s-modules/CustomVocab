@@ -83,11 +83,11 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     /**
      * List values as value/label, whatever the type.
      */
-    public function listValues(bool $appendIdToTitle = false): array
+    public function listValues(array $options = []): array
     {
         switch ($this->typeValues()) {
             case 'resource':
-                return $this->listItemTitles($appendIdToTitle) ?? [];
+                return $this->listItemTitles($options) ?? [];
             case 'uri':
                 return $this->listUriLabels() ?? [];
             case 'literal':
@@ -100,7 +100,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     /**
      * List item titles by id when the vocab is based on an item set.
      */
-    public function listItemTitles(bool $appendIdToTitle = false): ?array
+    public function listItemTitles(array $options = []): ?array
     {
         $itemSet = $this->resource->getItemSet();
         if (!$itemSet) {
@@ -112,7 +112,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
             ->search('items', ['item_set_id' => $itemSet->getId()])
             ->getContent();
         $lang = $this->lang();
-        if ($appendIdToTitle) {
+        if (!empty($options['append_id_to_title'])) {
             $label = $this->getTranslator()->translate('%s (#%s)'); // @translate
             foreach ($items as $item) {
                 $itemId = $item->id();

@@ -43,8 +43,9 @@ class CustomVocabSelect extends Select
             return [];
         }
 
-        $appendIdToTitle = (bool) ($this->getOption('append_id_to_title') ?? true);
-        return $customVocab->listValues($appendIdToTitle);
+        $valueOptions = $customVocab->listValues($this->getOptions());
+        $this->setValueOptions($valueOptions);
+        return $valueOptions;
     }
 
     public function setApiManager(ApiManager $api): self

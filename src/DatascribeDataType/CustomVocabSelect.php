@@ -126,7 +126,7 @@ class CustomVocabSelect implements DataTypeInterface
         }
         try {
             $customVocab = $this->api->read('custom_vocabs', $customVocabId)->getContent();
-            $valueOptions = $customVocab->listValues(true);
+            $valueOptions = $customVocab->listValues(['append_id_to_title' => true]);
         } catch (NotFoundException $e) {
             $valueOptions = [];
         }
