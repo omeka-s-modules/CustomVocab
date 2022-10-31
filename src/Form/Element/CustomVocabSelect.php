@@ -18,26 +18,18 @@ class CustomVocabSelect extends Select
      */
     protected $api;
 
-    /**
-     * @see https://github.com/zendframework/zendframework/issues/2761#issuecomment-14488216
-     *
-     * {@inheritDoc}
-     * @see \Laminas\Form\Element\Select::getInputSpecification()
-     */
-    public function getInputSpecification()
+    public function getInputSpecification() : array
     {
         $inputSpecification = parent::getInputSpecification();
-        $inputSpecification['required'] = isset($this->attributes['required'])
-            && $this->attributes['required'];
+        $inputSpecification['required'] = isset($this->attributes['required']) && $this->attributes['required'];
         return $inputSpecification;
     }
 
-    public function getValueOptions()
+    public function getValueOptions() : array
     {
         $customVocabId = $this->getOption('custom_vocab_id');
 
         try {
-            /** @var \CustomVocab\Api\Representation\CustomVocabRepresentation $customVocab */
             $customVocab = $this->api->read('custom_vocabs', $customVocabId)->getContent();
         } catch (\Omeka\Api\Exception\NotFoundException $e) {
             return [];

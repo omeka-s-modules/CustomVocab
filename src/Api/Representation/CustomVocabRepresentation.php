@@ -170,6 +170,9 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
             ->getRepresentation($this->resource->getOwner());
     }
 
+    /**
+     * Get a select element for this custom vocab.
+     */
     public function select(array $options = []): CustomVocabSelect
     {
         $options['custom_vocab_id'] = $this->id();
