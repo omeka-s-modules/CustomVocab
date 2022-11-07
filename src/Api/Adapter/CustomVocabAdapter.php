@@ -14,6 +14,16 @@ class CustomVocabAdapter extends AbstractEntityAdapter
         'owner' => 'owner',
     ];
 
+    protected $scalarFields = [
+        'id' => 'id',
+        'label' => 'label',
+        'owner' => 'owner',
+        'lang' => 'lang',
+        'terms' => 'terms',
+        'uris' => 'uris',
+        'item_set' => 'itemSet',
+    ];
+
     public function getResourceName()
     {
         return 'custom_vocabs';
