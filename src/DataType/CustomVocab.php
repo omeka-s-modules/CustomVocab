@@ -68,7 +68,7 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
             ->setName('customvocab')
             ->setAttribute('data-value-key', 'value_resource_id')
             ->setAttribute('class', 'terms to-require')
-            ->setEmptyOption($view->translate('Select item below'));
+            ->setEmptyOption($view->translate('Select item below')); // @translate
         return $view->formSelect($select);
     }
 
@@ -80,32 +80,12 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
      */
     protected function getUriForm(PhpRenderer $view)
     {
-        $valueOptions = [];
-        $uriLabels = $this->vocab->listUriLabels() ?? [];
-        $sLabel = $view->translate('%s <%s>'); // @translate
-        foreach ($uriLabels as $uri => $label) {
-            if ($uri !== $label) {
-                $valueOptions[] = [
-                    'value' => $uri,
-                    'label' => sprintf($sLabel, $label, $uri),
-                    'attributes' => [
-                        'data-label' => $label,
-                    ],
-                ];
-            } else {
-                $valueOptions[] = [
-                    'value' => $uri,
-                    'label' => $uri,
-                ];
-            }
-        }
-        $select = $this->vocab->select();
+        $select = $this->vocab->select(['append_uri_to_label' => true]);
         $select
             ->setName('customvocab')
             ->setAttribute('data-value-key', '@id')
             ->setAttribute('class', 'terms to-require custom-vocab-uri')
-            ->setEmptyOption($view->translate('Select URI below'))
-            ->setValueOptions($valueOptions);
+            ->setEmptyOption($view->translate('Select URI below')); // @translate
         return $view->formSelect($select);
     }
 
@@ -122,7 +102,7 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
             ->setName('customvocab')
             ->setAttribute('data-value-key', '@value')
             ->setAttribute('class', 'terms to-require')
-            ->setEmptyOption($view->translate('Select term below'));
+            ->setEmptyOption($view->translate('Select term below')); // @translate
         return $view->formSelect($select);
     }
 
@@ -158,6 +138,7 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
         ) {
             $dataTypeName = 'uri';
             $valueObject['@language'] = $this->vocab->lang();
+            $valueObject['o:label'] = $this->vocab->listUriLabels()[$valueObject['@id']] ?? null;
         } elseif (isset($valueObject['@value'])
             && is_string($valueObject['@value'])
             && '' !== trim($valueObject['@value'])

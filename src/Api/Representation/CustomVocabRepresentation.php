@@ -90,7 +90,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
             case 'resource':
                 return $this->listItemTitles($options) ?? [];
             case 'uri':
-                return $this->listUriLabels() ?? [];
+                return $this->listUriLabels($options) ?? [];
             case 'literal':
                 return $this->listTerms() ?? [];
             default:
@@ -146,7 +146,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     /**
      * List of uris (as key) and labels when the vocab is a list of uris.
      */
-    public function listUriLabels(): ?array
+    public function listUriLabels(array $options = []): ?array
     {
         $uris = trim($this->resource->getUris());
         if (!strlen($uris)) {
@@ -154,11 +154,22 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         }
         $result = [];
         $matches = [];
-        foreach (array_filter(array_map('trim', explode("\n", $uris)), 'strlen') as $uri) {
-            if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
-                $result[$matches[1]] = $matches[2];
-            } elseif (preg_match('/^(.+)/', $uri, $matches)) {
-                $result[$matches[1]] = $matches[1];
+        if (!empty($options['append_uri_to_label'])) {
+            $sLabel = $this->getTranslator()->translate('%1$s <%2$s>'); // @translate
+            foreach (array_filter(array_map('trim', explode("\n", $uris)), 'strlen') as $uri) {
+                if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
+                    $result[$matches[1]] = sprintf($sLabel, $matches[2], $matches[1]);
+                } elseif (preg_match('/^(.+)/', $uri, $matches)) {
+                    $result[$matches[1]] = $matches[1];
+                }
+            }
+        } else {
+            foreach (array_filter(array_map('trim', explode("\n", $uris)), 'strlen') as $uri) {
+                if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
+                    $result[$matches[1]] = $matches[2];
+                } elseif (preg_match('/^(.+)/', $uri, $matches)) {
+                    $result[$matches[1]] = $matches[1];
+                }
             }
         }
         return $result ?: null;
