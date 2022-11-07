@@ -60,10 +60,8 @@ class CustomVocabAdapter extends AbstractEntityAdapter
             $entity->setTerms($terms);
         }
         if ($this->shouldHydrate($request, 'o:uris')) {
-            $uris = $this->sanitizeTerms($request->getValue('o:uris'));
-            if ('' === $uris) {
-                $uris = null;
-            }
+            $uris = $this->sanitizeUris($request->getValue('o:uris'));
+            $uris = $uris ?: null;
             $entity->setUris($uris);
         }
     }
@@ -92,5 +90,13 @@ class CustomVocabAdapter extends AbstractEntityAdapter
         $terms = array_filter($terms); // remove empty terms
         $terms = array_unique($terms); // remove duplicate terms
         return trim(implode("\n", $terms));
+    }
+
+    protected function sanitizeUris($uriLabels)
+    {
+        // The str_replace() allows to fix Apple copy/paste.
+        $uriLabels = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $uriLabels)); // explode at end of line
+        $uriLabels = array_map('trim', $uriLabels); // trim all terms
+        return trim(implode("\n", $uriLabels));
     }
 }
