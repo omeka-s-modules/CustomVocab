@@ -133,11 +133,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
      */
     public function listTerms(): ?array
     {
-        $terms = trim($this->resource->getTerms());
-        if (!strlen($terms)) {
-            return null;
-        }
-        $terms = array_filter(array_map('trim', explode("\n", $terms)), 'strlen') ?: null;
+        $terms = $this->resource->getTerms();
         return $terms
             ? array_combine($terms, $terms)
             : null;
@@ -148,31 +144,22 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
      */
     public function listUriLabels(array $options = []): ?array
     {
-        $uris = trim($this->resource->getUris());
-        if (!strlen($uris)) {
+        $uris = $this->resource->getUris();
+        if (!$uris) {
             return null;
         }
         $result = [];
-        $matches = [];
         if (!empty($options['append_uri_to_label'])) {
             $sLabel = $this->getTranslator()->translate('%1$s <%2$s>'); // @translate
-            foreach (array_filter(array_map('trim', explode("\n", $uris)), 'strlen') as $uri) {
-                if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
-                    $result[$matches[1]] = sprintf($sLabel, $matches[2], $matches[1]);
-                } elseif (preg_match('/^(.+)/', $uri, $matches)) {
-                    $result[$matches[1]] = $matches[1];
-                }
+            foreach ($uris as $uri => $label) {
+                $result[$uri] = strlen($label) ? sprintf($sLabel, $label, $uri) : $uri;
             }
         } else {
-            foreach (array_filter(array_map('trim', explode("\n", $uris)), 'strlen') as $uri) {
-                if (preg_match('/^(\S+) (.+)$/', $uri, $matches)) {
-                    $result[$matches[1]] = $matches[2];
-                } elseif (preg_match('/^(.+)/', $uri, $matches)) {
-                    $result[$matches[1]] = $matches[1];
-                }
+            foreach ($uris as $uri => $label) {
+                $result[$uri] = strlen($label) ? $label : $uri;
             }
         }
-        return $result ?: null;
+        return $result;
     }
 
     public function owner(): ?UserRepresentation

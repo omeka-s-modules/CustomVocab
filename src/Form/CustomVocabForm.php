@@ -2,6 +2,7 @@
 namespace CustomVocab\Form;
 
 use Laminas\Form\Form;
+use Omeka\Form\Element as OmekaElement;
 
 class CustomVocabForm extends Form
 {
@@ -63,10 +64,11 @@ class CustomVocabForm extends Form
 
         $this->add([
             'name' => 'o:terms',
-            'type' => 'textarea',
+            'type' => OmekaElement\ArrayTextarea::class,
             'options' => [
                 'label' => 'Terms', // @translate
                 'info' => 'Enter all the terms in this vocabulary, separated by new lines.', // @translate
+                'as_key_value' => false,
             ],
             'attributes' => [
                 'rows' => 20,
@@ -76,10 +78,12 @@ class CustomVocabForm extends Form
 
         $this->add([
             'name' => 'o:uris',
-            'type' => 'textarea',
+            'type' => OmekaElement\ArrayTextarea::class,
             'options' => [
                 'label' => 'URIs', // @translate
                 'info' => 'Enter all the URIs in this vocabulary, separated by new lines. You may label a URI by including the label after the URI, separated by a space.', // @translate
+                'as_key_value' => true,
+                'key_value_separator' => ' ',
             ],
             'attributes' => [
                 'rows' => 20,

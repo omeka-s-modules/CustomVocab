@@ -64,9 +64,7 @@ class CustomVocabAdapter extends AbstractEntityAdapter
         }
         if ($this->shouldHydrate($request, 'o:terms')) {
             $terms = $this->sanitizeTerms($request->getValue('o:terms'));
-            if ('' === $terms) {
-                $terms = null;
-            }
+            $terms = $terms ? array_values($terms) : null;
             $entity->setTerms($terms);
         }
         if ($this->shouldHydrate($request, 'o:uris')) {
@@ -87,7 +85,10 @@ class CustomVocabAdapter extends AbstractEntityAdapter
             $errorStore->addError('o:label', 'The label is already taken.'); // @translate
         }
 
-        if ((null === $entity->getItemSet()) && (false == trim($entity->getTerms())) && (false == trim($entity->getUris()))) {
+        $itemSet = $entity->getItemSet();
+        $terms = $entity->getTerms();
+        $uris = $entity->getUris();
+        if ((null === $itemSet) && null === $terms && null === $uris) {
             $errorStore->addError('o:terms', 'The item set, terms, and URIs cannot all be empty.'); // @translate
         }
     }
@@ -95,18 +96,20 @@ class CustomVocabAdapter extends AbstractEntityAdapter
     protected function sanitizeTerms($terms)
     {
         // The str_replace() allows to fix Apple copy/paste.
-        $terms = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $terms)); // explode at end of line
+        if (!is_array($terms)) {
+            $terms = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $terms)); // explode at end of line
+        }
         $terms = array_map('trim', $terms); // trim all terms
         $terms = array_filter($terms); // remove empty terms
-        $terms = array_unique($terms); // remove duplicate terms
-        return trim(implode("\n", $terms));
+        return array_unique($terms); // remove duplicate terms
     }
 
     protected function sanitizeUris($uriLabels)
     {
         // The str_replace() allows to fix Apple copy/paste.
-        $uriLabels = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $uriLabels)); // explode at end of line
-        $uriLabels = array_map('trim', $uriLabels); // trim all terms
-        return trim(implode("\n", $uriLabels));
+        if (!is_array($uriLabels)) {
+            $uriLabels = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $uriLabels)); // explode at end of line
+        }
+        return array_map('trim', $uriLabels); // trim all terms
     }
 }

@@ -34,12 +34,12 @@ class CustomVocab extends AbstractEntity
     protected $itemSet;
 
     /**
-     * @Column(nullable=true, type="text")
+     * @Column(nullable=true, type="json")
      */
     protected $terms;
 
     /**
-     * @Column(nullable=true, type="text")
+     * @Column(nullable=true, type="json")
      */
     protected $uris;
 
