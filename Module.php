@@ -109,36 +109,6 @@ class Module extends AbstractModule
             [$this, 'setVocabTypeToDefaultState']
         );
         $sharedEventManager->attach(
-            'Omeka\Controller\Admin\Item',
-            'view.add.after',
-            [$this, 'prepareResourceForm']
-        );
-        $sharedEventManager->attach(
-            'Omeka\Controller\Admin\Item',
-            'view.edit.after',
-            [$this, 'prepareResourceForm']
-        );
-        $sharedEventManager->attach(
-            'Omeka\Controller\Admin\ItemSet',
-            'view.add.after',
-            [$this, 'prepareResourceForm']
-        );
-        $sharedEventManager->attach(
-            'Omeka\Controller\Admin\ItemSet',
-            'view.edit.after',
-            [$this, 'prepareResourceForm']
-        );
-        $sharedEventManager->attach(
-            'Omeka\Controller\Admin\Media',
-            'view.add.after',
-            [$this, 'prepareResourceForm']
-        );
-        $sharedEventManager->attach(
-            'Omeka\Controller\Admin\Media',
-            'view.edit.after',
-            [$this, 'prepareResourceForm']
-        );
-        $sharedEventManager->attach(
             '*',
             'csv_import.config',
             [$this, 'addDataTypesToCsvImportConfig']
@@ -177,17 +147,6 @@ class Module extends AbstractModule
         $stmt = $conn->prepare('UPDATE resource_template_property SET data_type = NULL WHERE data_type = ?');
         $stmt->bindValue(1, $vocabName);
         $stmt->execute();
-    }
-
-    /**
-     * Prepare resource forms for custom vocab.
-     *
-     * @param Event $event
-     */
-    public function prepareResourceForm(Event $event)
-    {
-        $view = $event->getTarget();
-        $view->headScript()->appendFile($view->assetUrl('js/custom-vocab.js', 'CustomVocab'));
     }
 
     /**
