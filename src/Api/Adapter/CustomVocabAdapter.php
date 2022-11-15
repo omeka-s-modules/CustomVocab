@@ -95,6 +95,9 @@ class CustomVocabAdapter extends AbstractEntityAdapter
 
     protected function sanitizeTerms($terms)
     {
+        if (null === $terms) {
+            return null;
+        }
         // The str_replace() allows to fix Apple copy/paste.
         if (!is_array($terms)) {
             $terms = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $terms)); // explode at end of line
@@ -106,6 +109,9 @@ class CustomVocabAdapter extends AbstractEntityAdapter
 
     protected function sanitizeUris($uriLabels)
     {
+        if (null === $uriLabels) {
+            return null;
+        }
         // The str_replace() allows to fix Apple copy/paste.
         if (!is_array($uriLabels)) {
             $uriLabels = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $uriLabels)); // explode at end of line
