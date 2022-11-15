@@ -62,7 +62,7 @@ class Module extends AbstractModule
     public function install(ServiceLocatorInterface $serviceLocator)
     {
         $conn = $serviceLocator->get('Omeka\Connection');
-        $conn->exec('CREATE TABLE custom_vocab (id INT AUTO_INCREMENT NOT NULL, item_set_id INT DEFAULT NULL, owner_id INT DEFAULT NULL, `label` VARCHAR(190) NOT NULL, lang VARCHAR(190) DEFAULT NULL, terms LONGTEXT DEFAULT NULL, uris LONGTEXT DEFAULT NULL, UNIQUE INDEX UNIQ_8533D2A5EA750E8 (`label`), INDEX IDX_8533D2A5960278D7 (item_set_id), INDEX IDX_8533D2A57E3C61F9 (owner_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB;');
+        $conn->exec('CREATE TABLE custom_vocab (id INT AUTO_INCREMENT NOT NULL, item_set_id INT DEFAULT NULL, owner_id INT DEFAULT NULL, `label` VARCHAR(190) NOT NULL, lang VARCHAR(190) DEFAULT NULL, terms LONGTEXT DEFAULT NULL COMMENT "(DC2Type:json)", uris LONGTEXT DEFAULT NULL COMMENT "(DC2Type:json)", UNIQUE INDEX UNIQ_8533D2A5EA750E8 (`label`), INDEX IDX_8533D2A5960278D7 (item_set_id), INDEX IDX_8533D2A57E3C61F9 (owner_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;');
         $conn->exec('ALTER TABLE custom_vocab ADD CONSTRAINT FK_8533D2A5960278D7 FOREIGN KEY (item_set_id) REFERENCES item_set (id) ON DELETE SET NULL;');
         $conn->exec('ALTER TABLE custom_vocab ADD CONSTRAINT FK_8533D2A57E3C61F9 FOREIGN KEY (owner_id) REFERENCES user (id) ON DELETE SET NULL;');
     }
@@ -93,6 +93,35 @@ class Module extends AbstractModule
         if (Comparator::lessThan($oldVersion, '1.4.0')) {
             // Add the URIs field
             $conn->exec('ALTER TABLE custom_vocab ADD uris LONGTEXT DEFAULT NULL');
+        }
+        if (Comparator::lessThan($oldVersion, '1.7.0')) {
+            // Use old heuristic from representation to convert terms and uris.
+            $vocabs = $conn->executeQuery('SELECT id, terms, uris FROM custom_vocab WHERE item_set_id IS NULL;')->fetchAll();
+            foreach ($vocabs as $vocab) {
+                $id = $vocab['id'];
+                $uris = $vocab['uris'];
+                $terms = $vocab['terms'];
+                if ($uris) {
+                    $result = [];
+                    $matches = [];
+                    foreach (array_filter(array_map('trim', explode("\n", $uris)), 'strlen') as $uri) {
+                        if (preg_match('/^(\S+) \s*(.+)\s*$/', $uri, $matches)) {
+                            $result[$matches[1]] = $matches[1] === $matches[2] ? '' : $matches[2];
+                        } elseif (preg_match('/^\s*(.+)\s*/', $uri, $matches)) {
+                            $result[$matches[1]] = '';
+                        }
+                    }
+                    empty($result)
+                        ? $conn->executeStatement('UPDATE custom_vocab SET uris = NULL, terms = NULL WHERE id = :id;', ['id' => $id])
+                        : $conn->executeStatement('UPDATE custom_vocab SET uris = :uris, terms = NULL WHERE id = :id;', ['id' => $id, 'uris' => json_encode($result)]);
+                } else {
+                    $terms = array_filter(array_map('trim', explode("\n", $terms)), 'strlen') ?: null;
+                    empty($terms)
+                        ? $conn->executeStatement('UPDATE custom_vocab SET terms = NULL, uris = NULL WHERE id = :id;', ['id' => $id])
+                        : $conn->executeStatement('UPDATE custom_vocab SET terms = :terms, uris = NULL WHERE id = :id;', ['id' => $id, 'terms' => json_encode($terms)]);
+                }
+            }
+            $conn->executeStatement('ALTER TABLE custom_vocab CHANGE terms terms LONGTEXT DEFAULT NULL COMMENT "(DC2Type:json)", CHANGE uris uris LONGTEXT DEFAULT NULL COMMENT "(DC2Type:json)";');
         }
     }
 
@@ -170,13 +199,7 @@ class Module extends AbstractModule
             $name = sprintf('customvocab:%s', $vocab->id());
             // Set the CSV Import data type "adapter" according to the type of
             // vocabulary, which is determined heuristically.
-            if ($vocab->itemSet()) {
-                $adapter = 'resource';
-            } elseif ($vocab->uris()) {
-                $adapter = 'uri';
-            } else {
-                $adapter = 'literal';
-            }
+            $adapter = $vocab->typeValues() ?? 'literal';
             $config['data_types'][$name] = [
                 'label' => $vocab->label(),
                 'adapter' => $adapter,
