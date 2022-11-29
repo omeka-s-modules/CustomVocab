@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 12:05-0400\n"
+"POT-Creation-Date: 2022-11-29 11:02-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Josip Ilic <josip.ilic@ericsson.com>, 2021\n"
 "Language-Team: Croatian (https://www.transifex.com/omeka/teams/14184/hr/)\n"
@@ -22,25 +22,25 @@ msgstr ""
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: src/DataType/CustomVocab.php:73
+#: src/Api/Representation/CustomVocabRepresentation.php:117
 #, php-format
 msgid "%s (#%s)"
 msgstr "%s (%s)"
 
-#: src/DataType/CustomVocab.php:81
+#: src/Api/Representation/CustomVocabRepresentation.php:153
+#, php-format
+msgid "%1$s <%2$s>"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:71
 msgid "Select item below"
 msgstr "Odaberite stavku u nastavku"
 
-#: src/DataType/CustomVocab.php:102
-#, php-format
-msgid "%s <%s>"
-msgstr ""
-
-#: src/DataType/CustomVocab.php:118
+#: src/DataType/CustomVocab.php:88
 msgid "Select URI below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:136
+#: src/DataType/CustomVocab.php:105
 msgid "Select term below"
 msgstr "Odaberite pojam u nastavku"
 
@@ -69,15 +69,34 @@ msgstr ""
 msgid "Edit Custom Vocab: “%s”"
 msgstr "Uredi prilagođeni vokabular: \"%s\""
 
-#: view/custom-vocab/index/show-details.phtml:7
-msgid "Language: "
-msgstr "Jezik:"
+#: view/custom-vocab/index/show-details.phtml:16
+#, php-format
+msgid "Language: %s"
+msgstr ""
 
-#: config/module.config.php:41 src/DataType/CustomVocab.php:37
+#: view/custom-vocab/index/show-details.phtml:16
+msgid "[none]"
+msgstr ""
+
+#: view/custom-vocab/index/show-details.phtml:23
+#, php-format
+msgid "%1$s in item set %2$s"
+msgstr ""
+
+#: view/custom-vocab/index/show-details.phtml:24
+#, php-format
+msgid "%d items"
+msgstr ""
+
+#: view/custom-vocab/index/show-details.phtml:46
+msgid "This custom vocabulary does not contain any value."
+msgstr ""
+
+#: config/module.config.php:46 src/DataType/CustomVocab.php:37
 msgid "Custom Vocab"
 msgstr "Prilagođeni Vokabular"
 
-#: src/Api/Adapter/CustomVocabAdapter.php:77
+#: src/Api/Adapter/CustomVocabAdapter.php:92
 msgid "The item set, terms, and URIs cannot all be empty."
 msgstr ""
 
@@ -101,56 +120,56 @@ msgstr ""
 msgid "[No selection]"
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:15
+#: src/Form/CustomVocabForm.php:16
 msgid "A human-readable title of the custom vocabulary."
 msgstr "Čitljiv naslov prilagođenog rječnika."
 
-#: src/Form/CustomVocabForm.php:28
+#: src/Form/CustomVocabForm.php:29
 msgid "The language of the vocabulary terms."
 msgstr "Jezik uvjeta vokabulara."
 
-#: src/Form/CustomVocabForm.php:41 src/Form/CustomVocabForm.php:68
+#: src/Form/CustomVocabForm.php:42 src/Form/CustomVocabForm.php:69
 msgid "Terms"
 msgstr "Uvjeti"
 
-#: src/Form/CustomVocabForm.php:43 src/Form/CustomVocabForm.php:81
+#: src/Form/CustomVocabForm.php:44 src/Form/CustomVocabForm.php:83
 msgid "URIs"
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:56
+#: src/Form/CustomVocabForm.php:57
 msgid "Enter the item set containing the items in this vocabulary."
 msgstr "Unesite skup predmeta koji sadrže stavke iz ovog rječnika."
 
-#: src/Form/CustomVocabForm.php:69
+#: src/Form/CustomVocabForm.php:70
 msgid "Enter all the terms in this vocabulary, separated by new lines."
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:82
+#: src/Form/CustomVocabForm.php:84
 msgid ""
 "Enter all the URIs in this vocabulary, separated by new lines. You may label"
 " a URI by including the label after the URI, separated by a space."
 msgstr ""
 
-#: src/Controller/IndexController.php:38
+#: src/Controller/IndexController.php:39
 msgid "Custom vocab created."
 msgstr "Izrađen prilagođeni vokabular"
 
-#: src/Controller/IndexController.php:42 src/Controller/IndexController.php:67
+#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:68
 msgid "There was an error during validation"
 msgstr "Pojavila se greška prilikom validacije"
 
-#: src/Controller/IndexController.php:63
+#: src/Controller/IndexController.php:64
 msgid "Custom vocab updated."
 msgstr "Prilagođeni vokabular ažuriran"
 
-#: src/Controller/IndexController.php:118
+#: src/Controller/IndexController.php:119
 msgid "Vocab successfully deleted"
 msgstr "Vokabular je uspješno izbrisan"
 
-#: src/Controller/IndexController.php:121
+#: src/Controller/IndexController.php:122
 msgid "Vocab could not be deleted"
 msgstr "Vokabular ne može biti izbrisan"
 
-#: src/Controller/IndexController.php:135
+#: src/Controller/IndexController.php:136
 msgid "custom vocab"
 msgstr "prilagođeni vokabular"

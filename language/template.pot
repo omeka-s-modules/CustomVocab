@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 12:05-0400\n"
+"POT-Creation-Date: 2022-11-29 11:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/DataType/CustomVocab.php:73
+#: src/Api/Representation/CustomVocabRepresentation.php:117
 #, php-format
 msgid "%s (#%s)"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:81
+#: src/Api/Representation/CustomVocabRepresentation.php:153
+#, php-format
+msgid "%1$s <%2$s>"
+msgstr ""
+
+#: src/DataType/CustomVocab.php:71
 msgid "Select item below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:102
-#, php-format
-msgid "%s <%s>"
-msgstr ""
-
-#: src/DataType/CustomVocab.php:118
+#: src/DataType/CustomVocab.php:88
 msgid "Select URI below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:136
+#: src/DataType/CustomVocab.php:105
 msgid "Select term below"
 msgstr ""
 
@@ -64,15 +64,34 @@ msgstr ""
 msgid "Edit Custom Vocab: “%s”"
 msgstr ""
 
-#: view/custom-vocab/index/show-details.phtml:7
-msgid "Language: "
+#: view/custom-vocab/index/show-details.phtml:16
+#, php-format
+msgid "Language: %s"
 msgstr ""
 
-#: config/module.config.php:41 src/DataType/CustomVocab.php:37
+#: view/custom-vocab/index/show-details.phtml:16
+msgid "[none]"
+msgstr ""
+
+#: view/custom-vocab/index/show-details.phtml:23
+#, php-format
+msgid "%1$s in item set %2$s"
+msgstr ""
+
+#: view/custom-vocab/index/show-details.phtml:24
+#, php-format
+msgid "%d items"
+msgstr ""
+
+#: view/custom-vocab/index/show-details.phtml:46
+msgid "This custom vocabulary does not contain any value."
+msgstr ""
+
+#: config/module.config.php:46 src/DataType/CustomVocab.php:37
 msgid "Custom Vocab"
 msgstr ""
 
-#: src/Api/Adapter/CustomVocabAdapter.php:77
+#: src/Api/Adapter/CustomVocabAdapter.php:92
 msgid "The item set, terms, and URIs cannot all be empty."
 msgstr ""
 
@@ -96,56 +115,56 @@ msgstr ""
 msgid "[No selection]"
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:15
+#: src/Form/CustomVocabForm.php:16
 msgid "A human-readable title of the custom vocabulary."
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:28
+#: src/Form/CustomVocabForm.php:29
 msgid "The language of the vocabulary terms."
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:41 src/Form/CustomVocabForm.php:68
+#: src/Form/CustomVocabForm.php:42 src/Form/CustomVocabForm.php:69
 msgid "Terms"
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:43 src/Form/CustomVocabForm.php:81
+#: src/Form/CustomVocabForm.php:44 src/Form/CustomVocabForm.php:83
 msgid "URIs"
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:56
+#: src/Form/CustomVocabForm.php:57
 msgid "Enter the item set containing the items in this vocabulary."
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:69
+#: src/Form/CustomVocabForm.php:70
 msgid "Enter all the terms in this vocabulary, separated by new lines."
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:82
+#: src/Form/CustomVocabForm.php:84
 msgid ""
 "Enter all the URIs in this vocabulary, separated by new lines. You may label "
 "a URI by including the label after the URI, separated by a space."
 msgstr ""
 
-#: src/Controller/IndexController.php:38
+#: src/Controller/IndexController.php:39
 msgid "Custom vocab created."
 msgstr ""
 
-#: src/Controller/IndexController.php:42 src/Controller/IndexController.php:67
+#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:68
 msgid "There was an error during validation"
 msgstr ""
 
-#: src/Controller/IndexController.php:63
+#: src/Controller/IndexController.php:64
 msgid "Custom vocab updated."
 msgstr ""
 
-#: src/Controller/IndexController.php:118
+#: src/Controller/IndexController.php:119
 msgid "Vocab successfully deleted"
 msgstr ""
 
-#: src/Controller/IndexController.php:121
+#: src/Controller/IndexController.php:122
 msgid "Vocab could not be deleted"
 msgstr ""
 
-#: src/Controller/IndexController.php:135
+#: src/Controller/IndexController.php:136
 msgid "custom vocab"
 msgstr ""
