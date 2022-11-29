@@ -7,7 +7,6 @@ use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\DataType\AbstractDataType;
 use Omeka\DataType\ValueAnnotatingInterface;
 use Omeka\Entity\Value;
-use Laminas\Form\Element\Select;
 use Laminas\View\Renderer\PhpRenderer;
 
 class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
