@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-29 11:02-0500\n"
+"POT-Creation-Date: 2022-12-12 11:54-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -30,17 +30,17 @@ msgstr "%s (#%s)"
 #: src/Api/Representation/CustomVocabRepresentation.php:153
 #, php-format
 msgid "%1$s <%2$s>"
-msgstr ""
+msgstr "%1$s <%2$s>"
 
-#: src/DataType/CustomVocab.php:71
+#: src/DataType/CustomVocab.php:70
 msgid "Select item below"
 msgstr "Seleziona contenuto"
 
-#: src/DataType/CustomVocab.php:88
+#: src/DataType/CustomVocab.php:87
 msgid "Select URI below"
 msgstr "Seleziona l'URI qui sotto"
 
-#: src/DataType/CustomVocab.php:105
+#: src/DataType/CustomVocab.php:104
 msgid "Select term below"
 msgstr "Seleziona termine"
 
@@ -72,27 +72,27 @@ msgstr "Modifica vocabolario personalizzato: “%s”"
 #: view/custom-vocab/index/show-details.phtml:16
 #, php-format
 msgid "Language: %s"
-msgstr ""
+msgstr "Lingua: %s"
 
 #: view/custom-vocab/index/show-details.phtml:16
 msgid "[none]"
-msgstr ""
+msgstr "[nessuno]"
 
 #: view/custom-vocab/index/show-details.phtml:23
 #, php-format
 msgid "%1$s in item set %2$s"
-msgstr ""
+msgstr "%1$s nella collezione %2$s"
 
 #: view/custom-vocab/index/show-details.phtml:24
 #, php-format
 msgid "%d items"
-msgstr ""
+msgstr "%d contenuti"
 
 #: view/custom-vocab/index/show-details.phtml:46
 msgid "This custom vocabulary does not contain any value."
-msgstr ""
+msgstr "Questo vocabolario personalizzato non contiene nessun valore."
 
-#: config/module.config.php:46 src/DataType/CustomVocab.php:37
+#: config/module.config.php:46 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
 msgstr "Vocabolario personalizzato"
 

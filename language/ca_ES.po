@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-29 11:02-0500\n"
+"POT-Creation-Date: 2022-12-12 11:54-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2022\n"
 "Language-Team: Catalan (Spain) (https://www.transifex.com/omeka/teams/14184/ca_ES/)\n"
@@ -31,15 +31,15 @@ msgstr "%s (#%s)"
 msgid "%1$s <%2$s>"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:71
+#: src/DataType/CustomVocab.php:70
 msgid "Select item below"
 msgstr "Selecciona un recurs"
 
-#: src/DataType/CustomVocab.php:88
+#: src/DataType/CustomVocab.php:87
 msgid "Select URI below"
 msgstr "Selecciona un URI"
 
-#: src/DataType/CustomVocab.php:105
+#: src/DataType/CustomVocab.php:104
 msgid "Select term below"
 msgstr "Selecciona un terme"
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "This custom vocabulary does not contain any value."
 msgstr ""
 
-#: config/module.config.php:46 src/DataType/CustomVocab.php:37
+#: config/module.config.php:46 src/DataType/CustomVocab.php:36
 msgid "Custom Vocab"
 msgstr "Vocabulari personalitzat"
 
