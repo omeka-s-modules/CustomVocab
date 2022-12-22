@@ -4,12 +4,12 @@ namespace CustomVocab\DataType;
 use CustomVocab\Api\Representation\CustomVocabRepresentation;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
-use Omeka\DataType\AbstractDataType;
+use Omeka\DataType\DataTypeWithOptionsInterface;
 use Omeka\DataType\ValueAnnotatingInterface;
 use Omeka\Entity\Value;
 use Laminas\View\Renderer\PhpRenderer;
 
-class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
+class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterface
 {
     /**
      * @var CustomVocabRepresentation
@@ -39,6 +39,10 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
     public function getLabel()
     {
         return $this->vocab->label();
+    }
+
+    public function prepareForm(PhpRenderer $view)
+    {
     }
 
     public function form(PhpRenderer $view)
@@ -151,11 +155,12 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
             ->hydrate($valueObject, $value, $adapter);
     }
 
-    public function render(PhpRenderer $view, ValueRepresentation $value, $lang = null)
+    public function render(PhpRenderer $view, ValueRepresentation $value, $options = [])
     {
+        $lang = $options['lang'] ?? null;
         $valueResource = $value->valueResource();
         if ($valueResource) {
-            return $valueResource->linkPretty('square');
+            return $valueResource->linkPretty('square', null, null, null, $lang);
         }
         if ($value->uri()) {
             $uri = $value->uri();
@@ -186,6 +191,11 @@ class CustomVocab extends AbstractDataType implements ValueAnnotatingInterface
             $jsonLd['@language'] = $value->lang();
         }
         return $jsonLd;
+    }
+
+    public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)
+    {
+        return $value->value();
     }
 
     public function toString(ValueRepresentation $value)
