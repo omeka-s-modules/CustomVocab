@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-12 11:54-0500\n"
+"POT-Creation-Date: 2023-01-19 09:11-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Joachim Räth <info@ihregeschichte.info>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/omeka/teams/14184/de_DE/)\n"
@@ -31,15 +31,15 @@ msgstr ""
 msgid "%1$s <%2$s>"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:70
+#: src/DataType/CustomVocab.php:74
 msgid "Select item below"
 msgstr "Wählen Sie ein Objekt aus"
 
-#: src/DataType/CustomVocab.php:87
+#: src/DataType/CustomVocab.php:91
 msgid "Select URI below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:104
+#: src/DataType/CustomVocab.php:108
 msgid "Select term below"
 msgstr "Wählen Sie einen Begriff aus"
 
@@ -58,10 +58,6 @@ msgstr "Neues Vokabular hinzufügen"
 #: view/custom-vocab/index/browse.phtml:16
 msgid "There are no custom vocabs"
 msgstr "Keine individuellen Vokabulare vorhanden"
-
-#: view/custom-vocab/index/browse.phtml:51
-msgid "[Unknown]"
-msgstr ""
 
 #: view/custom-vocab/index/edit.phtml:6
 #, php-format

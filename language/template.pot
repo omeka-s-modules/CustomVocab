@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-12 11:54-0500\n"
+"POT-Creation-Date: 2023-01-19 09:11-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,15 +27,15 @@ msgstr ""
 msgid "%1$s <%2$s>"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:70
+#: src/DataType/CustomVocab.php:74
 msgid "Select item below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:87
+#: src/DataType/CustomVocab.php:91
 msgid "Select URI below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:104
+#: src/DataType/CustomVocab.php:108
 msgid "Select term below"
 msgstr ""
 
@@ -53,10 +53,6 @@ msgstr ""
 
 #: view/custom-vocab/index/browse.phtml:16
 msgid "There are no custom vocabs"
-msgstr ""
-
-#: view/custom-vocab/index/browse.phtml:51
-msgid "[Unknown]"
 msgstr ""
 
 #: view/custom-vocab/index/edit.phtml:6
