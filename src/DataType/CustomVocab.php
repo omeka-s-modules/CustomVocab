@@ -43,6 +43,7 @@ class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterf
 
     public function prepareForm(PhpRenderer $view)
     {
+        $view->headScript()->appendFile($view->assetUrl('js/resource-form.js', 'CustomVocab'));
     }
 
     public function form(PhpRenderer $view)
@@ -70,8 +71,9 @@ class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterf
         $select
             ->setName('customvocab')
             ->setAttribute('data-value-key', 'value_resource_id')
-            ->setAttribute('class', 'terms to-require')
-            ->setEmptyOption($view->translate('Select item below')); // @translate
+            ->setAttribute('class', 'custom-vocab-resource to-require')
+            ->setAttribute('data-placeholder', $view->translate('Select item below'))
+            ->setEmptyOption('');
         return $view->formSelect($select);
     }
 
@@ -87,8 +89,9 @@ class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterf
         $select
             ->setName('customvocab')
             ->setAttribute('data-value-key', '@id')
-            ->setAttribute('class', 'terms to-require custom-vocab-uri')
-            ->setEmptyOption($view->translate('Select URI below')); // @translate
+            ->setAttribute('class', 'custom-vocab-uri to-require')
+            ->setAttribute('data-placeholder', $view->translate('Select URI below'))
+            ->setEmptyOption('');
         return $view->formSelect($select);
     }
 
@@ -104,8 +107,9 @@ class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterf
         $select
             ->setName('customvocab')
             ->setAttribute('data-value-key', '@value')
-            ->setAttribute('class', 'terms to-require')
-            ->setEmptyOption($view->translate('Select term below')); // @translate
+            ->setAttribute('class', 'custom-vocab-literal to-require')
+            ->setAttribute('data-placeholder', $view->translate('Select term below'))
+            ->setEmptyOption('');
         return $view->formSelect($select);
     }
 
