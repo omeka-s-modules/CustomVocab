@@ -15,9 +15,14 @@ return [
             dirname(__DIR__) . '/data/doctrine-proxies',
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            'CustomVocab\ImportExport' => Service\Stdlib\ImportExportFactory::class,
+        ],
+    ],
     'data_types' => [
         'abstract_factories' => [
-            Service\CustomVocabFactory::class,
+            Service\DataType\CustomVocabFactory::class,
         ],
     ],
     'view_manager' => [
@@ -31,8 +36,8 @@ return [
         ],
     ],
     'controllers' => [
-        'invokables' => [
-            Controller\IndexController::class => Controller\IndexController::class,
+        'factories' => [
+            'CustomVocab\Controller\Admin\Index' => Service\Controller\Admin\IndexControllerFactory::class,
         ],
     ],
     'datascribe_data_types' => [
@@ -45,11 +50,11 @@ return [
             [
                 'label' => 'Custom Vocab', // @translate
                 'route' => 'admin/custom-vocab',
-                'resource' => Controller\IndexController::class,
+                'resource' => 'CustomVocab\Controller\Admin\Index',
                 'privilege' => 'browse',
                 'pages' => [
                     [
-                        'route' => 'admin/custom-vocab/add',
+                        'route' => 'admin/custom-vocab/default',
                         'visible' => false,
                     ],
                     [
@@ -69,17 +74,20 @@ return [
                         'options' => [
                             'route' => '/custom-vocab',
                             'defaults' => [
-                                '__NAMESPACE__' => 'CustomVocab\Controller',
-                                'controller' => Controller\IndexController::class,
+                                '__NAMESPACE__' => 'CustomVocab\Controller\Admin',
+                                'controller' => 'index',
                                 'action' => 'browse',
                             ],
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
-                            'add' => [
-                                'type' => \Laminas\Router\Http\Literal::class,
+                            'default' => [
+                                'type' => \Laminas\Router\Http\Segment::class,
                                 'options' => [
-                                    'route' => '/add',
+                                    'route' => '/:action',
+                                    'constraints' => [
+                                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                    ],
                                     'defaults' => [
                                         'action' => 'add',
                                     ],

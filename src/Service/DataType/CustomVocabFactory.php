@@ -1,5 +1,5 @@
 <?php
-namespace CustomVocab\Service;
+namespace CustomVocab\Service\DataType;
 
 use CustomVocab\DataType\CustomVocab;
 use Interop\Container\ContainerInterface;

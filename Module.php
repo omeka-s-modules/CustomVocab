@@ -23,7 +23,7 @@ class Module extends AbstractModule
         $acl = $this->getServiceLocator()->get('Omeka\Acl');
         $acl->allow(
             null,
-            \CustomVocab\Controller\IndexController::class,
+            'CustomVocab\Controller\Admin\Index',
             ['browse', 'show-details']
         );
         $acl->allow(
@@ -38,7 +38,7 @@ class Module extends AbstractModule
         );
         $acl->allow(
             'editor',
-            \CustomVocab\Controller\IndexController::class,
+            'CustomVocab\Controller\Admin\Index',
             ['add', 'edit', 'delete']
         );
         $acl->allow(
