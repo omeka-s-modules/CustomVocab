@@ -40,7 +40,7 @@ class IndexController extends AbstractActionController
         $form = $this->getForm(CustomVocabForm::class);
 
         if ($this->getRequest()->isPost()) {
-            $importFile = $this->params()->fromFiles('file');
+            $importFile = $this->params()->fromFiles('import_file');
             if ($importFile) {
                 // Handle an import.
                 $importForm = $this->getForm(CustomVocabImportForm::class);
@@ -48,9 +48,10 @@ class IndexController extends AbstractActionController
                 if ($importForm->isValid()) {
                     $import = json_decode(file_get_contents($importFile['tmp_name']), true);
                     if ($this->importExport->isValidImport($import)) {
+                        $this->messenger()->addSuccess('Import applied to this form. Check for accuracy and submit to save.'); // @translate
                         $form->setData($import);
                     } else {
-                        $this->messenger()->addError('Cannot import custom vocab.'); // @translate
+                        $this->messenger()->addError('Cannot import custom vocab. Invalid import file.'); // @translate
                         return $this->redirect()->toRoute('admin/custom-vocab/default', ['action' => 'import']);
                     }
                 } else {
@@ -85,7 +86,7 @@ class IndexController extends AbstractActionController
         $vocab = $response->getContent();
 
         if ($this->getRequest()->isPost()) {
-            $importFile = $this->params()->fromFiles('file');
+            $importFile = $this->params()->fromFiles('import_file');
             if ($importFile) {
                 // Handle an import.
                 $importForm = $this->getForm(CustomVocabImportForm::class);
@@ -93,9 +94,10 @@ class IndexController extends AbstractActionController
                 if ($importForm->isValid()) {
                     $import = json_decode(file_get_contents($importFile['tmp_name']), true);
                     if ($this->importExport->isValidImport($import)) {
+                        $this->messenger()->addSuccess('Import applied to this form. Check for accuracy and submit to save.'); // @translate
                         $form->setData($import);
                     } else {
-                        $this->messenger()->addError('Cannot import custom vocab.'); // @translate
+                        $this->messenger()->addError('Cannot import custom vocab. Invalid import file.'); // @translate
                         return $this->redirect()->toRoute('admin/custom-vocab/id', ['action' => 'import', 'id' => $this->params('id')]);
                     }
                 } else {
@@ -150,13 +152,16 @@ class IndexController extends AbstractActionController
     {
         $form = $this->getForm(CustomVocabImportForm::class);
         if ($this->params('id')) {
+            $vocab = $this->api()->read('custom_vocabs', $this->params('id'))->getContent();
             $form->setAttribute('action', $this->url()->fromRoute('admin/custom-vocab/id', ['action' => 'edit', 'id' => $this->params('id')]));
         } else {
+            $vocab = null;
             $form->setAttribute('action', $this->url()->fromRoute('admin/custom-vocab/default', ['action' => 'add']));
         }
 
         $view = new ViewModel;
         $view->setVariable('form', $form);
+        $view->setVariable('vocab', $vocab);
         return $view;
     }
 

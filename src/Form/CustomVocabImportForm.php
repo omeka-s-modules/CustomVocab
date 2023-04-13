@@ -8,7 +8,7 @@ class CustomVocabImportForm extends Form
     public function init()
     {
         $this->add([
-            'name' => 'file',
+            'name' => 'import_file',
             'type' => 'file',
             'options' => [
                 'label' => 'Custom vocab file', // @translate
