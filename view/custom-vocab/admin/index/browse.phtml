@@ -34,12 +34,6 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/custom-vocab.css', 'Cus
                     <?php if ($vocab->userIsAllowed('delete')): ?>
                     <li><?php echo $this->hyperlink('', '#', ['class' => 'o-icon-delete sidebar-content', 'data-sidebar-content-url' => $vocab->url('delete-confirm'), 'aria-label' => $translate('Delete'), 'title' => $translate('Delete')]); ?></li>
                     <?php endif; ?>
-                    <?php if (in_array($vocab->typeValues(), ['literal', 'uri'])): ?>
-                    <li><?php echo $this->hyperlink('', $this->url('admin/custom-vocab/id', ['action' => 'export', 'id' => $vocab->id()]), ['class' => 'o-icon-uninstall', 'aria-label' => $translate('Export'), 'title' => $translate('Export')]); ?></li>
-                    <?php if ($vocab->userIsAllowed('update')): ?>
-                    <li><?php echo $this->hyperlink('', $this->url('admin/custom-vocab/id', ['action' => 'import', 'id' => $vocab->id()]), ['class' => 'o-icon-install', 'aria-label' => $translate('Import'), 'title' => $translate('Import')]); ?></li>
-                    <?php endif; ?>
-                    <?php endif; ?>
                     <li><?php echo $this->hyperlink('', '#', ['class' => 'o-icon-more sidebar-content', 'data-sidebar-content-url' => $vocab->url('show-details'), 'aria-label' => $translate('Details'), 'title' => $translate('Details')]); ?></li>
                 </ul>
                 <?php echo $escape($vocab->label()); ?></td>
