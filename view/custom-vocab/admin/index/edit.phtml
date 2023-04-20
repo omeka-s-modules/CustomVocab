@@ -8,10 +8,10 @@ $translate = $this->plugin('translate');
 <div id="page-actions">
     <?php if (in_array($vocab->typeValues(), ['literal', 'uri'])): ?>
     <?php echo $this->hyperlink($translate('Export'), $this->url('admin/custom-vocab/id', ['action' => 'export', 'id' => $vocab->id()]), ['class' => 'button', 'aria-label' => $translate('Export'), 'title' => $translate('Export')]); ?>
-    <?php echo $this->hyperlink($translate('Import'), $this->url('admin/custom-vocab/id', ['action' => 'import', 'id' => $vocab->id()]), ['class' => 'button', 'aria-label' => $translate('Import'), 'title' => $translate('Import')]); ?>
+    <?php echo $this->hyperlink($translate('Update'), $this->url('admin/custom-vocab/id', ['action' => 'import', 'id' => $vocab->id()]), ['class' => 'button', 'aria-label' => $translate('Import'), 'title' => $translate('Import')]); ?>
     <?php endif; ?>
     <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/custom-vocab', ['action' => 'browse'], true), ['class' => 'button']); ?>
-    <button><?php echo $this->escapeHtml($translate('Submit')); ?></button>
+    <button><?php echo $this->escapeHtml($translate('Save')); ?></button>
 </div>
 <?php echo $this->formCollection($form, false); ?>
 <?php echo $this->form()->closeTag(); ?>
