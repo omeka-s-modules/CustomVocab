@@ -8,7 +8,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/custom-vocab.css', 'Cus
 
 <div id="page-actions">
     <?php if ($this->userIsAllowed('CustomVocab\Api\Adapter\CustomVocabAdapter', 'create')): ?>
-    <?php echo $this->hyperlink($translate('Import'), $this->url('admin/custom-vocab/default', ['action' => 'import']), ['class' => 'button']); ?>
+    <?php echo $this->hyperlink($translate('Import from file'), $this->url('admin/custom-vocab/default', ['action' => 'import']), ['class' => 'button']); ?>
     <?php echo $this->hyperlink($translate('Add new vocab'), $this->url('admin/custom-vocab/default', ['action' => 'add']), ['class' => 'button']); ?>
     <?php endif; ?>
 </div>

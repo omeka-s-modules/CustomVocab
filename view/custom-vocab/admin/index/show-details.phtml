@@ -1,48 +1,63 @@
 <?php
-/**
- * @var \Laminas\View\Renderer\PhpRenderer $this
- * @var \CustomVocab\Api\Representation\CustomVocabRepresentation $resource
- */
-
-$plugins = $this->getHelperPluginManager();
-$url = $plugins->get('url');
-$escape = $plugins->get('escapeHtml');
-$translate = $plugins->get('translate');
-$hyperlink = $plugins->get('hyperlink');
-$escapeAttr = $plugins->get('escapeHtmlAttr');
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$hyperlink = $this->plugin('hyperlink');
+$url = $this->plugin('url');
+$type = $resource->typeValues();
 ?>
+<h3><?php echo $escape($resource->label()); ?></h3>
 
-<h2><?= $escape($resource->label()) ?></h2>
-<div><?= $escape(sprintf($translate('Language: %s'), $resource->lang() ?: $translate('[none]'))) ?></div>
+<?php if (in_array($type, ['literal', 'uri'])): ?>
+    <?php echo $hyperlink($translate('Export to file'), $url('admin/custom-vocab/id', ['action' => 'export', 'id' => $resource->id()]), ['class' => 'button', 'aria-label' => $translate('Export'), 'title' => $translate('Export')]); ?>
+    <?php if ($resource->userIsAllowed('update')): ?>
+    <?php echo $hyperlink($translate('Update from file'), $url('admin/custom-vocab/id', ['action' => 'import', 'id' => $resource->id()]), ['class' => 'button', 'aria-label' => $translate('Import'), 'title' => $translate('Import')]); ?>
+    <?php endif; ?>
+<?php endif; ?>
 
-<?php switch ($resource->typeValues()):
-    case 'resource':
-        $itemSet = $resource->itemSet();
-        ?>
-<div><?= sprintf(
-    $translate('%1$s in item set %2$s'),
-    $hyperlink(sprintf($translate('%d items'), $itemSet->itemCount()), $url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])),
-    $itemSet->link($itemSet->displayTitle())
-) ?>
-<?php break;
+<div class="meta-group">
+    <h4><?php echo $translate('Type'); ?></h4>
+    <div class="value"><?php echo $translate($resource->typeLabelValues()); ?></div>
+</div>
 
-    case 'uri': ?>
-<ul>
-    <?php foreach ($resource->listUriLabels() as $uri => $label): ?>
-    <li><a href="<?= $escapeAttr($uri) ?>" target="_blank"><?= $escape($label) ?></a></li>
-    <?php endforeach; ?>
-</ul>
-<?php break;
+<div class="meta-group">
+    <h4><?php echo $translate('Language'); ?></h4>
+    <div class="value"><?php echo $resource->lang() ? $resource->lang() : $translate('[None]'); ?></div>
+</div>
 
-    case 'literal': ?>
-<ul>
-    <?php foreach ($resource->listTerms() as $term): ?>
-    <li><?= $escape($term) ?></li>
-    <?php endforeach; ?>
-</ul>
-<?php break;
+<?php if ('literal' === $type): ?>
+<div class="meta-group">
+    <h4><?php echo $translate('Terms'); ?></h4>
+    <div class="value">
+        <ul>
+            <?php foreach ($resource->listTerms() as $term): ?>
+            <li><?php echo $term; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>
 
-    default: ?>
-<div class="warning"><?= $translate('This custom vocabulary does not contain any value.') ?></div>
+<?php if ('uri' === $type): ?>
+<div class="meta-group">
+    <h4><?php echo $translate('URIs'); ?></h4>
+    <div class="value">
+        <ul>
+            <?php foreach ($resource->listUriLabels() as $uri => $label): ?>
+            <li><?php echo $hyperlink($label, $uri); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>
 
-<?php endswitch; ?>
+<?php if ('resource' === $type): ?>
+<?php $itemSet = $resource->itemSet(); ?>
+<div class="meta-group">
+    <h4><?php echo $translate('Items'); ?></h4>
+    <div class="value"><?php echo sprintf(
+        $translate('%s items in item set %s'),
+        $hyperlink($itemSet->itemCount(), $url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])),
+        $itemSet->link($itemSet->displayTitle())
+    ); ?></div>
+</div>
+<?php endif; ?>

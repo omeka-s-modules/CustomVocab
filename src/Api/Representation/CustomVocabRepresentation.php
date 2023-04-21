@@ -81,6 +81,20 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         }
     }
 
+    public function typeLabelValues(): ?string
+    {
+        switch ($this->typeValues()) {
+            case 'literal':
+                return 'Terms'; // @translate
+            case 'uri':
+                return 'URIs'; // @translate
+            case 'resource':
+                return 'Items'; // @translate
+            default:
+                return null;
+        }
+    }
+
     /**
      * List values as value/label, whatever the type.
      */
