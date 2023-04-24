@@ -199,7 +199,7 @@ class Module extends AbstractModule
             $name = sprintf('customvocab:%s', $vocab->id());
             // Set the CSV Import data type "adapter" according to the type of
             // vocabulary, which is determined heuristically.
-            $adapter = $vocab->typeValues() ?? 'literal';
+            $adapter = $vocab->type() ?? 'literal';
             $config['data_types'][$name] = [
                 'label' => $vocab->label(),
                 'adapter' => $adapter,

@@ -65,9 +65,14 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
     }
 
     /**
-     * The type of values can be "resource", "uri", "literal" or null (unknown).
+     * Get the vocab type.
+     *
+     * The types are:
+     *   - literal: a vocab containing terms
+     *   - uri: a vocab containing URIs
+     *   - resource: a vocab containing items in an item set
      */
-    public function typeValues(): ?string
+    public function type(): ?string
     {
         // Normally, values are checked in adapter on save, so no more check.
         if ($this->resource->getItemSet()) {
@@ -81,9 +86,12 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         }
     }
 
-    public function typeLabelValues(): ?string
+    /**
+     * Get the vocab type's label.
+     */
+    public function typeLabel(): ?string
     {
-        switch ($this->typeValues()) {
+        switch ($this->type()) {
             case 'literal':
                 return 'Terms'; // @translate
             case 'uri':
@@ -100,7 +108,7 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
      */
     public function listValues(array $options = []): array
     {
-        switch ($this->typeValues()) {
+        switch ($this->type()) {
             case 'resource':
                 return $this->listItemTitles($options) ?? [];
             case 'uri':

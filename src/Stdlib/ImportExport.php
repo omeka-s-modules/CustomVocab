@@ -30,7 +30,7 @@ class ImportExport
             'o:label' => $vocab->label(),
             'o:lang' => $vocab->lang(),
         ];
-        switch ($vocab->typeValues()) {
+        switch ($vocab->type()) {
             case 'literal':
                 $export['o:terms'] = $vocab->terms();
                 break;

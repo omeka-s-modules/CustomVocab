@@ -48,7 +48,7 @@ class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterf
 
     public function form(PhpRenderer $view)
     {
-        switch ($this->vocab->typeValues()) {
+        switch ($this->vocab->type()) {
             case 'resource':
                 return $this->getResourceForm($view);
             case 'uri':
