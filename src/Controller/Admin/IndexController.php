@@ -42,16 +42,16 @@ class IndexController extends AbstractActionController
         if ($this->getRequest()->isPost()) {
             $importFile = $this->params()->fromFiles('import_file');
             if ($importFile) {
-                // Handle an import.
+                // Handle an import from file.
                 $importForm = $this->getForm(CustomVocabImportForm::class);
                 $importForm->setData($this->params()->fromPost());
                 if ($importForm->isValid()) {
                     $import = json_decode(file_get_contents($importFile['tmp_name']), true);
                     if ($this->importExport->isValidImport($import)) {
-                        $this->messenger()->addSuccess('Import applied to this form. Check for accuracy and submit to save.'); // @translate
+                        $this->messenger()->addSuccess('Custom vocab file applied to this form. Check for accuracy and submit to save.'); // @translate
                         $form->setData($import);
                     } else {
-                        $this->messenger()->addError('Cannot import custom vocab. Invalid import file.'); // @translate
+                        $this->messenger()->addError('Invalid custom vocab file.'); // @translate
                         return $this->redirect()->toRoute('admin/custom-vocab/default', ['action' => 'import']);
                     }
                 } else {
@@ -88,16 +88,16 @@ class IndexController extends AbstractActionController
         if ($this->getRequest()->isPost()) {
             $importFile = $this->params()->fromFiles('import_file');
             if ($importFile) {
-                // Handle an import.
+                // Handle an update from file.
                 $importForm = $this->getForm(CustomVocabImportForm::class);
                 $importForm->setData($this->params()->fromPost());
                 if ($importForm->isValid()) {
                     $import = json_decode(file_get_contents($importFile['tmp_name']), true);
                     if ($this->importExport->isValidImport($import)) {
-                        $this->messenger()->addSuccess('Import applied to this form. Check for accuracy and submit to save.'); // @translate
+                        $this->messenger()->addSuccess('Custom vocab file applied to this form. Check for accuracy and submit to save.'); // @translate
                         $form->setData($import);
                     } else {
-                        $this->messenger()->addError('Cannot import custom vocab. Invalid import file.'); // @translate
+                        $this->messenger()->addError('Invalid custom vocab file.'); // @translate
                         return $this->redirect()->toRoute('admin/custom-vocab/id', ['action' => 'import', 'id' => $this->params('id')]);
                     }
                 } else {
