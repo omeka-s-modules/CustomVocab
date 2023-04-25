@@ -4,92 +4,84 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2022
+# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 09:11-0500\n"
+"POT-Creation-Date: 2023-04-25 12:01-0400\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
-"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2022\n"
-"Language-Team: Catalan (Spain) (https://www.transifex.com/omeka/teams/14184/ca_ES/)\n"
+"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2023\n"
+"Language-Team: Catalan (Spain) (https://app.transifex.com/omeka/teams/14184/ca_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/Api/Representation/CustomVocabRepresentation.php:117
+#: src/Api/Representation/CustomVocabRepresentation.php:139
 #, php-format
 msgid "%s (#%s)"
 msgstr "%s (#%s)"
 
-#: src/Api/Representation/CustomVocabRepresentation.php:153
+#: src/Api/Representation/CustomVocabRepresentation.php:175
 #, php-format
 msgid "%1$s <%2$s>"
-msgstr ""
+msgstr "%1$s <%2$s>"
 
-#: src/DataType/CustomVocab.php:74
+#: src/DataType/CustomVocab.php:75
 msgid "Select item below"
 msgstr "Selecciona un recurs"
 
-#: src/DataType/CustomVocab.php:91
+#: src/DataType/CustomVocab.php:93
 msgid "Select URI below"
 msgstr "Selecciona un URI"
 
-#: src/DataType/CustomVocab.php:108
+#: src/DataType/CustomVocab.php:111
 msgid "Select term below"
 msgstr "Selecciona un terme"
 
-#: view/custom-vocab/index/add.phtml:6
-msgid "Add Custom Vocab"
-msgstr "Afegeix un vocabulari personalitzat"
+#: view/custom-vocab/admin/index/add.phtml:6
+#: view/custom-vocab/admin/index/browse.phtml:7
+#: view/custom-vocab/admin/index/edit.phtml:6
+#: view/custom-vocab/admin/index/import.phtml:6
+msgid "Custom Vocab"
+msgstr "Custom Vocab"
 
-#: view/custom-vocab/index/browse.phtml:7
-msgid "Custom Vocabs"
-msgstr "Vocabularis personalitzats"
+#: view/custom-vocab/admin/index/browse.phtml:11
+msgid "Import from file"
+msgstr ""
 
-#: view/custom-vocab/index/browse.phtml:11
+#: view/custom-vocab/admin/index/browse.phtml:12
 msgid "Add new vocab"
 msgstr "Afegeix un nou vocabulari"
 
-#: view/custom-vocab/index/browse.phtml:16
+#: view/custom-vocab/admin/index/browse.phtml:17
 msgid "There are no custom vocabs"
 msgstr "No hi ha cap vocabulari"
 
-#: view/custom-vocab/index/edit.phtml:6
+#: view/custom-vocab/admin/index/show-details.phtml:11
+msgid "Export to file"
+msgstr ""
+
+#: view/custom-vocab/admin/index/show-details.phtml:13
+msgid "Update from file"
+msgstr ""
+
+#: view/custom-vocab/admin/index/show-details.phtml:29
+msgid "Terms"
+msgstr "Termes"
+
+#: view/custom-vocab/admin/index/show-details.phtml:42
+msgid "URIs"
+msgstr "URIs"
+
+#: view/custom-vocab/admin/index/show-details.phtml:58
 #, php-format
-msgid "Edit Custom Vocab: “%s”"
-msgstr "Edita el vocabulari: “%s”"
-
-#: view/custom-vocab/index/show-details.phtml:16
-#, php-format
-msgid "Language: %s"
+msgid "%s items in item set %s"
 msgstr ""
-
-#: view/custom-vocab/index/show-details.phtml:16
-msgid "[none]"
-msgstr ""
-
-#: view/custom-vocab/index/show-details.phtml:23
-#, php-format
-msgid "%1$s in item set %2$s"
-msgstr ""
-
-#: view/custom-vocab/index/show-details.phtml:24
-#, php-format
-msgid "%d items"
-msgstr ""
-
-#: view/custom-vocab/index/show-details.phtml:46
-msgid "This custom vocabulary does not contain any value."
-msgstr ""
-
-#: config/module.config.php:46 src/DataType/CustomVocab.php:36
-msgid "Custom Vocab"
-msgstr "Vocabulari personalitzat"
 
 #: src/Api/Adapter/CustomVocabAdapter.php:92
 msgid "The item set, terms, and URIs cannot all be empty."
@@ -123,14 +115,6 @@ msgstr "El títol del vocabulari."
 msgid "The language of the vocabulary terms."
 msgstr "L'idioma dels termes del vocabulari."
 
-#: src/Form/CustomVocabForm.php:42 src/Form/CustomVocabForm.php:69
-msgid "Terms"
-msgstr "Termes"
-
-#: src/Form/CustomVocabForm.php:44 src/Form/CustomVocabForm.php:83
-msgid "URIs"
-msgstr "URIs"
-
 #: src/Form/CustomVocabForm.php:57
 msgid "Enter the item set containing the items in this vocabulary."
 msgstr ""
@@ -148,26 +132,50 @@ msgstr ""
 "Afegiu els URIs del vocabulari, un per cada línia. Podeu etiquetar un URI "
 "incloent l'etiqueta abans de l'URI, separada per un espai."
 
-#: src/Controller/IndexController.php:39
+#: src/Form/CustomVocabImportForm.php:14
+msgid "Custom vocab file"
+msgstr ""
+
+#: src/Controller/Admin/IndexController.php:51
+#: src/Controller/Admin/IndexController.php:97
+msgid ""
+"Custom vocab file applied to this form. Check for accuracy and submit to "
+"save."
+msgstr ""
+
+#: src/Controller/Admin/IndexController.php:54
+#: src/Controller/Admin/IndexController.php:100
+msgid "Invalid custom vocab file."
+msgstr ""
+
+#: src/Controller/Admin/IndexController.php:68
 msgid "Custom vocab created."
 msgstr "S'ha creat el vocabulari."
 
-#: src/Controller/IndexController.php:43 src/Controller/IndexController.php:68
-msgid "There was an error during validation"
-msgstr "Error en la validació"
+#: src/Controller/Admin/IndexController.php:72
+msgid "Cannot add custom vocab."
+msgstr ""
 
-#: src/Controller/IndexController.php:64
+#: src/Controller/Admin/IndexController.php:113
 msgid "Custom vocab updated."
 msgstr "S'ha actualitzat el vocabulari."
 
-#: src/Controller/IndexController.php:119
+#: src/Controller/Admin/IndexController.php:117
+msgid "Cannot edit custom vocab."
+msgstr ""
+
+#: src/Controller/Admin/IndexController.php:136
+msgid "Cannot export custom vocab."
+msgstr ""
+
+#: src/Controller/Admin/IndexController.php:205
 msgid "Vocab successfully deleted"
 msgstr "S'ha suprimit el vocabulari"
 
-#: src/Controller/IndexController.php:122
+#: src/Controller/Admin/IndexController.php:208
 msgid "Vocab could not be deleted"
 msgstr "El vocabulari no es pot suprimir"
 
-#: src/Controller/IndexController.php:136
+#: src/Controller/Admin/IndexController.php:222
 msgid "custom vocab"
 msgstr "custom vocab"
