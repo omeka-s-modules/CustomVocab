@@ -23,7 +23,7 @@ class Module extends AbstractModule
         $acl = $this->getServiceLocator()->get('Omeka\Acl');
         $acl->allow(
             null,
-            \CustomVocab\Controller\IndexController::class,
+            'CustomVocab\Controller\Admin\Index',
             ['browse', 'show-details']
         );
         $acl->allow(
@@ -38,7 +38,7 @@ class Module extends AbstractModule
         );
         $acl->allow(
             'editor',
-            \CustomVocab\Controller\IndexController::class,
+            'CustomVocab\Controller\Admin\Index',
             ['add', 'edit', 'delete']
         );
         $acl->allow(
@@ -199,7 +199,7 @@ class Module extends AbstractModule
             $name = sprintf('customvocab:%s', $vocab->id());
             // Set the CSV Import data type "adapter" according to the type of
             // vocabulary, which is determined heuristically.
-            $adapter = $vocab->typeValues() ?? 'literal';
+            $adapter = $vocab->type() ?? 'literal';
             $config['data_types'][$name] = [
                 'label' => $vocab->label(),
                 'adapter' => $adapter,

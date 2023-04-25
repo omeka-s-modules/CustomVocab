@@ -4,11 +4,12 @@ $escape = $this->plugin('escapeHtml');
 $this->headLink()->appendStylesheet($this->assetUrl('css/custom-vocab.css', 'CustomVocab'));
 ?>
 
-<?php echo $this->pageTitle($translate('Custom Vocabs')); ?>
+<?php echo $this->pageTitle($translate('Browse'), 1, $translate('Custom Vocab')); ?>
 
 <div id="page-actions">
     <?php if ($this->userIsAllowed('CustomVocab\Api\Adapter\CustomVocabAdapter', 'create')): ?>
-    <?php echo $this->hyperlink($translate('Add new vocab'), $this->url('admin/custom-vocab/add'), ['class' => 'button']); ?>
+    <?php echo $this->hyperlink($translate('Import from file'), $this->url('admin/custom-vocab/default', ['action' => 'import']), ['class' => 'button']); ?>
+    <?php echo $this->hyperlink($translate('Add new vocab'), $this->url('admin/custom-vocab/default', ['action' => 'add']), ['class' => 'button']); ?>
     <?php endif; ?>
 </div>
 
@@ -28,24 +29,12 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/custom-vocab.css', 'Cus
             <td>
                 <ul class="actions">
                     <?php if ($vocab->userIsAllowed('update')): ?>
-                    <li><?php echo $vocab->link('', 'edit', [
-                        'class' => 'o-icon-edit',
-                        'aria-label' => $translate('Edit'),
-                        'title' => $translate('Edit'),
-                    ]); ?></li>
+                    <li><?php echo $vocab->link('', 'edit', ['class' => 'o-icon-edit', 'aria-label' => $translate('Edit'), 'title' => $translate('Edit')]); ?></li>
                     <?php endif; ?>
                     <?php if ($vocab->userIsAllowed('delete')): ?>
-                    <li><a href="#"
-                        data-sidebar-content-url="<?php echo $escape($vocab->url('delete-confirm')); ?>"
-                        class="o-icon-delete sidebar-content"
-                        aria-label="<?php echo $escape($translate('Delete')); ?>"
-                        title="<?php echo $escape($translate('Delete')); ?>"></a></li>
+                    <li><?php echo $this->hyperlink('', '#', ['class' => 'o-icon-delete sidebar-content', 'data-sidebar-content-url' => $vocab->url('delete-confirm'), 'aria-label' => $translate('Delete'), 'title' => $translate('Delete')]); ?></li>
                     <?php endif; ?>
-                    <li><a href="#"
-                        data-sidebar-content-url="<?php echo $escape($vocab->url('show-details')); ?>"
-                        class="o-icon-more sidebar-content"
-                        aria-label="<?php echo $escape($translate('Details')); ?>"
-                        title="<?php echo $escape($translate('Details')); ?>"></a></li>
+                    <li><?php echo $this->hyperlink('', '#', ['class' => 'o-icon-more sidebar-content', 'data-sidebar-content-url' => $vocab->url('show-details'), 'aria-label' => $translate('Details'), 'title' => $translate('Details')]); ?></li>
                 </ul>
                 <?php echo $escape($vocab->label()); ?></td>
             <td><?php echo $escape($vocab->owner() ? $vocab->owner()->name() : $translate('[Unknown]')); ?></td>
