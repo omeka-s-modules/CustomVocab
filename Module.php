@@ -133,9 +133,9 @@ class Module extends AbstractModule
                 if (!is_null($vocab['terms'])) {
                     if (!is_array(json_decode($vocab['terms'], true))) {
                         $terms = array_filter(array_map('trim', explode("\n", $vocab['terms'])), 'strlen') ?: null;
-                        if (!empty($terms)) {
-                            $conn->executeStatement('UPDATE custom_vocab SET terms = :terms WHERE id = :id;', ['id' => $vocab['id'], 'terms' => json_encode($terms)]);
-                        }
+                        empty($terms)
+                            ? $conn->executeStatement('UPDATE custom_vocab SET terms = NULL WHERE id = :id;', ['id' => $vocab['id']])
+                            : $conn->executeStatement('UPDATE custom_vocab SET terms = :terms WHERE id = :id;', ['id' => $vocab['id'], 'terms' => json_encode($terms)]);
                     }
                 }
                 if (!is_null($vocab['uris'])) {
@@ -148,9 +148,9 @@ class Module extends AbstractModule
                                 $result[$matches[1]] = '';
                             }
                         }
-                        if (!empty($result)) {
-                            $conn->executeStatement('UPDATE custom_vocab SET uris = :uris WHERE id = :id;', ['id' => $vocab['id'], 'uris' => json_encode($result)]);
-                        }
+                        empty($result)
+                            ? $conn->executeStatement('UPDATE custom_vocab SET uris = NULL WHERE id = :id;', ['id' => $vocab['id']])
+                            : $conn->executeStatement('UPDATE custom_vocab SET uris = :uris WHERE id = :id;', ['id' => $vocab['id'], 'uris' => json_encode($result)]);
                     }
                 }
             }
