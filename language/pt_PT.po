@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-20 17:19-0400\n"
+"POT-Creation-Date: 2023-10-21 21:08-0400\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: Daniel Alves <daniel_r_alves@hotmail.com>, 2020\n"
 "Language-Team: Portuguese (Portugal) (https://app.transifex.com/omeka/teams/14184/pt_PT/)\n"
@@ -58,9 +58,9 @@ msgstr ""
 msgid "Add new vocab"
 msgstr "Adicionar novo vocabulário"
 
-#: view/custom-vocab/admin/index/browse.phtml:17
-msgid "There are no custom vocabs"
-msgstr "Não existem vocabulários personalizados"
+#: view/custom-vocab/admin/index/browse.phtml:18
+msgid "Omeka could not find any custom vocabularies."
+msgstr ""
 
 #: view/custom-vocab/admin/index/show-details.phtml:11
 msgid "Export to file"
@@ -133,46 +133,46 @@ msgstr ""
 msgid "Custom vocab file"
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:51
-#: src/Controller/Admin/IndexController.php:97
+#: src/Controller/Admin/IndexController.php:52
+#: src/Controller/Admin/IndexController.php:98
 msgid ""
 "Custom vocab file applied to this form. Check for accuracy and submit to "
 "save."
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:54
-#: src/Controller/Admin/IndexController.php:100
+#: src/Controller/Admin/IndexController.php:55
+#: src/Controller/Admin/IndexController.php:101
 msgid "Invalid custom vocab file."
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:68
+#: src/Controller/Admin/IndexController.php:69
 msgid "Custom vocab created."
 msgstr "Vocabulário personalizado criado."
 
-#: src/Controller/Admin/IndexController.php:72
+#: src/Controller/Admin/IndexController.php:73
 msgid "Cannot add custom vocab."
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:113
+#: src/Controller/Admin/IndexController.php:114
 msgid "Custom vocab updated."
 msgstr "Vocabulário personalizado actualizado."
 
-#: src/Controller/Admin/IndexController.php:117
+#: src/Controller/Admin/IndexController.php:118
 msgid "Cannot edit custom vocab."
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:136
+#: src/Controller/Admin/IndexController.php:137
 msgid "Cannot export custom vocab."
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:205
+#: src/Controller/Admin/IndexController.php:206
 msgid "Vocab successfully deleted"
 msgstr "Vocabulário eliminado com sucesso"
 
-#: src/Controller/Admin/IndexController.php:208
+#: src/Controller/Admin/IndexController.php:209
 msgid "Vocab could not be deleted"
 msgstr "Vocabulário não pode ser eliminado"
 
-#: src/Controller/Admin/IndexController.php:222
+#: src/Controller/Admin/IndexController.php:223
 msgid "custom vocab"
 msgstr "vocabulário personalizado"
