@@ -19,8 +19,9 @@ class IndexController extends AbstractActionController
 
     public function browseAction()
     {
-        $this->setBrowseDefaults('label', 'asc');
+        $this->browse()->setDefaults('custom_vocabs');
         $response = $this->api()->search('custom_vocabs', $this->params()->fromQuery());
+        $this->paginator($response->getTotalResults());
         $view = new ViewModel;
         $view->setVariable('vocabs', $response->getContent());
         return $view;

@@ -40,6 +40,14 @@ return [
             'CustomVocab\Controller\Admin\Index' => Service\Controller\Admin\IndexControllerFactory::class,
         ],
     ],
+    'browse_defaults' => [
+        'admin' => [
+            'custom_vocabs' => [
+                'sort_by' => 'label',
+                'sort_order' => 'asc',
+            ],
+        ],
+    ],
     'datascribe_data_types' => [
         'factories' => [
             'custom_vocab_select' => Service\DatascribeDataType\CustomVocabSelectFactory::class,
