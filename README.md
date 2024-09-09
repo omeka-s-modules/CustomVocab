@@ -30,15 +30,6 @@ When this Resource Template is used in an Item or Item Set, the designated prope
 
 See the [Omeka S user manual](http://omeka.org/s/docs/user-manual/modules/customvocab/) for user documentation.
 
-# For developers
-
-## Accessing Custom Vocabs through the API
-
-If you are a developer trying to access the custom vocabulary list through the API, the end points are the following:
-
-- List of custom vocabularies are at `/api/custom_vocabs`
-- The details of a specific custom vocabulary is at `/api/custom_vocabs/<id>`
-
 # Copyright
 
 CustomVocab is Copyright © 2016-present Corporation for Digital Scholarship, Vienna, Virginia, USA http://digitalscholar.org
