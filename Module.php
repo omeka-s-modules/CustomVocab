@@ -270,6 +270,11 @@ class Module extends AbstractModule
      *
      * @todo Factorize handleRepresentationValueHtml().
      *
+     * Compatible with the converted value to a link of the following modules:
+     * 
+     * Advanced Resource Template 3.4.43
+     * Metadata Browse 1.6.0
+     * 
      */
     public function handleRepresentationValueHtml(Event $event): void
     {
@@ -294,10 +299,13 @@ class Module extends AbstractModule
                     $val = (string) $value->value();
                     if(!empty($listValues) && !empty($val) && !empty($listValues[$val])){
                         $html = $event->getParam('html');
-                        $need[] = '/'.$val.'/i';;
-                        $need[] = '/(>.+<\/a>)/i';
-                        $replace[] = $listValues[$val];
-                        $replace[] = '>'.$listValues[$val].'</a>';
+                        if(stripos($html, '</a>') !== False){
+                            $need[] = '/(>.+<\/a>)/i';
+                            $replace[] = '>'.$listValues[$val].'</a>';
+                        }else{
+                            $need[] = '/'.$val.'/i';
+                            $replace[] = $listValues[$val];
+                        }
                         $html = preg_replace($need, $replace, $html);
                         $event->setParam('html', $html);
                     }
