@@ -231,9 +231,17 @@ class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterf
                 break;
             case 'uri':
                 // Attempt to convert to custom vocab (uri).
+                $value = $valueObject->getValue();
                 $uri = $valueObject->getUri();
                 $uris = $this->vocab->uris();
                 if (is_string($uri) && '' !== trim($uri) && array_key_exists($uri, $uris)) {
+                    if (is_string($uris[$uri]) && '' !== trim($uris[$uri])) {
+                        // If the URI has a label, set it as the value. This will
+                        // overwrite any existing value, and therefore data loss
+                        // may occur. Even so, this behavior is desirable because
+                        // we're converting to a controlled vocabulary.
+                        $valueObject->setValue($uris[$uri]);
+                    }
                     return true;
                 }
                 break;
