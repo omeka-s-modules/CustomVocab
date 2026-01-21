@@ -8,7 +8,7 @@ $(document).on('o:prepare-value', function(e, type, value) {
     }
     value.find('select').chosen({
         width: '100%',
-        disable_search_threshold: 25,
+        disable_search_threshold: 5,
         allow_single_deselect: true,
         // // More than 1000 may cause performance issues
         // @see https://github.com/harvesthq/chosen/issues/2580
