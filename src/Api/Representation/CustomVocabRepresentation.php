@@ -152,13 +152,21 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
 
     /**
      * List of terms by term when the vocab is a simple list.
+     * If you need to add values ​​with labels, you need to separate them =
      */
     public function listTerms(): ?array
     {
         $terms = $this->resource->getTerms();
-        return $terms
-            ? array_combine($terms, $terms)
-            : null;
+        $rc = [];
+        foreach($terms as $v){
+            if(stripos($v, '=') !== False){
+                $nval = explode('=', $v);
+                $rc[trim($nval[0])] = trim($nval[1]);
+            }else{
+                $rc[$v] = $v;
+            }
+        }
+        return $rc;
     }
 
     /**
