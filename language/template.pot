@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-21 21:08-0400\n"
+"POT-Creation-Date: 2026-01-26 17:16-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,15 +27,15 @@ msgstr ""
 msgid "%1$s <%2$s>"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:75
+#: src/DataType/CustomVocab.php:76
 msgid "Select item below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:93
+#: src/DataType/CustomVocab.php:94
 msgid "Select URI below"
 msgstr ""
 
-#: src/DataType/CustomVocab.php:111
+#: src/DataType/CustomVocab.php:112
 msgid "Select term below"
 msgstr ""
 
@@ -79,10 +79,6 @@ msgstr ""
 msgid "%s items in item set %s"
 msgstr ""
 
-#: src/Api/Adapter/CustomVocabAdapter.php:92
-msgid "The item set, terms, and URIs cannot all be empty."
-msgstr ""
-
 #: src/DatascribeDataType/CustomVocabSelect.php:37
 msgid "Custom vocab select"
 msgstr ""
@@ -103,30 +99,8 @@ msgstr ""
 msgid "[No selection]"
 msgstr ""
 
-#: src/Form/CustomVocabForm.php:16
-msgid "A human-readable title of the custom vocabulary."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:29
-msgid "The language of the vocabulary terms."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:57
-msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:70
-msgid "Enter all the terms in this vocabulary, separated by new lines."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:84
-msgid ""
-"Enter all the URIs in this vocabulary, separated by new lines. You may label "
-"a URI by including the label after the URI, separated by a space."
-msgstr ""
-
-#: src/Form/CustomVocabImportForm.php:14
-msgid "Custom vocab file"
+#: src/Api/Adapter/CustomVocabAdapter.php:92
+msgid "The item set, terms, and URIs cannot all be empty."
 msgstr ""
 
 #: src/Controller/Admin/IndexController.php:52
@@ -171,4 +145,30 @@ msgstr ""
 
 #: src/Controller/Admin/IndexController.php:223
 msgid "custom vocab"
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:16
+msgid "A human-readable title of the custom vocabulary."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:29
+msgid "The language of the vocabulary terms."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:57
+msgid "Enter the item set containing the items in this vocabulary."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:70
+msgid "Enter all the terms in this vocabulary, separated by new lines."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:84
+msgid ""
+"Enter all the URIs in this vocabulary, separated by new lines. You may label "
+"a URI by including the label after the URI, separated by a space."
+msgstr ""
+
+#: src/Form/CustomVocabImportForm.php:14
+msgid "Custom vocab file"
 msgstr ""

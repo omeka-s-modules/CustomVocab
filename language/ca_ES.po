@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2023
+# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-21 21:08-0400\n"
+"POT-Creation-Date: 2026-01-26 17:16-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
-"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2023\n"
+"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2024\n"
 "Language-Team: Catalan (Spain) (https://app.transifex.com/omeka/teams/14184/ca_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,15 +31,15 @@ msgstr "%s (#%s)"
 msgid "%1$s <%2$s>"
 msgstr "%1$s <%2$s>"
 
-#: src/DataType/CustomVocab.php:75
+#: src/DataType/CustomVocab.php:76
 msgid "Select item below"
 msgstr "Selecciona un recurs"
 
-#: src/DataType/CustomVocab.php:93
+#: src/DataType/CustomVocab.php:94
 msgid "Select URI below"
 msgstr "Selecciona un URI"
 
-#: src/DataType/CustomVocab.php:111
+#: src/DataType/CustomVocab.php:112
 msgid "Select term below"
 msgstr "Selecciona un terme"
 
@@ -60,7 +60,7 @@ msgstr "Afegeix un nou vocabulari"
 
 #: view/custom-vocab/admin/index/browse.phtml:18
 msgid "Omeka could not find any custom vocabularies."
-msgstr ""
+msgstr "No s'ha trobat cap vocabulari personalitzat."
 
 #: view/custom-vocab/admin/index/show-details.phtml:11
 msgid "Export to file"
@@ -81,11 +81,7 @@ msgstr "URIs"
 #: view/custom-vocab/admin/index/show-details.phtml:58
 #, php-format
 msgid "%s items in item set %s"
-msgstr ""
-
-#: src/Api/Adapter/CustomVocabAdapter.php:92
-msgid "The item set, terms, and URIs cannot all be empty."
-msgstr "El conjunt de recursos, els termes i els URIs  s'han d'emplenar."
+msgstr "%s recursos en el conjunt de recursos %s"
 
 #: src/DatascribeDataType/CustomVocabSelect.php:37
 msgid "Custom vocab select"
@@ -107,34 +103,9 @@ msgstr "Selecciona un:"
 msgid "[No selection]"
 msgstr "[Cap seleccionat]"
 
-#: src/Form/CustomVocabForm.php:16
-msgid "A human-readable title of the custom vocabulary."
-msgstr "El títol del vocabulari."
-
-#: src/Form/CustomVocabForm.php:29
-msgid "The language of the vocabulary terms."
-msgstr "L'idioma dels termes del vocabulari."
-
-#: src/Form/CustomVocabForm.php:57
-msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
-"Introduïu el conjunt de recursos que conté els recursos d'aquest vocabulari."
-
-#: src/Form/CustomVocabForm.php:70
-msgid "Enter all the terms in this vocabulary, separated by new lines."
-msgstr "Afegiu els termes un per cada línia."
-
-#: src/Form/CustomVocabForm.php:84
-msgid ""
-"Enter all the URIs in this vocabulary, separated by new lines. You may label"
-" a URI by including the label after the URI, separated by a space."
-msgstr ""
-"Afegiu els URIs del vocabulari, un per cada línia. Podeu etiquetar un URI "
-"incloent l'etiqueta abans de l'URI, separada per un espai."
-
-#: src/Form/CustomVocabImportForm.php:14
-msgid "Custom vocab file"
-msgstr "Fitxer del vocabulari"
+#: src/Api/Adapter/CustomVocabAdapter.php:92
+msgid "The item set, terms, and URIs cannot all be empty."
+msgstr "El conjunt de recursos, els termes i els URIs  s'han d'emplenar."
 
 #: src/Controller/Admin/IndexController.php:52
 #: src/Controller/Admin/IndexController.php:98
@@ -142,6 +113,8 @@ msgid ""
 "Custom vocab file applied to this form. Check for accuracy and submit to "
 "save."
 msgstr ""
+"El fitxer del vocabulari personalitzat s'ha aplicat a aquest formulari. "
+"Comproveu si és correcte i envieu per desar."
 
 #: src/Controller/Admin/IndexController.php:55
 #: src/Controller/Admin/IndexController.php:101
@@ -179,3 +152,32 @@ msgstr "El vocabulari no es pot suprimir"
 #: src/Controller/Admin/IndexController.php:223
 msgid "custom vocab"
 msgstr "custom vocab"
+
+#: src/Form/CustomVocabForm.php:16
+msgid "A human-readable title of the custom vocabulary."
+msgstr "El títol del vocabulari."
+
+#: src/Form/CustomVocabForm.php:29
+msgid "The language of the vocabulary terms."
+msgstr "L'idioma dels termes del vocabulari."
+
+#: src/Form/CustomVocabForm.php:57
+msgid "Enter the item set containing the items in this vocabulary."
+msgstr ""
+"Introduïu el conjunt de recursos que conté els recursos d'aquest vocabulari."
+
+#: src/Form/CustomVocabForm.php:70
+msgid "Enter all the terms in this vocabulary, separated by new lines."
+msgstr "Afegiu els termes un per cada línia."
+
+#: src/Form/CustomVocabForm.php:84
+msgid ""
+"Enter all the URIs in this vocabulary, separated by new lines. You may label"
+" a URI by including the label after the URI, separated by a space."
+msgstr ""
+"Afegiu els URIs del vocabulari, un per cada línia. Podeu etiquetar un URI "
+"incloent l'etiqueta abans de l'URI, separada per un espai."
+
+#: src/Form/CustomVocabImportForm.php:14
+msgid "Custom vocab file"
+msgstr "Fitxer del vocabulari"

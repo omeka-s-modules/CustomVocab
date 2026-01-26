@@ -25,7 +25,7 @@ class CustomVocabFactory implements AbstractFactoryInterface
         return true;
     }
 
-    public function __invoke(ContainerInterface $services, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $services, $requestedName, ?array $options = null)
     {
         // Derive the custom vocab ID, fetch the representation, and pass it to
         // the data type.
