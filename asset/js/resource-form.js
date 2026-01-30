@@ -1,5 +1,8 @@
 // Add Chosen UI to Custom Vocab selects.
 $(document).on('o:prepare-value', function(e, type, value) {
+    if (typeof type === 'undefined') {
+        return;
+    }
     if (!type.startsWith('customvocab:')) {
         return;
     }

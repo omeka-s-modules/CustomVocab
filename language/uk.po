@@ -4,7 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Joachim Räth <info@ihregeschichte.info>, 2019
+# Vladimir, 2024
+# tanya chorna <tanya.chorna@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -13,99 +14,99 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-26 17:16-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
-"Last-Translator: Joachim Räth <info@ihregeschichte.info>, 2019\n"
-"Language-Team: German (Germany) (https://app.transifex.com/omeka/teams/14184/de_DE/)\n"
+"Last-Translator: tanya chorna <tanya.chorna@gmail.com>, 2024\n"
+"Language-Team: Ukrainian (https://app.transifex.com/omeka/teams/14184/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
 #: src/Api/Representation/CustomVocabRepresentation.php:139
 #, php-format
 msgid "%s (#%s)"
-msgstr ""
+msgstr "%s (#%s)"
 
 #: src/Api/Representation/CustomVocabRepresentation.php:175
 #, php-format
 msgid "%1$s <%2$s>"
-msgstr ""
+msgstr "%1$s <%2$s>"
 
 #: src/DataType/CustomVocab.php:76
 msgid "Select item below"
-msgstr "Wählen Sie ein Objekt aus"
+msgstr "Виберіть наступні елементи"
 
 #: src/DataType/CustomVocab.php:94
 msgid "Select URI below"
-msgstr ""
+msgstr "Виберіть наступні URI"
 
 #: src/DataType/CustomVocab.php:112
 msgid "Select term below"
-msgstr "Wählen Sie einen Begriff aus"
+msgstr "Виберіть наступні терміни"
 
 #: view/custom-vocab/admin/index/add.phtml:6
 #: view/custom-vocab/admin/index/browse.phtml:7
 #: view/custom-vocab/admin/index/edit.phtml:6
 #: view/custom-vocab/admin/index/import.phtml:6
 msgid "Custom Vocab"
-msgstr "Individuelles Vokabular"
+msgstr "Користувацький Словник"
 
 #: view/custom-vocab/admin/index/browse.phtml:11
 msgid "Import from file"
-msgstr ""
+msgstr "Імортувати із файлу"
 
 #: view/custom-vocab/admin/index/browse.phtml:12
 msgid "Add new vocab"
-msgstr "Neues Vokabular hinzufügen"
+msgstr "Додати новий словник"
 
 #: view/custom-vocab/admin/index/browse.phtml:18
 msgid "Omeka could not find any custom vocabularies."
-msgstr ""
+msgstr "Omeka не змогла знайти ніяких користвацьких словників."
 
 #: view/custom-vocab/admin/index/show-details.phtml:11
 msgid "Export to file"
-msgstr ""
+msgstr "Експортувати до файлу"
 
 #: view/custom-vocab/admin/index/show-details.phtml:13
 msgid "Update from file"
-msgstr ""
+msgstr "Оновити із файлу"
 
 #: view/custom-vocab/admin/index/show-details.phtml:29
 msgid "Terms"
-msgstr "Begriffe"
+msgstr "Терміни"
 
 #: view/custom-vocab/admin/index/show-details.phtml:42
 msgid "URIs"
-msgstr ""
+msgstr "URI"
 
 #: view/custom-vocab/admin/index/show-details.phtml:58
 #, php-format
 msgid "%s items in item set %s"
-msgstr ""
+msgstr "%s елементів у наборі елементів %s"
 
 #: src/DatascribeDataType/CustomVocabSelect.php:37
 msgid "Custom vocab select"
-msgstr ""
+msgstr "Вибраний користувацький словник"
 
 #: src/DatascribeDataType/CustomVocabSelect.php:43
 msgid "Selection label"
-msgstr ""
+msgstr "Вибір етикетки"
 
 #: src/DatascribeDataType/CustomVocabSelect.php:56
 msgid "Custom vocab"
-msgstr ""
+msgstr "Користувацький словник"
 
 #: src/DatascribeDataType/CustomVocabSelect.php:59
 msgid "Select one:"
-msgstr ""
+msgstr "Вибрати один:"
 
 #: src/DatascribeDataType/CustomVocabSelect.php:89
 msgid "[No selection]"
-msgstr ""
+msgstr "[Не вибрано]"
 
 #: src/Api/Adapter/CustomVocabAdapter.php:92
 msgid "The item set, terms, and URIs cannot all be empty."
-msgstr ""
+msgstr "Набір елементів, терміни та URI не можуть будти пустими."
 
 #: src/Controller/Admin/IndexController.php:52
 #: src/Controller/Admin/IndexController.php:98
@@ -113,66 +114,70 @@ msgid ""
 "Custom vocab file applied to this form. Check for accuracy and submit to "
 "save."
 msgstr ""
+"Файл користувацького словника, застосований до цієї форми. Перевірте "
+"правильність і надішліть, щоб зберегти."
 
 #: src/Controller/Admin/IndexController.php:55
 #: src/Controller/Admin/IndexController.php:101
 msgid "Invalid custom vocab file."
-msgstr ""
+msgstr "Некоректний файл користувацького словника."
 
 #: src/Controller/Admin/IndexController.php:69
 msgid "Custom vocab created."
-msgstr "Individuelles Vokabular erstellt."
+msgstr "Користувацький словник створено."
 
 #: src/Controller/Admin/IndexController.php:73
 msgid "Cannot add custom vocab."
-msgstr ""
+msgstr "Неможливо додати користувацький словник."
 
 #: src/Controller/Admin/IndexController.php:114
 msgid "Custom vocab updated."
-msgstr "Individuelles Vokabular aktualisiert."
+msgstr "Користувацький словник оновлено."
 
 #: src/Controller/Admin/IndexController.php:118
 msgid "Cannot edit custom vocab."
-msgstr ""
+msgstr "Неможливо відредагувати користувацький словник."
 
 #: src/Controller/Admin/IndexController.php:137
 msgid "Cannot export custom vocab."
-msgstr ""
+msgstr "Неможливо експортувати користувацький словник."
 
 #: src/Controller/Admin/IndexController.php:206
 msgid "Vocab successfully deleted"
-msgstr "Vokabular erfolgreich gelöscht."
+msgstr "Словник успішно видалено"
 
 #: src/Controller/Admin/IndexController.php:209
 msgid "Vocab could not be deleted"
-msgstr "Vokabular konnte nicht gelöscht werden."
+msgstr "Словник неможливо видалити"
 
 #: src/Controller/Admin/IndexController.php:223
 msgid "custom vocab"
-msgstr "individuelles Vokabular"
+msgstr "користувацький словник"
 
 #: src/Form/CustomVocabForm.php:16
 msgid "A human-readable title of the custom vocabulary."
-msgstr "Ein menschenlesbarer Titel für das individuelle Vokabular"
+msgstr "Зрозуміла назва користувацького словника."
 
 #: src/Form/CustomVocabForm.php:29
 msgid "The language of the vocabulary terms."
-msgstr "Die Sprache der Vokabularbegriffe."
+msgstr "Мова термінів словника."
 
 #: src/Form/CustomVocabForm.php:57
 msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
+msgstr "Введіть набір елементів, що містить елементи цього словника."
 
 #: src/Form/CustomVocabForm.php:70
 msgid "Enter all the terms in this vocabulary, separated by new lines."
-msgstr ""
+msgstr "Введіть усі терміни цього словника, розділивши їх новими рядками."
 
 #: src/Form/CustomVocabForm.php:84
 msgid ""
 "Enter all the URIs in this vocabulary, separated by new lines. You may label"
 " a URI by including the label after the URI, separated by a space."
 msgstr ""
+"Введіть усі URI у цьому словнику, розділивши їх новими рядками. Ви можете "
+"позначити URI, включивши мітку після URI, розділивши її пробілом."
 
 #: src/Form/CustomVocabImportForm.php:14
 msgid "Custom vocab file"
-msgstr ""
+msgstr "Файл користувацького словника"

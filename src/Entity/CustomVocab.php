@@ -74,7 +74,7 @@ class CustomVocab extends AbstractEntity
         return $this->lang;
     }
 
-    public function setItemSet(ItemSet $itemSet = null)
+    public function setItemSet(?ItemSet $itemSet = null)
     {
         $this->itemSet = $itemSet;
     }
@@ -104,7 +104,7 @@ class CustomVocab extends AbstractEntity
         return $this->uris;
     }
 
-    public function setOwner(User $owner = null)
+    public function setOwner(?User $owner = null)
     {
         $this->owner = $owner;
     }

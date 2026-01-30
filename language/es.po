@@ -7,16 +7,16 @@
 # Josu Aramberri <jaramberri@i2basque.es>, 2018
 # Carlos Rivera <Robertohernande9z9@hotmail.com>, 2019
 # Darío Hereñú, 2022
-# Alfonso Montejo <almontejor@gmail.com>, 2023
+# 2b019265641dfb6bf87696b9851ef6cd_2798cfc <e6832017c56bb8e26082a549400c6ce9_896430>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-21 21:08-0400\n"
+"POT-Creation-Date: 2026-01-26 17:16-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
-"Last-Translator: Alfonso Montejo <almontejor@gmail.com>, 2023\n"
+"Last-Translator: 2b019265641dfb6bf87696b9851ef6cd_2798cfc <e6832017c56bb8e26082a549400c6ce9_896430>, 2023\n"
 "Language-Team: Spanish (https://app.transifex.com/omeka/teams/14184/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,15 +34,15 @@ msgstr "%s (#%s)"
 msgid "%1$s <%2$s>"
 msgstr "%1$s <%2$s>"
 
-#: src/DataType/CustomVocab.php:75
+#: src/DataType/CustomVocab.php:76
 msgid "Select item below"
 msgstr "Seleccionar un elemento"
 
-#: src/DataType/CustomVocab.php:93
+#: src/DataType/CustomVocab.php:94
 msgid "Select URI below"
 msgstr "Seleccionar el URI a continuación"
 
-#: src/DataType/CustomVocab.php:111
+#: src/DataType/CustomVocab.php:112
 msgid "Select term below"
 msgstr "Seleccionar un término"
 
@@ -86,10 +86,6 @@ msgstr "URIs"
 msgid "%s items in item set %s"
 msgstr "%s fichas en conjunto de fichas %s"
 
-#: src/Api/Adapter/CustomVocabAdapter.php:92
-msgid "The item set, terms, and URIs cannot all be empty."
-msgstr "El conjunto de fichas, términos y URI no pueden quedar todos vacíos."
-
 #: src/DatascribeDataType/CustomVocabSelect.php:37
 msgid "Custom vocab select"
 msgstr "Seleccionar vocabulario personalizado"
@@ -110,38 +106,9 @@ msgstr "Seleccionar uno…"
 msgid "[No selection]"
 msgstr "[Ninguna selección]"
 
-#: src/Form/CustomVocabForm.php:16
-msgid "A human-readable title of the custom vocabulary."
-msgstr "Un título, de fácil lectura, para el vocabulario personalizado."
-
-#: src/Form/CustomVocabForm.php:29
-msgid "The language of the vocabulary terms."
-msgstr "Idioma de los términos del vocabulario"
-
-#: src/Form/CustomVocabForm.php:57
-msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
-"Seleccionar un conjunto de fichas que contenga los elementos de este "
-"vocabulario."
-
-#: src/Form/CustomVocabForm.php:70
-msgid "Enter all the terms in this vocabulary, separated by new lines."
-msgstr ""
-"Introducir todos los términos del vocabulario, separados en líneas "
-"independientes."
-
-#: src/Form/CustomVocabForm.php:84
-msgid ""
-"Enter all the URIs in this vocabulary, separated by new lines. You may label"
-" a URI by including the label after the URI, separated by a space."
-msgstr ""
-"Introducir todos los URIs del vocabulario, separados en líneas "
-"independientes. Puede etiquetarse un URI introduciendo la etiqueta después "
-"del URI, separada por un espacio."
-
-#: src/Form/CustomVocabImportForm.php:14
-msgid "Custom vocab file"
-msgstr "Archivo de vocabulario personalizado"
+#: src/Api/Adapter/CustomVocabAdapter.php:92
+msgid "The item set, terms, and URIs cannot all be empty."
+msgstr "El conjunto de fichas, términos y URI no pueden quedar todos vacíos."
 
 #: src/Controller/Admin/IndexController.php:52
 #: src/Controller/Admin/IndexController.php:98
@@ -188,3 +155,36 @@ msgstr "El vocabulario personalizado no puede eliminarse."
 #: src/Controller/Admin/IndexController.php:223
 msgid "custom vocab"
 msgstr "Vocabulario personalizado"
+
+#: src/Form/CustomVocabForm.php:16
+msgid "A human-readable title of the custom vocabulary."
+msgstr "Un título, de fácil lectura, para el vocabulario personalizado."
+
+#: src/Form/CustomVocabForm.php:29
+msgid "The language of the vocabulary terms."
+msgstr "Idioma de los términos del vocabulario"
+
+#: src/Form/CustomVocabForm.php:57
+msgid "Enter the item set containing the items in this vocabulary."
+msgstr ""
+"Seleccionar un conjunto de fichas que contenga los elementos de este "
+"vocabulario."
+
+#: src/Form/CustomVocabForm.php:70
+msgid "Enter all the terms in this vocabulary, separated by new lines."
+msgstr ""
+"Introducir todos los términos del vocabulario, separados en líneas "
+"independientes."
+
+#: src/Form/CustomVocabForm.php:84
+msgid ""
+"Enter all the URIs in this vocabulary, separated by new lines. You may label"
+" a URI by including the label after the URI, separated by a space."
+msgstr ""
+"Introducir todos los URIs del vocabulario, separados en líneas "
+"independientes. Puede etiquetarse un URI introduciendo la etiqueta después "
+"del URI, separada por un espacio."
+
+#: src/Form/CustomVocabImportForm.php:14
+msgid "Custom vocab file"
+msgstr "Archivo de vocabulario personalizado"

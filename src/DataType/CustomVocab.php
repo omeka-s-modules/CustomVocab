@@ -5,11 +5,12 @@ use CustomVocab\Api\Representation\CustomVocabRepresentation;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\DataType\DataTypeWithOptionsInterface;
+use Omeka\DataType\ConversionTargetInterface;
 use Omeka\DataType\ValueAnnotatingInterface;
 use Omeka\Entity\Value;
 use Laminas\View\Renderer\PhpRenderer;
 
-class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterface
+class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterface, ConversionTargetInterface
 {
     /**
      * @var CustomVocabRepresentation
@@ -218,5 +219,41 @@ class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterf
     public function valueAnnotationForm(PhpRenderer $view)
     {
         return $this->form($view);
+    }
+
+    public function convert(Value $valueObject, string $dataTypeTarget): bool
+    {
+        switch ($this->vocab->type()) {
+            case 'resource':
+                // Does not support convert to custom vocab (resource) due to
+                // the potentially massive overhead required to determine
+                // whether the item is assigned to the vocab's item set.
+                break;
+            case 'uri':
+                // Attempt to convert to custom vocab (uri).
+                $value = $valueObject->getValue();
+                $uri = $valueObject->getUri();
+                $uris = $this->vocab->uris();
+                if (is_string($uri) && '' !== trim($uri) && array_key_exists($uri, $uris)) {
+                    if (is_string($uris[$uri]) && '' !== trim($uris[$uri])) {
+                        // If the URI has a label, set it as the value. This will
+                        // overwrite any existing value, and therefore data loss
+                        // may occur. Even so, this behavior is desirable because
+                        // we're converting to a controlled vocabulary.
+                        $valueObject->setValue($uris[$uri]);
+                    }
+                    return true;
+                }
+                break;
+            case 'literal':
+                // Attempt to convert to custom vocab (literal).
+                $value = $valueObject->getValue();
+                $terms = $this->vocab->terms();
+                if (is_string($value) && '' !== trim($value) && in_array($value, $terms)) {
+                    return true;
+                }
+                break;
+        }
+        return false;
     }
 }

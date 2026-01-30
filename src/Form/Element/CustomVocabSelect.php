@@ -18,14 +18,14 @@ class CustomVocabSelect extends Select
      */
     protected $api;
 
-    public function getInputSpecification() : array
+    public function getInputSpecification(): array
     {
         $inputSpecification = parent::getInputSpecification();
         $inputSpecification['required'] = isset($this->attributes['required']) && $this->attributes['required'];
         return $inputSpecification;
     }
 
-    public function getValueOptions() : array
+    public function getValueOptions(): array
     {
         $customVocabId = $this->getOption('custom_vocab_id');
 

@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Deidson Rafael Trindade <drafael@usp.br>, 2023
+# Deidson Rafael Trindade <drafael@usp.br>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-21 21:08-0400\n"
+"POT-Creation-Date: 2026-01-26 17:16-0500\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
-"Last-Translator: Deidson Rafael Trindade <drafael@usp.br>, 2023\n"
+"Last-Translator: Deidson Rafael Trindade <drafael@usp.br>, 2024\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/omeka/teams/14184/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,15 +31,15 @@ msgstr "%s (#%s)"
 msgid "%1$s <%2$s>"
 msgstr "%1$s <%2$s>"
 
-#: src/DataType/CustomVocab.php:75
+#: src/DataType/CustomVocab.php:76
 msgid "Select item below"
 msgstr "Selecione o item abaixo"
 
-#: src/DataType/CustomVocab.php:93
+#: src/DataType/CustomVocab.php:94
 msgid "Select URI below"
 msgstr "Selecione o URI abaixo"
 
-#: src/DataType/CustomVocab.php:111
+#: src/DataType/CustomVocab.php:112
 msgid "Select term below"
 msgstr "Selecione o termo abaixo"
 
@@ -52,7 +52,7 @@ msgstr "Vocabulário Personalizado"
 
 #: view/custom-vocab/admin/index/browse.phtml:11
 msgid "Import from file"
-msgstr ""
+msgstr "Importar do arquivo"
 
 #: view/custom-vocab/admin/index/browse.phtml:12
 msgid "Add new vocab"
@@ -60,15 +60,15 @@ msgstr "Adicionar novo vocabulário"
 
 #: view/custom-vocab/admin/index/browse.phtml:18
 msgid "Omeka could not find any custom vocabularies."
-msgstr ""
+msgstr "O Omeka não conseguiu encontrar nenhum vocabulário personalizado."
 
 #: view/custom-vocab/admin/index/show-details.phtml:11
 msgid "Export to file"
-msgstr ""
+msgstr "Exportar para arquivo"
 
 #: view/custom-vocab/admin/index/show-details.phtml:13
 msgid "Update from file"
-msgstr ""
+msgstr "Atualização do arquivo"
 
 #: view/custom-vocab/admin/index/show-details.phtml:29
 msgid "Terms"
@@ -81,11 +81,7 @@ msgstr "URIs"
 #: view/custom-vocab/admin/index/show-details.phtml:58
 #, php-format
 msgid "%s items in item set %s"
-msgstr ""
-
-#: src/Api/Adapter/CustomVocabAdapter.php:92
-msgid "The item set, terms, and URIs cannot all be empty."
-msgstr "O conjunto de itens, termos e URIs não podem estar vazios."
+msgstr "%s itens na coleção %s"
 
 #: src/DatascribeDataType/CustomVocabSelect.php:37
 msgid "Custom vocab select"
@@ -106,6 +102,56 @@ msgstr "Selecione um:"
 #: src/DatascribeDataType/CustomVocabSelect.php:89
 msgid "[No selection]"
 msgstr "[Nenhuma seleção]"
+
+#: src/Api/Adapter/CustomVocabAdapter.php:92
+msgid "The item set, terms, and URIs cannot all be empty."
+msgstr "O conjunto de itens, termos e URIs não podem estar vazios."
+
+#: src/Controller/Admin/IndexController.php:52
+#: src/Controller/Admin/IndexController.php:98
+msgid ""
+"Custom vocab file applied to this form. Check for accuracy and submit to "
+"save."
+msgstr ""
+"Arquivo de vocabulário personalizado aplicado a este formulário. Verifique a"
+" precisão e envie para salvar."
+
+#: src/Controller/Admin/IndexController.php:55
+#: src/Controller/Admin/IndexController.php:101
+msgid "Invalid custom vocab file."
+msgstr "Arquivo de vocabulário personalizado inválido."
+
+#: src/Controller/Admin/IndexController.php:69
+msgid "Custom vocab created."
+msgstr "Vocabulário personalizado criado."
+
+#: src/Controller/Admin/IndexController.php:73
+msgid "Cannot add custom vocab."
+msgstr "Não é possível adicionar vocabulário personalizado."
+
+#: src/Controller/Admin/IndexController.php:114
+msgid "Custom vocab updated."
+msgstr "Vocabulário personalizado atualizado."
+
+#: src/Controller/Admin/IndexController.php:118
+msgid "Cannot edit custom vocab."
+msgstr "Não é possível editar o vocabulário personalizado."
+
+#: src/Controller/Admin/IndexController.php:137
+msgid "Cannot export custom vocab."
+msgstr "Não é possível exportar vocabulário personalizado."
+
+#: src/Controller/Admin/IndexController.php:206
+msgid "Vocab successfully deleted"
+msgstr "Vocabulário excluído com sucesso"
+
+#: src/Controller/Admin/IndexController.php:209
+msgid "Vocab could not be deleted"
+msgstr "Vocabulário não pode ser excluído"
+
+#: src/Controller/Admin/IndexController.php:223
+msgid "custom vocab"
+msgstr "vocabulário personalizado"
 
 #: src/Form/CustomVocabForm.php:16
 msgid "A human-readable title of the custom vocabulary."
@@ -133,48 +179,4 @@ msgstr ""
 
 #: src/Form/CustomVocabImportForm.php:14
 msgid "Custom vocab file"
-msgstr ""
-
-#: src/Controller/Admin/IndexController.php:52
-#: src/Controller/Admin/IndexController.php:98
-msgid ""
-"Custom vocab file applied to this form. Check for accuracy and submit to "
-"save."
-msgstr ""
-
-#: src/Controller/Admin/IndexController.php:55
-#: src/Controller/Admin/IndexController.php:101
-msgid "Invalid custom vocab file."
-msgstr ""
-
-#: src/Controller/Admin/IndexController.php:69
-msgid "Custom vocab created."
-msgstr "Vocabulário personalizado criado."
-
-#: src/Controller/Admin/IndexController.php:73
-msgid "Cannot add custom vocab."
-msgstr ""
-
-#: src/Controller/Admin/IndexController.php:114
-msgid "Custom vocab updated."
-msgstr "Vocabulário personalizado atualizado."
-
-#: src/Controller/Admin/IndexController.php:118
-msgid "Cannot edit custom vocab."
-msgstr ""
-
-#: src/Controller/Admin/IndexController.php:137
-msgid "Cannot export custom vocab."
-msgstr ""
-
-#: src/Controller/Admin/IndexController.php:206
-msgid "Vocab successfully deleted"
-msgstr "Vocabulário excluído com sucesso"
-
-#: src/Controller/Admin/IndexController.php:209
-msgid "Vocab could not be deleted"
-msgstr "Vocabulário não pode ser excluído"
-
-#: src/Controller/Admin/IndexController.php:223
-msgid "custom vocab"
-msgstr "vocabulário personalizado"
+msgstr "Arquivo de vocabulário personalizado"

@@ -32,12 +32,12 @@ class CustomVocabSelect implements DataTypeInterface
         $this->api = $api;
     }
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return 'Custom vocab select'; // @translate
     }
 
-    public function addFieldElements(Fieldset $fieldset, array $fieldData) : void
+    public function addFieldElements(Fieldset $fieldset, array $fieldData): void
     {
         $element = new Element\Text('label');
         $element->setLabel('Selection label'); // @translate
@@ -61,7 +61,7 @@ class CustomVocabSelect implements DataTypeInterface
         $fieldset->add($element);
     }
 
-    public function getFieldDataFromUserData(array $userData) : array
+    public function getFieldDataFromUserData(array $userData): array
     {
         $fieldData = [];
         $fieldData['label'] =
@@ -73,12 +73,12 @@ class CustomVocabSelect implements DataTypeInterface
         return $fieldData;
     }
 
-    public function fieldDataIsValid(array $fieldData) : bool
+    public function fieldDataIsValid(array $fieldData): bool
     {
         return true;
     }
 
-    public function addValueElements(Fieldset $fieldset, array $fieldData, ?string $valueText) : void
+    public function addValueElements(Fieldset $fieldset, array $fieldData, ?string $valueText): void
     {
         $fieldData['options'] = $this->getValueOptions($fieldData['custom_vocab_id']);
         $element = new DatascribeElement\Select('value', [
@@ -91,7 +91,7 @@ class CustomVocabSelect implements DataTypeInterface
         $fieldset->add($element);
     }
 
-    public function getValueTextFromUserData(array $userData) : ?string
+    public function getValueTextFromUserData(array $userData): ?string
     {
         $text = null;
         if (isset($userData['value']) && is_string($userData['value']) && ('' !== $userData['value'])) {
@@ -100,7 +100,7 @@ class CustomVocabSelect implements DataTypeInterface
         return $text;
     }
 
-    public function valueTextIsValid(array $fieldData, ?string $valueText) : bool
+    public function valueTextIsValid(array $fieldData, ?string $valueText): bool
     {
         $fieldData['options'] = $this->getValueOptions($fieldData['custom_vocab_id']);
         $element = new DatascribeElement\Select('value', [
