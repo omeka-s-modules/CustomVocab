@@ -179,6 +179,14 @@ class Module extends AbstractModule
             'data_types.value_annotating',
             [$this, 'addDataTypesToValueAnnotatingConfig']
         );
+
+        $sharedEventManager->attach(
+            \Omeka\Api\Representation\ValueRepresentation::class,
+            'rep.value.html',
+            [$this, 'handleRepresentationValueHtml'],
+            -1000
+        );
+        
     }
 
     public function addVocabularyServices(Event $event)
@@ -256,4 +264,55 @@ class Module extends AbstractModule
         }
         $event->setParam('data_types', $valueAnnotating);
     }
+    
+    /**
+     * Convert selected property values to its title.
+     *
+     * @todo Factorize handleRepresentationValueHtml().
+     *
+     * Compatible with the converted value to a link of the following modules:
+     * 
+     * Advanced Resource Template 3.4.43
+     * Metadata Browse 1.6.0
+     * 
+     */
+    public function handleRepresentationValueHtml(Event $event): void
+    {
+
+        $services = $this->getServiceLocator();
+        $status = $services->get('Omeka\Status');
+        $apiManager = $services->get('Omeka\ApiManager');
+        $isSite = $status->isSiteRequest();
+        $isAdmin = $status->isAdminRequest();
+        if (!$isSite && !$isAdmin) {
+            return;
+        }
+        $value = $event->getTarget();
+        $type = $value->type();
+        if(!empty($type) && stripos($type, 'customvocab') !== False){
+            $rc = explode(':', $type);
+            if(!empty($rc[1])){
+                $customvocabID = $rc[1];
+                $response = $apiManager->read('custom_vocabs', $customvocabID);
+                if(!empty($response)){
+                    $listValues = $response->getContent()->listValues();
+                    $val = (string) $value->value();
+                    if(!empty($listValues) && !empty($val) && !empty($listValues[$val])){
+                        $html = $event->getParam('html');
+                        if(stripos($html, '</a>') !== False){
+                            $need[] = '/(>.+<\/a>)/i';
+                            $replace[] = '>'.$listValues[$val].'</a>';
+                        }else{
+                            $need[] = '/'.$val.'/i';
+                            $replace[] = $listValues[$val];
+                        }
+                        $html = preg_replace($need, $replace, $html);
+                        $event->setParam('html', $html);
+                    }
+                }
+            }
+        }
+        
+    }
+    
 }
