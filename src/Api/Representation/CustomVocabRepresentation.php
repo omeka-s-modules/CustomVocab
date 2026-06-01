@@ -20,21 +20,15 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
 
     public function getJsonLd()
     {
-        $itemSet = null;
-        $owner = null;
-        if ($this->itemSet()) {
-            $itemSet = $this->itemSet()->getReference();
-        }
-        if ($this->owner()) {
-            $owner = $this->owner()->getReference();
-        }
+        $itemSet = $this->itemSet();
+        $owner = $this->owner();
         return [
             'o:label' => $this->label(),
             'o:lang' => $this->lang(),
             'o:terms' => $this->terms(),
             'o:uris' => $this->uris(),
-            'o:item_set' => $itemSet,
-            'o:owner' => $owner,
+            'o:item_set' => $itemSet ? $itemSet->getReference()->jsonSerialize() : null,
+            'o:owner' => $owner ? $owner->getReference()->jsonSerialize() : null,
         ];
     }
 
