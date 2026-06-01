@@ -120,7 +120,9 @@ class IndexController extends AbstractActionController
             }
         } else {
             $data = $vocab->jsonSerialize();
-            $data['o:item_set'] = $data['o:item_set'] ? $data['o:item_set']->id() : null;
+            $data['o:item_set'] = $data['o:item_set']
+                ? (is_object($data['o:item_set']) ? $data['o:item_set']->id() : $data['o:item_set']['o:id'])
+                : null;
             $form->setData($data);
         }
 
