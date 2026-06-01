@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 17:16-0500\n"
+"POT-Creation-Date: 2026-06-01 00:00+0000\n"
 "PO-Revision-Date: 2017-09-14 20:14+0000\n"
 "Last-Translator: 2b019265641dfb6bf87696b9851ef6cd_2798cfc <e6832017c56bb8e26082a549400c6ce9_896430>, 2023\n"
 "Language-Team: Spanish (https://app.transifex.com/omeka/teams/14184/es/)\n"
@@ -26,8 +26,8 @@ msgstr ""
 
 #: src/Api/Representation/CustomVocabRepresentation.php:139
 #, php-format
-msgid "%s (#%s)"
-msgstr "%s (#%s)"
+msgid "%1$s (#%2$s)"
+msgstr "%1$s (#%2$s)"
 
 #: src/Api/Representation/CustomVocabRepresentation.php:175
 #, php-format
@@ -83,8 +83,8 @@ msgstr "URIs"
 
 #: view/custom-vocab/admin/index/show-details.phtml:58
 #, php-format
-msgid "%s items in item set %s"
-msgstr "%s fichas en conjunto de fichas %s"
+msgid "%1$s items in item set %2$s"
+msgstr "%1$s fichas en conjunto de fichas %2$s"
 
 #: src/DatascribeDataType/CustomVocabSelect.php:37
 msgid "Custom vocab select"

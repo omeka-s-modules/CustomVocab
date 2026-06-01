@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 17:16-0500\n"
+"POT-Creation-Date: 2026-06-01 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Api/Representation/CustomVocabRepresentation.php:139
+#: src/Api/Representation/CustomVocabRepresentation.php:133
 #, php-format
-msgid "%s (#%s)"
+msgid "%1$s (#%2$s)"
 msgstr ""
 
-#: src/Api/Representation/CustomVocabRepresentation.php:175
+#: src/Api/Representation/CustomVocabRepresentation.php:164
 #, php-format
 msgid "%1$s <%2$s>"
 msgstr ""
@@ -76,7 +76,7 @@ msgstr ""
 
 #: view/custom-vocab/admin/index/show-details.phtml:58
 #, php-format
-msgid "%s items in item set %s"
+msgid "%1$s items in item set %2$s"
 msgstr ""
 
 #: src/DatascribeDataType/CustomVocabSelect.php:37
@@ -97,6 +97,32 @@ msgstr ""
 
 #: src/DatascribeDataType/CustomVocabSelect.php:89
 msgid "[No selection]"
+msgstr ""
+
+#: src/Form/CustomVocabImportForm.php:14
+msgid "Custom vocab file"
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:16
+msgid "A human-readable title of the custom vocabulary."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:29
+msgid "The language of the vocabulary terms."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:57
+msgid "Enter the item set containing the items in this vocabulary."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:70
+msgid "Enter all the terms in this vocabulary, separated by new lines."
+msgstr ""
+
+#: src/Form/CustomVocabForm.php:84
+msgid ""
+"Enter all the URIs in this vocabulary, separated by new lines. You may label "
+"a URI by including the label after the URI, separated by a space."
 msgstr ""
 
 #: src/Api/Adapter/CustomVocabAdapter.php:92
@@ -131,44 +157,18 @@ msgstr ""
 msgid "Cannot edit custom vocab."
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:137
+#: src/Controller/Admin/IndexController.php:139
 msgid "Cannot export custom vocab."
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:206
+#: src/Controller/Admin/IndexController.php:208
 msgid "Vocab successfully deleted"
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:209
+#: src/Controller/Admin/IndexController.php:211
 msgid "Vocab could not be deleted"
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:223
+#: src/Controller/Admin/IndexController.php:225
 msgid "custom vocab"
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:16
-msgid "A human-readable title of the custom vocabulary."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:29
-msgid "The language of the vocabulary terms."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:57
-msgid "Enter the item set containing the items in this vocabulary."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:70
-msgid "Enter all the terms in this vocabulary, separated by new lines."
-msgstr ""
-
-#: src/Form/CustomVocabForm.php:84
-msgid ""
-"Enter all the URIs in this vocabulary, separated by new lines. You may label "
-"a URI by including the label after the URI, separated by a space."
-msgstr ""
-
-#: src/Form/CustomVocabImportForm.php:14
-msgid "Custom vocab file"
 msgstr ""
