@@ -123,21 +123,16 @@ class CustomVocabRepresentation extends AbstractEntityRepresentation
         if (!$itemSet) {
             return null;
         }
-        $result = [];
-        /** @var \Omeka\Api\Representation\ItemRepresentation[] $items */
-        $items = $this->getServiceLocator()->get('Omeka\ApiManager')
-            ->search('items', ['item_set_id' => $itemSet->getId()])
+        // Fetch the cached display titles in a single scalar query instead of
+        // loading every item representation and calling displayTitle() on each.
+        // This process is used in browse views, but skip language and event.
+        $result = $this->getServiceLocator()->get('Omeka\ApiManager')
+            ->search('items', ['item_set_id' => $itemSet->getId()], ['returnScalar' => 'title'])
             ->getContent();
-        $lang = $this->lang();
         if (!empty($options['append_id_to_title'])) {
-            $label = $this->getTranslator()->translate('%s (#%s)'); // @translate
-            foreach ($items as $item) {
-                $itemId = $item->id();
-                $result[$itemId] = sprintf($label, $item->displayTitle(null, $lang), $itemId);
-            }
-        } else {
-            foreach ($items as $item) {
-                $result[$item->id()] = $item->displayTitle(null, $lang);
+            $label = $this->getTranslator()->translate('%1$s (#%2$s)'); // @translate
+            foreach ($result as $itemId => $title) {
+                $result[$itemId] = sprintf($label, $title, $itemId);
             }
         }
         natcasesort($result);
