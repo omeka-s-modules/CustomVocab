@@ -100,7 +100,7 @@ class CustomVocabAdapter extends AbstractEntityAdapter
         }
         // The str_replace() allows to fix Apple copy/paste.
         if (!is_array($terms)) {
-            $terms = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $terms)); // explode at end of line
+            $terms = explode("\n", strtr($terms, ["\r\n" => "\n", "\n\r" => "\n", "\r" => "\n"])); // explode at end of line
         }
         $terms = array_map('trim', $terms); // trim all terms
         $terms = array_filter($terms); // remove empty terms
@@ -114,7 +114,7 @@ class CustomVocabAdapter extends AbstractEntityAdapter
         }
         // The str_replace() allows to fix Apple copy/paste.
         if (!is_array($uriLabels)) {
-            $uriLabels = explode("\n", str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $uriLabels)); // explode at end of line
+            $uriLabels = explode("\n", strtr($uriLabels, ["\r\n" => "\n", "\n\r" => "\n", "\r" => "\n"])); // explode at end of line
         }
         return array_map('trim', $uriLabels); // trim all terms
     }
