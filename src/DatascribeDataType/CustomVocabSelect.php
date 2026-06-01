@@ -3,11 +3,11 @@ namespace CustomVocab\DatascribeDataType;
 
 use Datascribe\DatascribeDataType\DataTypeInterface;
 use Datascribe\Form\Element as DatascribeElement;
+use Laminas\Form\Element;
+use Laminas\Form\Fieldset;
+use Laminas\Validator\ValidatorChain;
 use Omeka\Api\Exception\NotFoundException;
 use Omeka\Api\Manager;
-use Zend\Form\Element;
-use Zend\Form\Fieldset;
-use Zend\Validator\ValidatorChain;
 
 /**
  * The Custom Vocab data type for the DataScribe module.

@@ -3,8 +3,8 @@
 namespace CustomVocab\Service\Controller\Admin;
 
 use CustomVocab\Controller\Admin\IndexController;
-use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 class IndexControllerFactory implements FactoryInterface
 {

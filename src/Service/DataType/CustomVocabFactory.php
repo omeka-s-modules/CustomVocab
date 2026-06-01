@@ -2,9 +2,9 @@
 namespace CustomVocab\Service\DataType;
 
 use CustomVocab\DataType\CustomVocab;
-use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 use Omeka\Api\Exception\NotFoundException;
+use Psr\Container\ContainerInterface;
 
 class CustomVocabFactory implements AbstractFactoryInterface
 {

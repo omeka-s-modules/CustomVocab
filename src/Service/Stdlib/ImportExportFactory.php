@@ -3,8 +3,8 @@
 namespace CustomVocab\Service\Stdlib;
 
 use CustomVocab\Stdlib\ImportExport;
-use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 class ImportExportFactory implements FactoryInterface
 {
