@@ -1,0 +1,36 @@
+{
+    "name": "omeka/custom-vocab",
+    "type": "omeka-s-module",
+    "description": "Module for Omeka S: Describe your resources using vocabularies you create.",
+    "keywords": [
+        "Omeka S",
+        "Omeka S module",
+        "curation",
+        "controlled vocabulary",
+        "authority list",
+        "data type"
+    ],
+    "license": "GPL-3.0-or-later",
+    "homepage": "https://omeka.org/s/docs/user-manual/modules/customvocab/",
+    "authors": [
+        {
+            "name": "Omeka Team"
+        },
+        {
+            "name": "Daniel Berthereau",
+            "email": "Daniel.packagist@Berthereau.net"
+        }
+    ],
+    "support": {
+        "issues": "https://forum.omeka.org/c/omeka-s/modules",
+        "forum": "https://forum.omeka.org/"
+    },
+    "autoload": {
+        "psr-4": {
+            "CustomVocab\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name": "CustomVocab"
+    }
+}
