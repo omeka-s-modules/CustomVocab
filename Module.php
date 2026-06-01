@@ -115,7 +115,7 @@ class Module extends AbstractModule
                         ? $conn->executeStatement('UPDATE custom_vocab SET uris = NULL, terms = NULL WHERE id = :id;', ['id' => $id])
                         : $conn->executeStatement('UPDATE custom_vocab SET uris = :uris, terms = NULL WHERE id = :id;', ['id' => $id, 'uris' => json_encode($result)]);
                 } else {
-                    $terms = array_filter(array_map('trim', explode("\n", $terms)), 'strlen') ?: null;
+                    $terms = array_values(array_filter(array_map('trim', explode("\n", $terms)), 'strlen')) ?: null;
                     empty($terms)
                         ? $conn->executeStatement('UPDATE custom_vocab SET terms = NULL, uris = NULL WHERE id = :id;', ['id' => $id])
                         : $conn->executeStatement('UPDATE custom_vocab SET terms = :terms, uris = NULL WHERE id = :id;', ['id' => $id, 'terms' => json_encode($terms)]);
