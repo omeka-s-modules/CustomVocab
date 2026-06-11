@@ -184,16 +184,21 @@ class CustomVocab implements DataTypeWithOptionsInterface, ValueAnnotatingInterf
         if ($valueResource) {
             return $valueResource->valueRepresentation();
         }
-        if ($value->uri()) {
-            $jsonLd = ['@id' => $value->uri()];
-            if ($value->value()) {
-                $jsonLd['o:label'] = $value->value();
+
+        $uri = $value->uri();
+        $val = (string) $value->value();
+
+        if ($uri) {
+            $jsonLd = ['@id' => $uri];
+            if ($val !== '') {
+                $jsonLd['o:label'] = $val;
             }
             return $jsonLd;
         }
-        $jsonLd = ['@value' => $value->value()];
-        if ($value->lang()) {
-            $jsonLd['@language'] = $value->lang();
+
+        $jsonLd = ['@value' => $val];
+        if ($lang = $value->lang()) {
+            $jsonLd['@language'] = $lang;
         }
         return $jsonLd;
     }

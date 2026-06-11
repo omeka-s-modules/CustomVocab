@@ -3,8 +3,8 @@
 namespace CustomVocab\Service\Form\Element;
 
 use CustomVocab\Form\Element\CustomVocabSelect;
-use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 class CustomVocabSelectFactory implements FactoryInterface
 {

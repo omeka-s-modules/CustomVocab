@@ -55,7 +55,7 @@ $type = $resource->type();
 <div class="meta-group">
     <h4><?php echo $translate('Items'); ?></h4>
     <div class="value"><?php echo sprintf(
-        $translate('%s items in item set %s'),
+        $translate('%1$s items in item set %2$s'),
         $hyperlink($itemSet->itemCount(), $url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])),
         $itemSet->link($itemSet->displayTitle())
     ); ?></div>

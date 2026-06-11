@@ -27,6 +27,20 @@ class CustomVocabSelect extends Select
 
     public function getValueOptions(): array
     {
+        /**
+         * @var \CustomVocab\Api\Representation\CustomVocabRepresentation $customVocab
+         */
+
+        static $computeds = [];
+
+        ksort($this->options);
+        $hash = md5(serialize($this->options));
+        if (isset($computeds[$hash])) {
+            return $computeds[$hash];
+        }
+
+        $computeds[$hash] = [];
+
         $customVocabId = $this->getOption('custom_vocab_id');
 
         try {
@@ -41,6 +55,8 @@ class CustomVocabSelect extends Select
         if (is_array($prependValueOptions)) {
             $valueOptions = $prependValueOptions + $valueOptions;
         }
+
+        $computeds[$hash] = $valueOptions;
 
         $this->setValueOptions($valueOptions);
         return $valueOptions;

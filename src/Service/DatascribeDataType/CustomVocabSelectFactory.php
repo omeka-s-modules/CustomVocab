@@ -1,9 +1,9 @@
 <?php
 namespace CustomVocab\Service\DatascribeDataType;
 
-use Interop\Container\ContainerInterface;
 use CustomVocab\DatascribeDataType\CustomVocabSelect;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 class CustomVocabSelectFactory implements FactoryInterface
 {
